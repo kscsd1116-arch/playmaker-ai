@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PlayMaker AI</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f7f6fb;color:#222}
+header{background:#6d3df5;color:#fff;padding:22px}
+header h1{margin:0;font-size:25px}
+header p{margin:6px 0 0;opacity:.9}
+main{padding:16px;max-width:800px;margin:auto}
+.hero,.card{background:#fff;border-radius:18px;padding:20px;margin-bottom:14px;box-shadow:0 2px 12px #0000000d}
+.hero{background:linear-gradient(135deg,#6d3df5,#9b74ff);color:white}
+button{border:0;border-radius:12px;padding:13px 16px;font-size:15px;font-weight:bold;cursor:pointer}
+.primary{background:#6d3df5;color:#fff}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.item{background:#faf9ff;border:1px solid #e8e2ff;border-radius:14px;padding:15px}
+.item b{display:block;margin-bottom:7px}
+.status{display:inline-block;background:#e8fff1;color:#16824b;padding:6px 10px;border-radius:20px;font-size:12px;font-weight:bold}
+footer{padding:85px 15px 20px;text-align:center;color:#888}
+nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #ddd;display:flex;overflow-x:auto;padding:7px;z-index:10}
+nav button{background:none;min-width:70px;font-size:11px;padding:7px 4px}
+@media(max-width:600px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header>
+<h1>PLAYMAKER AI</h1>
+<p>AI 음악 · 썸네일 · 영상 · YouTube 자동화</p>
+</header>
+
+<main>
+<section class="hero">
+<h2>음악 콘텐츠를 한 번에 만드세요 🎵</h2>
+<p>노래 제작부터 YouTube 업로드까지 하나의 워크플로우로 진행합니다.</p>
+<button onclick="start()" style="margin-top:12px">✨ AI 콘텐츠 만들기</button>
+</section>
+
+<section class="card">
+<h2>🤖 자동화 워크플로우</h2>
+<span class="status">● 준비 완료</span>
+<div class="grid" style="margin-top:15px">
+<div class="item"><b>🎵 1. 음악 생성</b>콘셉트·가사·음악 제작</div>
+<div class="item"><b>🖼️ 2. 썸네일</b>AI 이미지 자동 제작</div>
+<div class="item"><b>🎬 3. 영상 제작</b>음악과 이미지를 영상으로 변환</div>
+<div class="item"><b>📺 4. YouTube</b>제목·설명·업로드 자동화</div>
+<div class="item"><b>📅 5. 예약 업로드</b>원하는 날짜에 자동 게시</div>
+<div class="item"><b>📊 6. 분석</b>조회수와 채널 성과 확인</div>
+</div>
+</section>
+
+<section class="card" id="create">
+<h2>새 프로젝트</h2>
+<p>예: 비 오는 밤 감성 발라드 플레이리스트</p>
+<button class="primary" onclick="alert('PlayMaker AI 프로젝트 생성 기능을 연결합니다!')">새 프로젝트 만들기</button>
+</section>
+</main>
+
+<footer>PlayMaker AI · 음악이 머무는 밤</footer>
+
+<nav>
+<button>🏠<br>홈</button>
+<button onclick="start()">✨<br>만들기</button>
+<button>🎵<br>노래</button>
+<button>🖼️<br>썸네일</button>
+<button>🎬<br>영상</button>
+<button>📺<br>YouTube</button>
+</nav>
+
+<script>
+function start(){
+ document.getElementById("create").scrollIntoView({behavior:"smooth"});
+}
+</script>
+
+</body>
+</html>
