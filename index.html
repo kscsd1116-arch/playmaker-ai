@@ -532,29 +532,79 @@ function nextStep(){
   showThumb();
 }
 
-function makeThumbnail(){
+  async function makeThumbnail(){
 
-  const title=
-  document.getElementById('thumbTitle').value.trim()
-  || '감성 플레이리스트';
+  const title =
+    document.getElementById('thumbTitle').value.trim()
+    || '감성 플레이리스트';
 
-  const mood=
-  document.getElementById('thumbMood').value;
+  const mood =
+    document.getElementById('thumbMood').value;
 
-  document.getElementById('thumbPrompt').innerHTML=
-  mood+
-  ', cinematic lighting, emotional atmosphere, YouTube playlist thumbnail, 16:9';
+  const prompt =
+    title + ', ' + mood +
+    ', cinematic lighting, emotional atmosphere, YouTube playlist thumbnail, 16:9, no text';
 
-  document.getElementById('previewTitle').innerText=title;
+  document.getElementById('thumbPrompt').innerText = prompt;
 
-  document
-  .getElementById('thumbResult')
-  .classList.remove('hidden');
+  const result = document.getElementById('thumbResult');
+  result.classList.remove('hidden');
+  result.innerHTML = '<p>🎨 AI가 썸네일을 만들고 있습니다...</p>';
 
-  document
-  .getElementById('thumbResult')
-  .scrollIntoView({behavior:'smooth'});
-}
+  try {
+
+    const response = await fetch(
+      'https://playmaker-ai-api.onrender.com/generate-thumbnail',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ prompt })
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(
+        data?.error?.message ||
+        data?.error ||
+        '이미지 생성에 실패했습니다.'
+      );
+    }
+
+    if (!data.image) {
+      throw new Error('이미지 데이터가 없습니다.');
+    }
+
+    result.innerHTML = `
+      <img
+        src="data:image/png;base64,${data.image}"
+        style="width:100%;border-radius:16px;"
+        alt="AI 생성 썸네일"
+      >
+      <p class="small">AI 썸네일 생성 완료 ✓</p>
+      <button
+        class="btn secondary"
+        onclick="goVideo()">
+        다음: 영상 만들기 →
+      </button>
+    `;
+
+    result.scrollIntoView({behavior:'smooth'});
+
+  } catch(error) {
+
+    console.error(error);
+
+    result.innerHTML =
+      '<p>❌ 썸네일 생성 오류: ' +
+      error.message +
+      '</p>';
+  }
+}9
+                  
 
 function goVideo(){
 
