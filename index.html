@@ -409,7 +409,8 @@ onclick="goVideo()">
   style="margin-top:14px"
   onclick="document.getElementById('videoFile').click()">
   🎬 완성 영상 선택
-</button>  
+</button> 
+  <p id="videoFileName" class="small"></p>
 </section>
 
 </main>
@@ -615,7 +616,6 @@ function nextStep(){
                   
 
 function goVideo(){
-
   document
   .getElementById('videoStep')
   .classList.remove('hidden');
@@ -624,7 +624,16 @@ function goVideo(){
   .getElementById('videoStep')
   .scrollIntoView({behavior:'smooth'});
 }
+document.getElementById('videoFile').addEventListener('change', function() {
+  const file = this.files[0];
+  const nameBox = document.getElementById('videoFileName');
 
+  if (file) {
+    nameBox.textContent = '✅ 선택된 영상: ' + file.name;
+  } else {
+    nameBox.textContent = '';
+  }
+});
 </script>
 
 </body>
