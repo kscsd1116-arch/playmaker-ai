@@ -395,13 +395,21 @@ onclick="goVideo()">
 제목 오버레이
 </div>
 
-<button
-class="btn secondary"
-style="margin-top:14px"
-onclick="alert('다음 단계에서 실제 영상 생성 기능을 연결합니다.')">
-🎬 영상 생성 준비
-</button>
 
+
+
+
+
+
+
+<input id="videoFile" type="file" accept="video/*" class="hidden">
+
+<button
+  class="btn secondary"
+  style="margin-top:14px"
+  onclick="document.getElementById('videoFile').click()">
+  🎬 완성 영상 선택
+</button>  
 </section>
 
 </main>
