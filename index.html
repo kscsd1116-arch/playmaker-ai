@@ -632,9 +632,11 @@ function goVideo(){
 document.getElementById('videoFile').addEventListener('change', function() {
   const file = this.files[0];
   const nameBox = document.getElementById('videoFileName');
-
+const preview = document.getElementById('videoPreview');
   if (file) {
     nameBox.textContent = '✅ 선택된 영상: ' + file.name;
+    preview.src = URL.createObjectURL(file);
+    preview.classList.remove('hidden');
   } else {
     nameBox.textContent = '';
   }
