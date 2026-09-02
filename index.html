@@ -566,7 +566,8 @@ function nextStep(){
   const result = document.getElementById('thumbResult');
   result.classList.remove('hidden');
   result.innerHTML = '<p>🎨 AI가 썸네일을 만들고 있습니다...</p>';
-
+window.open('https://www.capcut.com/', '_blank');
+return;
   try {
 
     const response = await fetch(
