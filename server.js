@@ -10,10 +10,7 @@ app.use(cors());
 app.use(express.json({ limit: "20mb" }));
 
 app.get("/", (req, res) => {
-  res.json({
-    status: "ok",
-    message: "PlayMaker AI API is running"
-  });
+  res.sendFile(process.cwd() + "/index.html");
 });
 
 app.get("/health", (req, res) => {
