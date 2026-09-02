@@ -2,11 +2,10 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PlayMaker AI</title>
 
 <style>
-  
 *{box-sizing:border-box}
 body{
   margin:0;
@@ -15,7 +14,7 @@ body{
   color:#222
 }
 header{
-  background:linear-gradient(135deg,#6d3df5,#8b57f7);
+  background:linear-gradient(135deg,#6d3df5,#8b5cf6);
   color:#fff;
   padding:24px 20px
 }
@@ -25,141 +24,69 @@ header p{margin:8px 0 0;opacity:.92}
 main{
   max-width:760px;
   margin:auto;
-  padding:16px 16px 110px
+  padding:18px 14px 100px
 }
-
-.hero,.card{
+.card{
   background:#fff;
-  border-radius:20px;
+  border-radius:18px;
   padding:20px;
-  margin-bottom:16px;
-  box-shadow:0 4px 18px rgba(50,20,90,.07)
-}
-
-.hero{
-  background:linear-gradient(135deg,#6d3df5,#9b74ff);
-  color:#fff
-}
-.hero h2{
-  font-size:27px;
-  margin:0 0 12px;
-  line-height:1.3
-}
-.hero p{line-height:1.6}
-
-.btn{
-  border:0;
-  border-radius:14px;
-  padding:14px 18px;
-  font-size:16px;
-  font-weight:800;
-  cursor:pointer
-}
-.btn.white{background:#fff;color:#111}
-.btn.primary{
-  background:#6d3df5;
-  color:#fff;
-  width:100%
-}
-.btn.secondary{
-  background:#eee9ff;
-  color:#5d34cf;
-  width:100%
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px
-}
-.step{
-  background:#faf9ff;
-  border:1px solid #e8e2ff;
-  border-radius:14px;
-  padding:15px
-}
-.step b{
-  display:block;
-  margin-bottom:7px
-}
-.badge{
-  display:inline-block;
-  background:#e8fff1;
-  color:#16824b;
-  padding:7px 11px;
-  border-radius:20px;
-  font-size:13px;
-  font-weight:800
+  margin-bottom:18px;
+  box-shadow:0 4px 20px rgba(0,0,0,.06)
 }
 .hidden{display:none}
 
+h2{margin-top:0}
+
 label{
   display:block;
-  font-weight:800;
-  margin:14px 0 7px
+  margin-top:14px;
+  margin-bottom:6px;
+  font-weight:700
 }
-
 input,select,textarea{
   width:100%;
-  padding:14px;
-  border:1px solid #d9d3ea;
-  border-radius:12px;
-  font-size:16px;
-  background:#fff
+  padding:13px;
+  border:1px solid #ddd;
+  border-radius:10px;
+  font-size:16px
 }
-textarea{min-height:90px}
+textarea{min-height:120px}
 
-.row{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px
+.btn{
+  width:100%;
+  border:0;
+  border-radius:12px;
+  padding:15px;
+  font-size:16px;
+  font-weight:700;
+  cursor:pointer;
+  margin-top:12px
+}
+.primary{
+  background:#6d3df5;
+  color:#fff
+}
+.secondary{
+  background:#eee9ff;
+  color:#5330c8
+}
+.dark{
+  background:#222;
+  color:#fff
 }
 
 .result{
-  background:#f4f0ff;
-  border:1px solid #dcd1ff;
-  border-radius:14px;
-  padding:16px;
-  margin-top:14px
+  background:#f7f4ff;
+  border-radius:12px;
+  padding:14px;
+  margin:12px 0
 }
 
 .track{
+  border:1px solid #eee;
   padding:12px;
-  background:#fff;
-  border:1px solid #ece7f7;
-  border-radius:12px;
-  margin-top:10px
-}
-
-.small{
-  font-size:13px;
-  color:#666;
-  line-height:1.5
-}
-
-.thumb-preview{
-  margin-top:16px;
-  aspect-ratio:16/9;
-  border-radius:18px;
-  overflow:hidden;
-  background:
-    linear-gradient(rgba(20,10,50,.20),rgba(20,10,50,.65)),
-    linear-gradient(135deg,#7051e8,#d195c8);
-  display:flex;
-  align-items:flex-end;
-  padding:24px;
-  color:white;
-  box-shadow:0 8px 24px rgba(40,20,80,.18)
-}
-
-.thumb-preview h3{
-  font-size:26px;
-  margin:0 0 5px
-}
-
-.thumb-preview p{
-  margin:0;
-  opacity:.9
+  border-radius:10px;
+  margin:8px 0
 }
 
 nav{
@@ -168,24 +95,37 @@ nav{
   left:0;
   right:0;
   background:#fff;
-  border-top:1px solid #ddd;
   display:flex;
-  overflow-x:auto;
-  z-index:20
+  border-top:1px solid #ddd;
+  z-index:10
 }
-
 nav button{
+  flex:1;
   border:0;
-  background:none;
-  min-width:82px;
-  padding:9px 5px;
-  font-size:11px;
-  font-weight:700
+  background:white;
+  padding:10px 2px;
+  font-size:12px
 }
 
-@media(max-width:600px){
-  .grid,.row{grid-template-columns:1fr}
-  .hero h2{font-size:25px}
+img{
+  max-width:100%;
+  border-radius:12px;
+  margin-top:12px
+}
+
+audio,video{
+  width:100%;
+  margin-top:12px
+}
+
+.badge{
+  display:inline-block;
+  background:#e8fff0;
+  color:#16824b;
+  padding:6px 10px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:700
 }
 </style>
 </head>
@@ -193,457 +133,462 @@ nav button{
 <body>
 
 <header>
-<h1>PLAYMAKER AI</h1>
-<p>AI 음악 · 썸네일 · 영상 · YouTube 자동화</p>
+  <h1>🎵 PLAYMAKER AI</h1>
+  <p>음악부터 영상까지 한 번에 만드는 플레이리스트 제작 도구</p>
 </header>
 
 <main>
 
-<section class="hero" id="home">
-<h2>음악 콘텐츠를 한 번에 만드세요 🎵</h2>
-<p>
-프로젝트 설정부터 음악 기획, 썸네일, 영상,
-YouTube 업로드까지 한 흐름으로 진행합니다.
-</p>
-<button class="btn white" onclick="openProject()">
-✨ AI 콘텐츠 만들기
-</button>
+<section class="card" id="home">
+  <span class="badge">PLAYLIST AUTOMATION</span>
+  <h2>AI 플레이리스트 만들기</h2>
+
+  <p>
+    1. 음악 기획<br>
+    2. Suno 음악 만들기<br>
+    3. 썸네일 만들기<br>
+    4. 영상 만들기<br>
+    5. YouTube 업로드
+  </p>
+
+  <button class="btn primary" onclick="openProject()">
+    ✨ AI 콘텐츠 만들기
+  </button>
 </section>
 
-<section class="card">
-<h2>🤖 자동화 워크플로우</h2>
-<span class="badge">● 준비 완료</span>
 
-<div class="grid" style="margin-top:14px">
-<div class="step"><b>🎵 1. 음악 생성</b>콘셉트 · 가사 · 음악 제작</div>
-<div class="step"><b>🖼️ 2. 썸네일</b>이미지 시안 제작</div>
-<div class="step"><b>🎬 3. 영상 제작</b>음악과 이미지를 영상으로 변환</div>
-<div class="step"><b>📺 4. YouTube</b>제목 · 설명 · 업로드 준비</div>
-<div class="step"><b>📅 5. 예약 업로드</b>게시 일정 관리</div>
-<div class="step"><b>📊 6. 분석</b>조회수 · 성과 확인</div>
-</div>
-</section>
+<section class="card hidden" id="project">
 
-<section class="card hidden" id="projectForm">
+  <h2>✨ 새 프로젝트 만들기</h2>
 
-<h2>새 프로젝트 만들기</h2>
-<p class="small">
-원하는 음악 조건을 선택해 프로젝트를 만들어보세요.
-</p>
+  <label>프로젝트 이름</label>
+  <input id="projectName"
+  value="비 오는 밤 감성 플레이리스트">
 
-<label>프로젝트 이름</label>
-<input id="projectName" value="비 오는 밤 감성 플레이리스트">
+  <label>장르</label>
+  <select id="genre">
+    <option>감성 발라드</option>
+    <option>재즈</option>
+    <option>보사노바</option>
+    <option>카페 팝</option>
+    <option>로파이</option>
+  </select>
 
-<div class="row">
+  <label>분위기</label>
+  <input id="mood" value="비 오는 밤">
 
-<div>
-<label>음악 장르</label>
-<select id="genre">
-<option>감성 발라드</option>
-<option>로파이</option>
-<option>재즈</option>
-<option>어쿠스틱</option>
-<option>시티팝</option>
-<option>카페 BGM</option>
-</select>
-</div>
+  <label>보컬</label>
+  <select id="vocal">
+    <option>여성 보컬</option>
+    <option>남성 보컬</option>
+    <option>연주곡</option>
+  </select>
 
-<div>
-<label>분위기</label>
-<select id="mood">
-<option>비 오는 밤</option>
-<option>따뜻한 카페</option>
-<option>새벽 감성</option>
-<option>도시 야경</option>
-<option>편안한 휴식</option>
-</select>
-</div>
+  <label>곡 수</label>
+  <select id="count">
+    <option>5</option>
+    <option selected>10</option>
+  </select>
 
-</div>
-
-<div class="row">
-
-<div>
-<label>보컬</label>
-<select id="vocal">
-<option>여성 보컬</option>
-<option>남성 보컬</option>
-<option>혼성</option>
-<option>연주곡</option>
-</select>
-</div>
-
-<div>
-<label>곡 수</label>
-<select id="count">
-<option value="5">5곡</option>
-<option value="10" selected>10곡</option>
-<option value="15">15곡</option>
-</select>
-</div>
-
-</div>
-
-<label>곡 길이</label>
-<select id="length">
-<option>약 3분</option>
-<option selected>약 4분</option>
-<option>약 5분</option>
-</select>
-
-<label>추가 요청</label>
-<textarea
-id="request"
-placeholder="예: 피아노 중심, 잔잔하고 따뜻하게"></textarea>
-
-<button
-class="btn primary"
-style="margin-top:18px"
-onclick="makePlan()">
-✨ AI 음악 기획 만들기
-</button>
+  <button class="btn primary" onclick="makePlan()">
+    ✨ AI 음악 기획 만들기
+  </button>
 
 </section>
+
 
 <section class="card hidden" id="result">
 
-<h2>🎵 프로젝트 기획 완료</h2>
+  <h2>🎵 프로젝트 기획 완료</h2>
 
-<div id="summary" class="result"></div>
+  <div id="summary" class="result"></div>
 
-<div id="tracks"></div>
+  <div id="tracks"></div>
 
-<button
-class="btn primary"
-style="margin-top:16px"
-onclick="nextStep()">
-다음: 썸네일 만들기 →
-</button>
+  <button class="btn primary" onclick="showMusic()">
+    다음: Suno 음악 만들기 →
+  </button>
 
 </section>
+
+
+<section class="card hidden" id="musicStep">
+
+  <h2>🎵 Suno 음악 만들기</h2>
+
+  <p>
+    아래 프롬프트를 복사해서 Suno에 넣어 음악을 만드세요.
+  </p>
+
+  <label>Suno 프롬프트</label>
+
+  <textarea id="sunoPrompt"></textarea>
+
+  <button class="btn secondary" onclick="copyPrompt()">
+    📋 프롬프트 복사
+  </button>
+
+  <button class="btn dark" onclick="openSuno()">
+    🎵 Suno 열기
+  </button>
+
+  <label>완성된 MP3 가져오기</label>
+
+  <input
+    id="audioFile"
+    type="file"
+    accept="audio/*">
+
+  <div id="audioName"></div>
+
+  <audio
+    id="audioPreview"
+    controls
+    class="hidden">
+  </audio>
+
+  <button
+    class="btn primary"
+    onclick="showThumb()">
+    다음: 썸네일 만들기 →
+  </button>
+
+</section>
+
 
 <section class="card hidden" id="thumbnailStep">
 
-<h2>🖼️ 썸네일 만들기</h2>
+  <h2>🖼️ 썸네일 만들기</h2>
 
-<p class="small">
-프로젝트 분위기에 맞는 썸네일 시안을 만들어보세요.
-</p>
+  <label>썸네일 설명</label>
 
-<label>썸네일 문구</label>
-<input id="thumbTitle" value="비 오는 밤 감성 플레이리스트">
+  <textarea id="thumbPrompt">
+비 오는 밤의 따뜻한 카페 창가,
+감성적인 조명,
+영화 같은 분위기,
+YouTube 음악 플레이리스트 썸네일,
+글자 없음,
+16:9
+  </textarea>
 
-<label>이미지 분위기</label>
-<select id="thumbMood">
-<option>비 오는 창가 · 따뜻한 조명</option>
-<option>밤의 카페 · 보라빛 감성</option>
-<option>도시 야경 · 네온 조명</option>
-<option>새벽 하늘 · 잔잔한 분위기</option>
-<option>따뜻한 방 · 감성 조명</option>
-</select>
+  <button class="btn primary" onclick="generateThumbnail()">
+    ✨ AI 썸네일 생성
+  </button>
 
-<div class="result">
-<b>추천 이미지 프롬프트</b>
-<p id="thumbPrompt">
-비 오는 창가, 따뜻한 조명, 밤의 카페,
-감성적인 보라빛 톤, cinematic, 16:9
-</p>
-</div>
+  <div id="thumbStatus"></div>
 
-<button
-class="btn primary"
-style="margin-top:14px"
-onclick="makeThumbnail()">
-🖼️ 썸네일 시안 만들기
-</button>
+  <img id="thumbImage" class="hidden">
 
-<div id="thumbResult" class="hidden">
-
-<div class="thumb-preview">
-<div>
-<h3 id="previewTitle">비 오는 밤 감성 플레이리스트</h3>
-<p>PLAYMAKER AI</p>
-</div>
-</div>
-
-<p class="small">
-썸네일 시안 생성 완료 ✓
-</p>
-
-<button
-class="btn secondary"
-onclick="goVideo()">
-다음: 영상 만들기 →
-</button>
-
-</div>
+  <button
+    class="btn primary"
+    onclick="goVideo()">
+    다음: 영상 만들기 →
+  </button>
 
 </section>
 
+
 <section class="card hidden" id="videoStep">
 
-<h2>🎬 영상 만들기</h2>
+  <h2>🎬 영상 만들기</h2>
 
-<p>
-음악 + 썸네일을 이용해 YouTube용 영상을 만드는 단계입니다.
-</p>
+  <p>
+    음악과 썸네일을 사용해서 플레이리스트 영상을 완성합니다.
+  </p>
 
-<div class="result">
-<b>영상 구성</b><br><br>
-16:9 화면<br>
-감성 썸네일<br>
-플레이리스트 음악<br>
-제목 오버레이
-</div>
+  <button class="btn dark"
+  onclick="window.open('https://www.capcut.com/','_blank')">
+    🎬 CapCut 열기
+  </button>
+
+  <label>완성 영상 가져오기</label>
+
+  <input
+  id="videoFile"
+  type="file"
+  accept="video/*">
+
+  <div id="videoFileName"></div>
+
+  <video
+  id="videoPreview"
+  controls
+  class="hidden">
+  </video>
+
+  <button class="btn primary"
+  onclick="showYoutube()">
+    다음: YouTube →
+  </button>
+
+</section>
 
 
+<section class="card hidden" id="youtubeStep">
 
+  <h2>📺 YouTube 업로드</h2>
 
+  <p>
+    완성된 영상을 YouTube에 업로드할 준비가 되었습니다.
+  </p>
 
+  <button
+  class="btn primary"
+  onclick="window.open('https://studio.youtube.com/','_blank')">
+    📺 YouTube Studio 열기
+  </button>
 
-
-
-<input id="videoFile" type="file" accept="video/*" class="hidden">
-
-<button
-  class="btn secondary"
-  style="margin-top:14px"
-  onclick="document.getElementById('videoFile').click()">
-  🎬 ② 완성 영상 가져오기
-</button> 
-  <p id="videoFileName" class="small"></p>
-  <video id="videoPreview" controls class="hidden" style="width:100%;margin-top:12px;border-radius:12px;"></video>
-  <button class="btn secondary" style="margin-top:10px" onclick="window.location.href='https://www.capcut.com/'">
-  ✂️ ① CapCut으로 영상 만들기
-</button>
 </section>
 
 </main>
 
+
 <nav>
-<button onclick="goHome()">🏠<br>홈</button>
-<button onclick="openProject()">✨<br>만들기</button>
-<button onclick="alert('음악 관리 기능은 다음 단계에서 연결합니다.')">🎵<br>노래</button>
-<button onclick="showThumb()">🖼️<br>썸네일</button>
-<button onclick="goVideo()">🎬<br>영상</button>
-<button onclick="alert('YouTube 연결은 이후 단계에서 진행합니다.')">📺<br>YouTube</button>
+
+<button onclick="goHome()">
+🏠<br>홈
+</button>
+
+<button onclick="openProject()">
+✨<br>만들기
+</button>
+
+<button onclick="showMusic()">
+🎵<br>노래
+</button>
+
+<button onclick="showThumb()">
+🖼️<br>썸네일
+</button>
+
+<button onclick="goVideo()">
+🎬<br>영상
+</button>
+
 </nav>
+
 
 <script>
 
-function openProject(){
-  document
-  .getElementById('projectForm')
-  .classList.remove('hidden');
+const titles = [
+"비가 머문 자리",
+"너를 생각하는 밤",
+"창가에 흐르는 시간",
+"우리의 늦은 계절",
+"새벽 두 시의 편지",
+"조용히 번지는 마음",
+"다시 걷는 거리",
+"오늘도 네가 생각나",
+"밤공기와 오래된 기억",
+"그날의 온도"
+];
 
-  document
-  .getElementById('projectForm')
-  .scrollIntoView({behavior:'smooth'});
+function hideAll(){
+  [
+    "home",
+    "project",
+    "result",
+    "musicStep",
+    "thumbnailStep",
+    "videoStep",
+    "youtubeStep"
+  ].forEach(id=>{
+    document.getElementById(id).classList.add("hidden");
+  });
+}
+
+function show(id){
+  hideAll();
+  document.getElementById(id).classList.remove("hidden");
+  window.scrollTo({top:0,behavior:"smooth"});
 }
 
 function goHome(){
-  document
-  .getElementById('home')
-  .scrollIntoView({behavior:'smooth'});
+  show("home");
 }
 
-function showThumb(){
-  document
-  .getElementById('thumbnailStep')
-  .classList.remove('hidden');
-
-  document
-  .getElementById('thumbnailStep')
-  .scrollIntoView({behavior:'smooth'});
+function openProject(){
+  show("project");
 }
 
 function makePlan(){
 
-  const name=
-  document.getElementById('projectName').value.trim()
-  || '새 음악 프로젝트';
+  const name =
+  document.getElementById("projectName").value;
 
-  const genre=
-  document.getElementById('genre').value;
-
-  const mood=
-  document.getElementById('mood').value;
-
-  const vocal=
-  document.getElementById('vocal').value;
-
-  const count=
-  parseInt(
-    document.getElementById('count').value,
-    10
-  );
-
-  const length=
-  document.getElementById('length').value;
-
-  const request=
-  document.getElementById('request').value.trim();
-
-  document.getElementById('summary').innerHTML=
-  '<b>'+name+'</b><br><br>'+
-  '장르: '+genre+'<br>'+
-  '분위기: '+mood+'<br>'+
-  '보컬: '+vocal+'<br>'+
-  '곡 수: '+count+'곡<br>'+
-  '길이: '+length+
-  (request
-  ?'<br>추가 요청: '+request
-  :''
-  );
-
-  const titles=[
-  '비가 머문 자리',
-  '너를 생각하는 밤',
-  '창가에 흐르는 시간',
-  '우리의 늦은 계절',
-  '새벽 두 시의 편지',
-  '조용히 번지는 마음',
-  '다시 걷는 거리',
-  '오늘도 네가 생각나',
-  '밤공기와 오래된 기억',
-  '그날의 온도',
-  '비밀스러운 카페',
-  '잠들지 못한 도시',
-  '따뜻한 우산',
-  '너에게 가는 길',
-  '마지막 노을'
-  ];
-
-  let html=
-  '<h3 style="margin-top:20px">추천 곡 제목</h3>';
-
-  for(let i=0;i<count;i++){
-
-    html+=
-    '<div class="track">'+
-    '<b>'+(i+1)+'. '+titles[i]+'</b>'+
-    '<div class="small">'+
-    genre+' · '+mood+' · '+vocal+
-    '</div>'+
-    '</div>';
-
-  }
-
-  document.getElementById('tracks').innerHTML=html;
-
-  document
-  .getElementById('result')
-  .classList.remove('hidden');
-
-  document
-  .getElementById('result')
-  .scrollIntoView({behavior:'smooth'});
-
-  document.getElementById('thumbTitle').value=name;
-}
-
-function nextStep(){
-  window.open('https://suno.com/create', '_blank');
-  showThumb();
-}  
-
-
-  async function makeThumbnail(){
-
-  const title =
-    document.getElementById('thumbTitle').value.trim()
-    || '감성 플레이리스트';
+  const genre =
+  document.getElementById("genre").value;
 
   const mood =
-    document.getElementById('thumbMood').value;
+  document.getElementById("mood").value;
+
+  const vocal =
+  document.getElementById("vocal").value;
+
+  const count =
+  Number(document.getElementById("count").value);
+
+  document.getElementById("summary").innerHTML =
+  "<b>"+name+"</b><br>"+
+  genre+" · "+mood+" · "+vocal+" · "+count+"곡";
+
+  let html="";
+
+  for(let i=0;i<count;i++){
+    html +=
+    '<div class="track">'+
+    (i+1)+'. '+titles[i % titles.length]+
+    '</div>';
+  }
+
+  document.getElementById("tracks").innerHTML=html;
 
   const prompt =
-    title + ', ' + mood +
-    ', cinematic lighting, emotional atmosphere, YouTube playlist thumbnail, 16:9, no text';
+  genre+", "+mood+", "+vocal+
+  ", emotional playlist music, warm cinematic atmosphere, "+
+  "soft melody, natural arrangement, no excessive repetition, "+
+  "high quality studio sound";
 
-  document.getElementById('thumbPrompt').innerText = prompt;
+  document.getElementById("sunoPrompt").value=prompt;
 
-  const result = document.getElementById('thumbResult');
-  result.classList.remove('hidden');
-  result.innerHTML = '<p>🎨 AI가 썸네일을 만들고 있습니다...</p>';
-window.open('https://www.capcut.com/', '_blank');
-return;
-  try {
-
-    const response = await fetch(
-      'https://playmaker-ai-server.onrender.com/generate-thumbnail',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ prompt })
-      }
-    );
-
-    const data = await response.json();
-
-    if (!response.ok) {
-      throw new Error(
-        data?.error?.message ||
-        data?.error ||
-        '이미지 생성에 실패했습니다.'
-      );
-    }
-
-    if (!data.image) {
-      throw new Error('이미지 데이터가 없습니다.');
-    }
-
-    result.innerHTML = `
-      <img
-        src="data:image/png;base64,${data.image}"
-        style="width:100%;border-radius:16px;"
-        alt="AI 생성 썸네일"
-      >
-      <p class="small">AI 썸네일 생성 완료 ✓</p>
-      <button
-        class="btn secondary"
-        onclick="goVideo()">
-        다음: 영상 만들기 →
-      </button>
-    `;
-
-    result.scrollIntoView({behavior:'smooth'});
-
-  } catch(error) {
-
-    console.error(error);
-
-    result.innerHTML =
-      '<p>❌ 썸네일 생성 오류: ' +
-      error.message +
-      '</p>';
-  }
+  show("result");
 }
-                  
+
+function showMusic(){
+  show("musicStep");
+}
+
+function copyPrompt(){
+
+  const text =
+  document.getElementById("sunoPrompt");
+
+  text.select();
+  text.setSelectionRange(0,99999);
+
+  navigator.clipboard.writeText(text.value);
+
+  alert("Suno 프롬프트를 복사했습니다.");
+}
+
+function openSuno(){
+  window.open("https://suno.com/create","_blank");
+}
+
+document
+.getElementById("audioFile")
+.addEventListener("change",function(){
+
+  const file=this.files[0];
+
+  if(file){
+
+    document.getElementById("audioName").textContent =
+    "✅ 선택된 음악: "+file.name;
+
+    const preview =
+    document.getElementById("audioPreview");
+
+    preview.src=URL.createObjectURL(file);
+
+    preview.classList.remove("hidden");
+  }
+
+});
+
+
+function showThumb(){
+  show("thumbnailStep");
+}
+
+
+async function generateThumbnail(){
+
+  const prompt =
+  document.getElementById("thumbPrompt").value;
+
+  const status =
+  document.getElementById("thumbStatus");
+
+  status.textContent="⏳ 썸네일 생성 중...";
+
+  try{
+
+    const response=await fetch(
+    "https://playmaker-ai-server.onrender.com/generate-thumbnail",
+    {
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify({prompt})
+    });
+
+    const data=await response.json();
+
+    if(!response.ok){
+      throw new Error("생성 실패");
+    }
+
+    if(data.image){
+
+      const img=
+      document.getElementById("thumbImage");
+
+      img.src=
+      "data:image/png;base64,"+data.image;
+
+      img.classList.remove("hidden");
+
+      status.textContent="✅ 썸네일 생성 완료";
+    }
+
+  }catch(error){
+
+    status.textContent=
+    "❌ 썸네일 생성에 실패했습니다.";
+
+  }
+
+}
+
 
 function goVideo(){
-  document
-  .getElementById('videoStep')
-  .classList.remove('hidden');
-
-  document
-  .getElementById('videoStep')
-  .scrollIntoView({behavior:'smooth'});
+  show("videoStep");
 }
-document.getElementById('videoFile').addEventListener('change', function() {
-  const file = this.files[0];
-  const nameBox = document.getElementById('videoFileName');
-const preview = document.getElementById('videoPreview');
-  if (file) {
-    nameBox.textContent = '✅ 선택된 영상: ' + file.name;
-    preview.src = URL.createObjectURL(file);
-    preview.classList.remove('hidden');
-  } else {
-    nameBox.textContent = '';
+
+
+document
+.getElementById("videoFile")
+.addEventListener("change",function(){
+
+  const file=this.files[0];
+
+  const nameBox=
+  document.getElementById("videoFileName");
+
+  const preview=
+  document.getElementById("videoPreview");
+
+  if(file){
+
+    nameBox.textContent=
+    "✅ 선택된 영상: "+file.name;
+
+    preview.src=
+    URL.createObjectURL(file);
+
+    preview.classList.remove("hidden");
+
   }
+
 });
+
+
+function showYoutube(){
+  show("youtubeStep");
+}
+
 </script>
 
 </body>
