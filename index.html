@@ -527,7 +527,7 @@ async function generateThumbnail(){
     const data=await response.json();
 
     if(!response.ok){
-      throw new Error("생성 실패");
+    throw new Error(data?.error?.message || data?.error || `HTTP ${response.status}`);
     }
 
     if(data.image){
@@ -545,8 +545,7 @@ async function generateThumbnail(){
 
   }catch(error){
 
-    status.textContent=
-    "❌ 썸네일 생성에 실패했습니다.";
+  status.textContent="❌ 실패 원인: "+error.message;
 
   }
 
