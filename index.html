@@ -165,19 +165,20 @@ audio,video{
   <input id="projectName"
   placeholder="예: 카페에서 듣기 좋은 비 오는 밤 감성 음악 10곡">
 
-  <label style="display:none">장르</label>
-<select id="genre" style="display:none">
- <option>감성 발라드</option> 
-    <option>재즈</option>
-    <option>보사노바</option>
-    <option>카페 팝</option>
-    <option>로파이</option>
-  </select>
-
+  <label>음악 종류</label>
+<select id="genre">
+  <option>AI 자동</option>
+  <option>팝</option>
+  <option>가요</option>
+  <option>재즈</option>
+  <option>보사노바</option>
+  <option>발라드</option>
+  <option>로파이</option>
+</select>
   <label>분위기</label>
-  <input id="mood" value="비 오는 밤">
+<input id="mood" value="비 오는 밤">
 
-  <label>보컬</label>
+<label>보컬</label>ù
   <select id="vocal">
     <option>여성 보컬</option>
     <option>남성 보컬</option>
@@ -404,7 +405,8 @@ function makePlan(){
   const name =
   document.getElementById("projectName").value;
 
-  
+ const genre =
+document.getElementById("genre").value; 
 
   const mood =
   document.getElementById("mood").value;
@@ -417,7 +419,7 @@ function makePlan(){
 
   document.getElementById("summary").innerHTML =
   "<b>"+name+"</b><br>"+
-  mood+" · "+vocal+" · "+count+"곡";
+  genre+" · "+mood+" · "+vocal+" · "+count+"곡";
 
   let html="";
 
