@@ -279,47 +279,40 @@ YouTube 음악 플레이리스트 썸네일,
 
   <img id="thumbImage" class="hidden">
 
-  <button
-    class="btn primary"
-    onclick="goVideo()">
-    다음: 영상 만들기 →
-  </button>
 
-</section>
+<hr style="margin:24px 0">
 
+<h2>🎬 썸네일 · 영상 제작</h2>
 
-<section class="card hidden" id="videoStep">
+<p>
+  위에서 만든 AI 썸네일과 음악을 사용해서
+  플레이리스트 영상을 완성합니다.
+</p>
 
-  <h2>🎬 영상 만들기</h2>
-
-  <p>
-    음악과 썸네일을 사용해서 플레이리스트 영상을 완성합니다.
-  </p>
-
-  <button class="btn dark"
+<button class="btn dark"
   onclick="window.open('https://www.capcut.com/','_blank')">
-    🎬 CapCut 열기
-  </button>
+  🎬 CapCut 열기
+</button>
 
-  <label>완성 영상 가져오기</label>
+<label>완성 영상 가져오기</label>
 
-  <input
+<input
   id="videoFile"
   type="file"
   accept="video/*">
 
-  <div id="videoFileName"></div>
+<div id="videoFileName"></div>
 
-  <video
+<video
   id="videoPreview"
   controls
   class="hidden">
-  </video>
+</video>
 
-  <button class="btn primary"
+<button class="btn primary"
   onclick="showYoutube()">
-    다음: YouTube →
-  </button>
+  다음: YouTube →
+</button>
 
 </section>
 
