@@ -443,11 +443,38 @@ function makePlan(){
 
   document.getElementById("tracks").innerHTML=html;
 
-  const prompt =
-  genre+", "+mood+", "+vocal+
-  ", emotional playlist music, warm cinematic atmosphere, "+
-  "soft melody, natural arrangement, no excessive repetition, "+
-  "high quality studio sound";
+const tempos = ["slow", "medium-slow", "mid-tempo", "relaxed groove"];
+const instruments = [
+  "warm piano, soft electric guitar, gentle bass and light drums",
+  "mellow piano, brushed drums, warm bass and subtle strings",
+  "acoustic guitar, soft piano, smooth bass and light percussion",
+  "dreamy electric piano, gentle drums, warm bass and ambient pads"
+];
+const moods = [
+  "cozy late-night atmosphere",
+  "warm cafe mood",
+  "nostalgic rainy-night feeling",
+  "calm romantic evening atmosphere"
+];
+const arrangements = [
+  "natural arrangement with a soft intro and smooth development",
+  "simple arrangement with emotional build-up and gentle ending",
+  "warm cinematic arrangement with subtle dynamic changes",
+  "relaxed arrangement with soft transitions and no harsh sounds"
+];
+
+const tempo = tempos[Math.floor(Math.random() * tempos.length)];
+const instrument = instruments[Math.floor(Math.random() * instruments.length)];
+const extraMood = moods[Math.floor(Math.random() * moods.length)];
+const arrangement = arrangements[Math.floor(Math.random() * arrangements.length)];
+
+const prompt =
+  genre + ", " + mood + ", " + vocal +
+  ", " + tempo +
+  ", " + instrument +
+  ", " + extraMood +
+  ", " + arrangement +
+  ", emotional playlist music, soft melody, high quality studio sound";
 
   document.getElementById("sunoPrompt").value=prompt;
 
