@@ -416,7 +416,87 @@ document.getElementById("genre").value;
 
   const count =
   Number(document.getElementById("count").value);
+let titles;
 
+if (genre === "팝") {
+  titles = [
+    "Rainy Window",
+    "Thinking of You Tonight",
+    "Time by the Window",
+    "Our Slow Season",
+    "Letter at 2 AM",
+    "Quietly Falling",
+    "Walking Back to You",
+    "Still on My Mind",
+    "Old Memories in the Night",
+    "The Temperature of That Day"
+  ];
+} else if (genre === "가요") {
+  titles = [
+    "비가 머문 자리",
+    "너를 생각하는 밤",
+    "창가에 흐르는 시간",
+    "우리의 늦은 계절",
+    "새벽 두 시의 편지",
+    "조용히 번지는 마음",
+    "다시 걷는 거리",
+    "오늘도 네가 생각나",
+    "밤공기와 오래된 기억",
+    "그날의 온도"
+  ];
+} else if (genre === "재즈") {
+  titles = [
+    "Midnight Blue",
+    "Coffee and Jazz",
+    "Rainy Street",
+    "After Hours",
+    "Moonlight Lounge",
+    "Slow Evening",
+    "Blue Window",
+    "Late Night Cafe",
+    "Autumn Jazz",
+    "Quiet City"
+  ];
+} else if (genre === "보사노바") {
+  titles = [
+    "Cafe by the Sea",
+    "Summer Breeze",
+    "Soft Morning",
+    "Rio Sunset",
+    "Coffee and Sunshine",
+    "Lazy Afternoon",
+    "Ocean Window",
+    "Sunday in Rio",
+    "Warm Breeze",
+    "Golden Evening"
+  ];
+} else if (genre === "로파이") {
+  titles = [
+    "Rainy Study",
+    "Midnight Desk",
+    "Quiet Coffee",
+    "Slow Morning",
+    "Window Lights",
+    "Late Night Notes",
+    "Cozy Room",
+    "After the Rain",
+    "City Dreams",
+    "Night Routine"
+  ];
+} else {
+  titles = [
+    "비가 머문 자리",
+    "너를 생각하는 밤",
+    "창가에 흐르는 시간",
+    "우리의 늦은 계절",
+    "새벽 두 시의 편지",
+    "조용히 번지는 마음",
+    "다시 걷는 거리",
+    "오늘도 네가 생각나",
+    "밤공기와 오래된 기억",
+    "그날의 온도"
+  ];
+}
   document.getElementById("summary").innerHTML =
   "<b>"+name+"</b><br>"+
   genre+" · "+mood+" · "+vocal+" · "+count+"곡";
