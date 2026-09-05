@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PlayMaker AI v2</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f5f4fb;color:#222}
+header{background:linear-gradient(135deg,#6d3df5,#8b5cf6);color:white;padding:22px 18px}
+header h1{margin:0;font-size:27px}
+header p{margin:7px 0 0;font-size:14px}
+main{max-width:720px;margin:auto;padding:15px}
+.card{background:white;border-radius:16px;padding:18px;margin-bottom:14px;box-shadow:0 4px 15px #0001}
+h2{margin-top:0;font-size:19px}
+label{display:block;font-weight:bold;margin:12px 0 6px}
+input,select,textarea,button{
+ width:100%;padding:12px;border-radius:10px;border:1px solid #ddd;font-size:16px
+}
+textarea{min-height:130px}
+button{border:0;background:#6d3df5;color:white;font-weight:bold;margin-top:10px}
+button.green{background:#16a34a}
+button.dark{background:#222}
+.result{background:#fafafa;border:1px solid #eee;border-radius:10px;padding:12px;margin-top:10px;white-space:pre-wrap}
+.small{font-size:13px;color:#666}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🎵 PlayMaker AI v2</h1>
+<p>노래 기획 → 가사 → Suno 프롬프트 → 영상 자동 제작</p>
+</header>
+
+<main>
+
+<div class="card">
+<h2>1. 음악 기획</h2>
+
+<label>음악 종류</label>
+<select id="genre">
+<option>카페 팝</option>
+<option>재즈</option>
+<option>보사노바</option>
+<option>감성 팝</option>
+<option>로파이</option>
+</select>
+
+<label>분위기</label>
+<select id="mood">
+<option>늦은 밤 따뜻한 카페</option>
+<option>비 오는 밤</option>
+<option>편안하고 잔잔하게</option>
+<option>로맨틱하게</option>
+</select>
+
+<label>보컬</label>
+<select id="vocal">
+<option>여성 보컬</option>
+<option>남성 보컬</option>
+<option>연주곡</option>
+</select>
+
+<button onclick="generateSong()">✨ 제목 + 가사 + 프롬프트 자동 만들기</button>
+</div>
+
+
+<div class="card">
+<h2>2. 자동 생성 결과</h2>
+
+<label>곡 제목</label>
+<input id="title" placeholder="자동 생성">
+
+<label>가사</label>
+<textarea id="lyrics" placeholder="가사가 자동으로 생성됩니다"></textarea>
+
+<label>Suno 스타일 프롬프트</label>
+<textarea id="prompt" placeholder="Suno에 넣을 프롬프트"></textarea>
+</div>
+
+
+<div class="card">
+<h2>3. 영상 만들기</h2>
+
+<label>완성된 음악 MP3</label>
+<input type="file" id="audio" accept="audio/*">
+
+<label>썸네일 / 배경 이미지</label>
+<input type="file" id="image" accept="image/*">
+
+<button class="green" onclick="makeVideo()">🎬 영상 자동 만들기</button>
+
+<div id="videoStatus" class="result">
+MP3와 이미지를 선택하면 자동 영상 제작을 준비합니다.
+</div>
+
+<p class="small">
+최종 단계에서는 서버의 FFmpeg가 음악 길이를 자동으로 읽고
+16:9 MP4 영상을 만듭니다.
+</p>
+</div>
+
+
+<div class="card">
+<h2>4. 완성</h2>
+<button class="dark" onclick="alert('유튜브 자동 업로드는 마지막 단계에서 연결합니다.')">
+▶ 유튜브 업로드 준비
+</button>
+</div>
+
+</main>
+
+<script>
+function generateSong(){
+
+ const genre=document.getElementById('genre').value;
+ const mood=document.getElementById('mood').value;
+ const vocal=document.getElementById('vocal').value;
+
+ const titles=[
+  "Midnight Coffee",
+  "After the Rain",
+  "Coffee at Eleven",
+  "Quiet Window",
+  "Stay a Little Longer"
+ ];
+
+ const title=titles[Math.floor(Math.random()*titles.length)];
+
+ document.getElementById('title').value=title;
+
+ document.getElementById('lyrics').value=
+`[Verse 1]
+City lights are fading slow
+Raindrops dancing on the window
+Coffee warm between my hands
+Tonight I don't need any plans
+
+[Chorus]
+Stay with me a little while
+Let the night forget the miles
+In this quiet corner glow
+There's nowhere else I need to go
+
+[Verse 2]
+Soft music floating through the room
+Morning will be coming soon
+But until the darkness ends
+Let this little moment stay`;
+
+ document.getElementById('prompt').value=
+`${genre}, ${mood}, ${vocal}, warm intimate cafe atmosphere, soft piano, gentle guitar, smooth bass, relaxed tempo, emotional but not sad, clean modern production, suitable for a late-night cafe playlist.`;
+
+}
+
+function makeVideo(){
+
+ const audio=document.getElementById('audio').files[0];
+ const image=document.getElementById('image').files[0];
+
+ if(!audio || !image){
+  document.getElementById('videoStatus').innerText=
+  "⚠️ MP3와 이미지를 둘 다 선택해주세요.";
+  return;
+ }
+
+ document.getElementById('videoStatus').innerText=
+ "✅ 파일 확인 완료\n다음 단계에서 FFmpeg 서버를 연결하면 버튼 한 번으로 MP4가 생성됩니다.";
+}
+</script>
+
+</body>
+</html>
