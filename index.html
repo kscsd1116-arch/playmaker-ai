@@ -614,11 +614,15 @@ function generateThumbnail(){
     return;
   }
 
-  status.innerHTML =
-    "✅ CapCut용 썸네일 프롬프트가 준비되었습니다.<br><br>" +
-    "<b>복사해서 CapCut AI 이미지 생성에 사용하세요:</b><br><br>" +
-    prompt +
-    "<br><br>추천 문구: <b>Midnight Coffee</b>";
+status.innerHTML =
+  "✅ CapCut용 썸네일 프롬프트가 준비되었습니다.<br><br>" +
+  "<b>복사해서 CapCut AI 이미지 생성에 사용하세요:</b><br><br>" +
+  prompt +
+  "<br><br>추천 문구: <b>Midnight Coffee</b><br><br>" +
+  '<a href="https://www.capcut.com/" target="_blank" ' +
+  'style="display:block;padding:16px;background:#111;color:#fff;' +
+  'text-align:center;border-radius:12px;text-decoration:none;font-weight:bold;">' +
+  '🎬 CapCut 열기</a>';
 
   if(img){
     img.classList.add("hidden");
