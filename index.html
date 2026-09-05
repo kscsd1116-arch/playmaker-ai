@@ -598,51 +598,30 @@ function showThumb(){
 }
 
 
-async function generateThumbnail(){
+function generateThumbnail(){
 
   const prompt =
-  document.getElementById("thumbPrompt").value;
+    document.getElementById("thumbPrompt").value.trim();
 
   const status =
-  document.getElementById("thumbStatus");
+    document.getElementById("thumbStatus");
 
-  status.textContent="⏳ 썸네일 생성 중...";
+  const img =
+    document.getElementById("thumbImage");
 
-  try{
+  if(!prompt){
+    status.textContent = "❗ 썸네일 설명을 먼저 입력하세요.";
+    return;
+  }
 
-    const response=await fetch(
-    "https://playmaker-ai-server.onrender.com/generate-thumbnail",
-    {
-      method:"POST",
-      headers:{
-        "Content-Type":"application/json"
-      },
-      body:JSON.stringify({prompt})
-    });
+  status.innerHTML =
+    "✅ CapCut용 썸네일 프롬프트가 준비되었습니다.<br><br>" +
+    "<b>복사해서 CapCut AI 이미지 생성에 사용하세요:</b><br><br>" +
+    prompt +
+    "<br><br>추천 문구: <b>Midnight Coffee</b>";
 
-    const data=await response.json();
-
-    if(!response.ok){
-    throw new Error(data?.error?.message || data?.error || `HTTP ${response.status}`);
-    }
-
-    if(data.image){
-
-      const img=
-      document.getElementById("thumbImage");
-
-      img.src=
-      "data:image/png;base64,"+data.image;
-
-      img.classList.remove("hidden");
-
-      status.textContent="✅ 썸네일 생성 완료";
-    }
-
-  }catch(error){
-
-  status.textContent="❌ 실패 원인: "+error.message;
-
+  if(img){
+    img.classList.add("hidden");
   }
 
 }
