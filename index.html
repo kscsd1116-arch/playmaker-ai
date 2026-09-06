@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>PlayMaker AI</title>
 
 <style>
@@ -15,663 +15,676 @@ body{
 }
 header{
   background:linear-gradient(135deg,#6d3df5,#8b5cf6);
-  color:#fff;
-  padding:24px 20px
+  color:white;
+  padding:28px 20px
 }
-header h1{margin:0;font-size:28px}
-header p{margin:8px 0 0;opacity:.92}
-
+header h1{margin:0;font-size:30px}
+header p{margin:10px 0 0;opacity:.92;line-height:1.5}
 main{
   max-width:760px;
   margin:auto;
-  padding:18px 14px 100px
+  padding:20px 16px 110px
 }
 .card{
-  background:#fff;
-  border-radius:18px;
-  padding:20px;
+  background:white;
+  border-radius:24px;
+  padding:24px;
   margin-bottom:18px;
   box-shadow:0 4px 20px rgba(0,0,0,.06)
 }
 .hidden{display:none}
-
 h2{margin-top:0}
-
 label{
   display:block;
-  margin-top:14px;
-  margin-bottom:6px;
-  font-weight:700
+  font-weight:700;
+  margin-top:17px;
+  margin-bottom:7px
 }
 input,select,textarea{
   width:100%;
-  padding:13px;
+  padding:14px;
   border:1px solid #ddd;
-  border-radius:10px;
+  border-radius:12px;
   font-size:16px
 }
-textarea{min-height:120px}
-
-.btn{
+textarea{min-height:160px}
+button{
   width:100%;
   border:0;
-  border-radius:12px;
-  padding:15px;
-  font-size:16px;
+  border-radius:14px;
+  padding:16px;
+  margin-top:14px;
+  font-size:17px;
   font-weight:700;
-  cursor:pointer;
-  margin-top:12px
+  cursor:pointer
 }
-.primary{
-  background:#6d3df5;
-  color:#fff
-}
-.secondary{
-  background:#eee9ff;
-  color:#5330c8
-}
-.dark{
-  background:#222;
-  color:#fff
-}
-
-.result{
-  background:#f7f4ff;
-  border-radius:12px;
-  padding:14px;
-  margin:12px 0
-}
-
-.track{
+.primary{background:#6d3df5;color:white}
+.secondary{background:#eee9ff;color:#5630c8}
+.dark{background:#222;color:white}
+.song{
+  padding:15px;
+  margin:9px 0;
   border:1px solid #eee;
-  padding:12px;
-  border-radius:10px;
-  margin:8px 0
+  border-radius:13px;
+  background:#fff
 }
-
+.info{
+  background:#f5f1ff;
+  padding:16px;
+  border-radius:14px;
+  line-height:1.6
+}
 nav{
   position:fixed;
   bottom:0;
   left:0;
   right:0;
-  background:#fff;
-  display:flex;
+  background:white;
   border-top:1px solid #ddd;
+  display:flex;
   z-index:10
 }
 nav button{
-  flex:1;
-  border:0;
   background:white;
-  padding:10px 2px;
-  font-size:12px
+  color:#222;
+  margin:0;
+  border-radius:0;
+  font-size:14px;
+  padding:13px 4px
 }
-
-img{
-  max-width:100%;
-  border-radius:12px;
-  margin-top:12px
-}
-
-audio,video{
-  width:100%;
-  margin-top:12px
-}
-
-.badge{
-  display:inline-block;
-  background:#e8fff0;
-  color:#16824b;
-  padding:6px 10px;
-  border-radius:20px;
-  font-size:12px;
-  font-weight:700
-}
+.small{font-size:14px;color:#666}
 </style>
 </head>
 
 <body>
 
 <header>
-  <h1>🎵 PLAYMAKER AI</h1>
-  <p>음악부터 영상까지 한 번에 만드는 플레이리스트 제작 도구</p>
+<h1>🎵 PLAYMAKER AI</h1>
+<p>음악부터 썸네일·영상까지 한 번에 만드는 플레이리스트 제작 도구</p>
 </header>
 
 <main>
 
-<section class="card" id="home">
-  <span class="badge">PLAYLIST AUTOMATION</span>
-  <h2>AI 플레이리스트 만들기</h2>
+<section id="home" class="card">
+<div class="info">
+<b>PLAYLIST AUTOMATION</b>
+<h2>AI 플레이리스트 만들기</h2>
+<p>
+1. 음악 기획<br>
+2. Suno 음악 만들기<br>
+3. 썸네일 만들기<br>
+4. 영상 만들기<br>
+5. YouTube 업로드
+</p>
+</div>
 
-  <p>
-    1. 음악 기획<br>
-    2. Suno 음악 만들기<br>
-    3. 썸네일 만들기<br>
-    4. 영상 만들기<br>
-    5. YouTube 업로드
-  </p>
-
-  <button class="btn primary" onclick="openProject()">
-    ✨ AI 콘텐츠 만들기
-  </button>
+<button class="primary" onclick="showPage('create')">
+✨ AI 콘텐츠 만들기
+</button>
 </section>
 
 
-<section class="card hidden" id="project">
+<section id="create" class="card hidden">
+<h2>✨ 원하는 플레이리스트를 적어주세요</h2>
 
-  <h2>✨ 원하는 플레이리스트를 적어주세요⁸ </h2>
+<label>어떤 음악을 만들까요?</label>
+<input id="projectName"
+placeholder="예: 비 오는 밤 카페에서 듣기 좋은 감성 팝">
 
-  <label>어떤 음악을 만들까요?</label>
-  <input id="projectName"
-  placeholder="예: 카페에서 듣기 좋은 비 오는 밤 감성 음악 10곡">
-
-  <label>음악 종류</label>
+<label>음악 종류</label>
 <select id="genre">
-  <option>AI 자동</option>
-  <option>팝</option>
-  <option>가요</option>
-  <option>재즈</option>
-  <option>보사노바</option>
-  <option>발라드</option>
-  <option>로파이</option>
-  <option>트로트</option>
-  <option>성인가요</option>
-  <option>동요</option>
-  <option>R&B</option>
-  <option>어쿠스틱</option>
-  <option>시티팝</option>
-</select>0
-  <label>분위기</label>
+<option>AI 자동</option>
+<option>팝</option>
+<option>가요</option>
+<option>재즈</option>
+<option>보사노바</option>
+<option>발라드</option>
+<option>로파이</option>
+<option>트로트</option>
+<option>성인가요</option>
+<option>동요</option>
+<option>R&B</option>
+<option>어쿠스틱</option>
+<option>시티팝</option>
+</select>
+
+<label>분위기</label>
 <input id="mood" value="비 오는 밤">
 
-<label>보컬</label>ù
-  <select id="vocal">
-    <option>여성 보컬</option>
-    <option>남성 보컬</option>
-    <option>연주곡</option>
-  </select>
+<label>보컬</label>
+<select id="vocal">
+<option>여성 보컬</option>
+<option>남성 보컬</option>
+<option>연주곡</option>
+</select>
 
-  <label>곡 수</label>
-  <select id="count">
-    <option>5</option>
-    <option selected>10</option>
-  </select>
+<label>곡 수</label>
+<select id="count">
+<option>5</option>
+<option selected>10</option>
+</select>
 
-  <button class="btn primary" onclick="makePlan()">
-    ✨ AI 음악 기획 만들기
-  </button>
-
+<button class="primary" onclick="makePlan()">
+✨ AI 음악 기획 만들기
+</button>
 </section>
 
 
-<section class="card hidden" id="result">
+<section id="plan" class="card hidden">
+<h2>🎵 프로젝트 기획 완료</h2>
+<div id="planInfo" class="info"></div>
+<div id="songList"></div>
 
-  <h2>🎵 프로젝트 기획 완료</h2>
-
-  <div id="summary" class="result"></div>
-
-  <div id="tracks"></div>
-
-  <button class="btn primary" onclick="showMusic()">
-    다음: Suno 음악 만들기 →
-  </button>
-
+<button class="primary" onclick="makeSuno()">
+🎵 Suno 음악 만들기
+</button>
+<button class="secondary" onclick="showPage('create')">
+← 기획 수정하기
+</button>
 </section>
 
 
-<section class="card hidden" id="musicStep">
+<section id="suno" class="card hidden">
+<h2>🎵 Suno 음악 만들기</h2>
+<p>아래 스타일과 가사를 복사해서 Suno에 넣어주세요.</p>
 
-  <h2>🎵 Suno 음악 만들기</h2>
+<label>선택된 곡</label>
+<select id="songSelect" onchange="updateSongContent()"></select>
 
-  <p>
-    아래 프롬프트를 복사해서 Suno에 넣어 음악을 만드세요.
-  </p>
+<label>Suno 스타일 프롬프트</label>
+<textarea id="sunoPrompt"></textarea>
 
-  <label>Suno 프롬프트</label>
-
-  <textarea id="sunoPrompt"></textarea>
-
-  <button class="btn secondary" onclick="copyPrompt()">
-    📋 프롬프트 복사
-  </button>
-
-  <button class="btn dark" onclick="openSuno()">
-    🎵 Suno 열기
-  </button>
-
-  <label>완성된 MP3 가져오기</label>
-
-  <input
-    id="audioFile"
-    type="file"
-    accept="audio/*">
-
-  <div id="audioName"></div>
-
-  <audio
-    id="audioPreview"
-    controls
-    class="hidden">
-  </audio>
-
-  <button
-    class="btn primary"
-    onclick="showThumb()">
-    다음: 썸네일 만들기 →
-  </button>
-
-</section>
-
-
-<section class="card hidden" id="thumbnailStep">
-
-  <h2>🖼️ 썸네일 만들기</h2>
-
-  <label>썸네일 설명</label>
-
-  <textarea id="thumbPrompt">
-비 오는 밤의 따뜻한 카페 창가,
-감성적인 조명,
-영화 같은 분위기,
-YouTube 음악 플레이리스트 썸네일,
-글자 없음,
-16:9
-  </textarea>
-
-  <button class="btn primary" onclick="generateThumbnail()">
-    ✨ AI 썸네일 생성
-  </button>
-
-  <div id="thumbStatus"></div>
-
-  <img id="thumbImage" class="hidden">
-
-
-<hr style="margin:24px 0">
-
-<h2>🎬 썸네일 · 영상 제작</h2>
-
-<p>
-  위에서 만든 AI 썸네일과 음악을 사용해서
-  플레이리스트 영상을 완성합니다.
-</p>
-
-
-
-<label>완성 영상 가져오기</label>
-
-<input
-  id="videoFile"
-  type="file"
-  accept="video/*">
-
-<div id="videoFileName"></div>
-
-<video
-  id="videoPreview"
-  controls
-  class="hidden">
-</video>
-
-<button class="btn primary"
-  onclick="showYoutube()">
-  다음: YouTube →
+<button class="secondary" onclick="copyText('sunoPrompt')">
+📋 스타일 프롬프트 복사
 </button>
 
+<div id="lyricsArea">
+<label>가사</label>
+<textarea id="lyrics"></textarea>
+
+<button class="secondary" onclick="copyText('lyrics')">
+📋 가사 복사
+</button>
+</div>
+
+<button class="dark" onclick="openSuno()">🎵 Suno 열기</button>
+
+<label>완성된 MP3 가져오기</label>
+<input id="audioFile" type="file" accept="audio/*">
+
+<p id="audioName" class="small"></p>
+<audio id="audioPreview" controls class="hidden" style="width:100%"></audio>
+
+<button class="primary" onclick="showPage('thumbnail')">
+다음: 썸네일 만들기 →
+</button>
 </section>
 
 
-<section class="card hidden" id="youtubeStep">
+<section id="thumbnail" class="card hidden">
+<h2>🖼️ 썸네일 만들기</h2>
 
-  <h2>📺 YouTube 업로드</h2>
+<label>썸네일 문구</label>
+<input id="thumbTitle" placeholder="예: Rainy Night Cafe">
 
-  <p>
-    완성된 영상을 YouTube에 업로드할 준비가 되었습니다.
-  </p>
+<label>이미지 생성 프롬프트</label>
+<textarea id="thumbPrompt">
+cinematic cozy cafe at night, rain on window, warm lights, elegant atmosphere, realistic photography, YouTube music playlist cover, 16:9
+</textarea>
 
-  <button
-  class="btn primary"
-  onclick="window.open('https://studio.youtube.com/','_blank')">
-    📺 YouTube Studio 열기
-  </button>
+<button class="secondary" onclick="copyText('thumbPrompt')">
+📋 이미지 프롬프트 복사
+</button>
 
+<button class="primary" onclick="showPage('video')">
+다음: 영상 만들기 →
+</button>
+</section>
+
+
+<section id="video" class="card hidden">
+<h2>🎬 영상 만들기</h2>
+
+<div class="info">
+<b>PlayMaker 제작 순서</b><br><br>
+① 완성된 음악 준비<br>
+② 썸네일 이미지 준비<br>
+③ 음악 + 이미지를 영상으로 제작<br>
+④ YouTube 업로드
+</div>
+
+<button class="primary" onclick="showPage('suno')">
+← 음악 화면으로
+</button>
 </section>
 
 </main>
 
 
 <nav>
-
-<button onclick="goHome()">
-🏠<br>홈
-</button>
-
-<button onclick="openProject()">
-✨<br>만들기
-</button>
-
-<button onclick="showMusic()">
-🎵<br>노래
-</button>
-
-<button onclick="showThumb()">
-🖼️<br>썸네일
-</button>
-
-
-
+<button onclick="showPage('home')">🏠<br>홈</button>
+<button onclick="showPage('create')">✨<br>만들기</button>
+<button onclick="showPage('suno')">🎵<br>노래</button>
+<button onclick="showPage('thumbnail')">🖼️<br>썸네일</button>
 </nav>
 
 
 <script>
 
-const titles = [
-"비가 머문 자리",
-"너를 생각하는 밤",
-"창가에 흐르는 시간",
-"우리의 늦은 계절",
-"새벽 두 시의 편지",
-"조용히 번지는 마음",
-"다시 걷는 거리",
-"오늘도 네가 생각나",
-"밤공기와 오래된 기억",
-"그날의 온도"
+const genres=[
+"팝","가요","재즈","보사노바","발라드","로파이",
+"트로트","성인가요","동요","R&B","어쿠스틱","시티팝"
 ];
 
-function hideAll(){
-  [
-    "home",
-    "project",
-    "result",
-    "musicStep",
-    "thumbnailStep",
-    
-    "youtubeStep"
-  ].forEach(id=>{
-    document.getElementById(id).classList.add("hidden");
-  });
+const titleBanks={
+
+"팝":[
+"Rainy Window","Thinking of You Tonight","Time by the Window",
+"Our Slow Season","Letter at 2 AM","Quietly Falling",
+"Walking Back to You","Still on My Mind",
+"Old Memories in the Night","The Temperature of That Day"
+],
+
+"가요":[
+"비가 머문 자리","너를 생각하는 밤","창가에 흐르는 시간",
+"우리의 늦은 계절","새벽 두 시의 편지","조용히 번지는 마음",
+"다시 걷는 거리","오늘도 네가 생각나",
+"밤공기와 오래된 기억","그날의 온도"
+],
+
+"재즈":[
+"Midnight Blue","Coffee and Jazz","Rainy Street",
+"After Hours","Moonlight Lounge","Slow Evening",
+"Blue Window","Late Night Table","Autumn Jazz","Last Coffee"
+],
+
+"보사노바":[
+"Sunday Cafe","Soft Summer","Ocean Window","Morning Breeze",
+"Coffee in Rio","Lazy Afternoon","Warm Sunshine",
+"Little Vacation","Blue Balcony","Summer Letter"
+],
+
+"발라드":[
+"다시 너에게","남겨진 계절","그날 이후","우리의 마지막 밤",
+"기억 속의 너","늦은 편지","그리운 사람",
+"눈물이 머문 자리","다시 사랑한다면","마지막 인사"
+],
+
+"로파이":[
+"Rainy Study","Night Desk","Quiet Room","Slow Morning",
+"Coffee Break","Dreamy Window","Late Night Notes",
+"Soft Focus","Calm City","Moonlight Study"
+],
+
+"트로트":[
+"사랑이 뭐길래","인생 한잔","당신뿐이야","돌아와요 내 사랑",
+"오늘도 웃는다","세월아 천천히","사랑의 정거장",
+"내 인생의 봄날","당신이 최고야","한잔의 추억"
+],
+
+"성인가요":[
+"세월의 길목에서","그리운 당신","인생이라는 길",
+"사랑했던 날들","추억의 찻집","바람 같은 세월",
+"당신을 기다립니다","우리 다시 만나요",
+"그 시절 그 사람","남은 사랑"
+],
+
+"동요":[
+"구름 친구","달님 안녕","숲속 작은 집","무지개 놀이터",
+"별빛 여행","강아지와 산책","햇살 좋은 날",
+"꿈꾸는 고래","토끼의 소풍","우리 함께 노래해"
+],
+
+"R&B":[
+"Slow Motion","Stay Tonight","Velvet Rain","Close to Me",
+"After Midnight","Your Side","Soft Lights",
+"Only Tonight","Deep in Love","City Rain"
+],
+
+"어쿠스틱":[
+"Morning Letter","Wooden Table","Small Cafe","Walk With Me",
+"Warm Window","Sunday Morning","Old Guitar",
+"Simple Day","Coffee for Two","Quiet Road"
+],
+
+"시티팝":[
+"Neon Drive","Tokyo Midnight","City Lights","Summer Highway",
+"Last Train","Neon Rain","Night Avenue",
+"Blue City","Midnight Radio","Drive With You"
+]
+
+};
+
+
+const styleBanks={
+
+"팝":"modern emotional pop, catchy melody, warm piano, soft electric guitar, polished production",
+"가요":"Korean pop, emotional melody, warm piano, soft drums, cinematic arrangement",
+"재즈":"smooth cafe jazz, warm piano, upright bass, brushed drums, relaxed sophisticated atmosphere",
+"보사노바":"soft bossa nova, nylon guitar, gentle percussion, warm bass, relaxed cafe atmosphere",
+"발라드":"emotional Korean ballad, expressive piano, strings, gentle drums, dramatic build",
+"로파이":"lofi chill beats, mellow piano, vinyl texture, soft drums, relaxing late night atmosphere",
+"트로트":"modern Korean trot, catchy rhythm, bright brass, expressive melody, energetic arrangement",
+"성인가요":"Korean adult contemporary song, nostalgic melody, warm strings, emotional vocal, mature atmosphere",
+"동요":"bright cheerful children's song, simple catchy melody, playful instruments, warm friendly mood",
+"R&B":"smooth contemporary R&B, warm electric piano, deep bass, soft groove, soulful atmosphere",
+"어쿠스틱":"warm acoustic pop, acoustic guitar, soft piano, natural drums, intimate atmosphere",
+"시티팝":"80s inspired city pop, funky bass, electric piano, synths, nostalgic night drive atmosphere"
+
+};
+
+
+let currentGenre="";
+let currentTitles=[];
+
+
+function showPage(id){
+
+document.querySelectorAll("main section").forEach(
+el=>el.classList.add("hidden")
+);
+
+document.getElementById(id).classList.remove("hidden");
+
+localStorage.setItem("playmakerPage",id);
+
+window.scrollTo(0,0);
 }
 
-function show(id){
-  hideAll();
-  document.getElementById(id).classList.remove("hidden");
-  window.scrollTo({top:0,behavior:"smooth"});
+
+function random(arr){
+return arr[Math.floor(Math.random()*arr.length)];
 }
 
-function goHome(){
-  show("home");
-}
-
-function openProject(){
-  show("project");
-}
 
 function makePlan(){
 
-  const name =
-  document.getElementById("projectName").value;
+const name=document.getElementById("projectName").value ||
+"나만의 AI 플레이리스트";
 
- const genre =
-document.getElementById("genre").value; 
+let genre=document.getElementById("genre").value;
 
-  const mood =
-  document.getElementById("mood").value;
-
-  const vocal =
-  document.getElementById("vocal").value;
-
-  const count =
-  Number(document.getElementById("count").value);
-let titles;
-
-if (genre === "팝") {
-  titles = [
-    "Rainy Window",
-    "Thinking of You Tonight",
-    "Time by the Window",
-    "Our Slow Season",
-    "Letter at 2 AM",
-    "Quietly Falling",
-    "Walking Back to You",
-    "Still on My Mind",
-    "Old Memories in the Night",
-    "The Temperature of That Day"
-  ];
-} else if (genre === "가요") {
-  titles = [
-    "비가 머문 자리",
-    "너를 생각하는 밤",
-    "창가에 흐르는 시간",
-    "우리의 늦은 계절",
-    "새벽 두 시의 편지",
-    "조용히 번지는 마음",
-    "다시 걷는 거리",
-    "오늘도 네가 생각나",
-    "밤공기와 오래된 기억",
-    "그날의 온도"
-  ];
-} else if (genre === "재즈") {
-  titles = [
-    "Midnight Blue",
-    "Coffee and Jazz",
-    "Rainy Street",
-    "After Hours",
-    "Moonlight Lounge",
-    "Slow Evening",
-    "Blue Window",
-    "Late Night Cafe",
-    "Autumn Jazz",
-    "Quiet City"
-  ];
-} else if (genre === "보사노바") {
-  titles = [
-    "Cafe by the Sea",
-    "Summer Breeze",
-    "Soft Morning",
-    "Rio Sunset",
-    "Coffee and Sunshine",
-    "Lazy Afternoon",
-    "Ocean Window",
-    "Sunday in Rio",
-    "Warm Breeze",
-    "Golden Evening"
-  ];
-} else if (genre === "로파이") {
-  titles = [
-    "Rainy Study",
-    "Midnight Desk",
-    "Quiet Coffee",
-    "Slow Morning",
-    "Window Lights",
-    "Late Night Notes",
-    "Cozy Room",
-    "After the Rain",
-    "City Dreams",
-    "Night Routine"
-  ];
-} else {
-  titles = [
-    "비가 머문 자리",
-    "너를 생각하는 밤",
-    "창가에 흐르는 시간",
-    "우리의 늦은 계절",
-    "새벽 두 시의 편지",
-    "조용히 번지는 마음",
-    "다시 걷는 거리",
-    "오늘도 네가 생각나",
-    "밤공기와 오래된 기억",
-    "그날의 온도"
-  ];
+if(genre==="AI 자동"){
+genre=random(genres);
 }
-  document.getElementById("summary").innerHTML =
-  "<b>"+name+"</b><br>"+
-  genre+" · "+mood+" · "+vocal+" · "+count+"곡";
 
-  let html="";
+const mood=document.getElementById("mood").value;
+const vocal=document.getElementById("vocal").value;
+const count=Number(document.getElementById("count").value);
 
-  for(let i=0;i<count;i++){
-    html +=
-    '<div class="track">'+
-    (i+1)+'. '+titles[i % titles.length]+
-    '</div>';
-  }
+currentGenre=genre;
 
-  document.getElementById("tracks").innerHTML=html;
+let bank=[...titleBanks[genre]];
+bank.sort(()=>Math.random()-.5);
 
-const tempos = ["slow", "medium-slow", "mid-tempo", "relaxed groove"];
-const instruments = [
-  "warm piano, soft electric guitar, gentle bass and light drums",
-  "mellow piano, brushed drums, warm bass and subtle strings",
-  "acoustic guitar, soft piano, smooth bass and light percussion",
-  "dreamy electric piano, gentle drums, warm bass and ambient pads"
-];
-const moods = [
-  "cozy late-night atmosphere",
-  "warm cafe mood",
-  "nostalgic rainy-night feeling",
-  "calm romantic evening atmosphere"
-];
-const arrangements = [
-  "natural arrangement with a soft intro and smooth development",
-  "simple arrangement with emotional build-up and gentle ending",
-  "warm cinematic arrangement with subtle dynamic changes",
-  "relaxed arrangement with soft transitions and no harsh sounds"
+currentTitles=bank.slice(0,count);
+
+document.getElementById("planInfo").innerHTML=
+"<b>"+name+"</b><br>"+
+genre+" · "+mood+" · "+vocal+" · "+count+"곡";
+
+const list=document.getElementById("songList");
+list.innerHTML="";
+
+currentTitles.forEach((title,i)=>{
+list.innerHTML+=
+'<div class="song">'+(i+1)+'. '+title+'</div>';
+});
+
+saveProject();
+
+showPage("plan");
+}
+
+
+function makeSuno(){
+
+const select=document.getElementById("songSelect");
+
+select.innerHTML="";
+
+currentTitles.forEach((title,i)=>{
+const op=document.createElement("option");
+op.value=i;
+op.textContent=(i+1)+". "+title;
+select.appendChild(op);
+});
+
+updateSongContent();
+
+showPage("suno");
+}
+
+
+function updateSongContent(){
+
+if(!currentTitles.length)return;
+
+const index=Number(document.getElementById("songSelect").value || 0);
+const title=currentTitles[index];
+
+const mood=document.getElementById("mood").value;
+const vocal=document.getElementById("vocal").value;
+
+const tempos=["slow","medium-slow","mid-tempo"];
+const extras=[
+"warm cinematic arrangement",
+"gentle emotional build",
+"soft intimate production",
+"relaxed natural arrangement"
 ];
 
-const tempo = tempos[Math.floor(Math.random() * tempos.length)];
-const instrument = instruments[Math.floor(Math.random() * instruments.length)];
-const extraMood = moods[Math.floor(Math.random() * moods.length)];
-const arrangement = arrangements[Math.floor(Math.random() * arrangements.length)];
+const prompt=
+styleBanks[currentGenre]+", "+
+random(tempos)+", "+
+mood+", "+
+vocal+", "+
+random(extras)+
+", original composition, suitable for a long YouTube playlist";
 
-const prompt =
-  genre + ", " + mood + ", " + vocal +
-  ", " + tempo +
-  ", " + instrument +
-  ", " + extraMood +
-  ", " + arrangement +
-  ", emotional playlist music, soft melody, high quality studio sound";
+document.getElementById("sunoPrompt").value=prompt;
 
-  document.getElementById("sunoPrompt").value=prompt;
+const area=document.getElementById("lyricsArea");
 
-  show("result");
+if(vocal==="연주곡"){
+area.classList.add("hidden");
+document.getElementById("lyrics").value="";
+}else{
+area.classList.remove("hidden");
+document.getElementById("lyrics").value=
+makeLyrics(title,currentGenre);
 }
 
-function showMusic(){
-  show("musicStep");
+document.getElementById("thumbTitle").value=title;
+
+saveProject();
 }
 
-function copyPrompt(){
 
-  const text =
-  document.getElementById("sunoPrompt");
+function makeLyrics(title,genre){
 
-  text.select();
-  text.setSelectionRange(0,99999);
+if(genre==="팝" || genre==="R&B" ||
+genre==="어쿠스틱" || genre==="시티팝"){
 
-  navigator.clipboard.writeText(text.value);
+return `[Verse 1]
+Rain is falling softly tonight
+Coffee cooling by my side
+City lights are fading slow
+Still there's something I should know
 
-  alert("Suno 프롬프트를 복사했습니다.");
+[Pre-Chorus]
+Every little sound reminds me
+Of the way you used to smile
+
+[Chorus]
+${title}
+Stay with me a little while
+Through the quiet, through the night
+You're still somewhere in my mind
+
+[Verse 2]
+Walking past the window light
+Memories are passing by
+Maybe time will let us know
+Where all of these feelings go
+
+[Chorus]
+${title}
+Stay with me a little while
+Through the quiet, through the night
+You're still somewhere in my mind
+
+[Bridge]
+If tomorrow finds me dreaming
+I'll remember this tonight
+
+[Final Chorus]
+${title}
+Like a song I can't forget
+In the rain and in the silence
+You're the one I remember yet`;
 }
+
+if(genre==="동요"){
+
+return `[1절]
+오늘은 햇살이 반짝반짝
+우리 함께 길을 나서요
+작은 구름 손을 흔들고
+예쁜 바람 노래해요
+
+[후렴]
+${title}
+우리 함께 불러봐요
+웃음 가득 행복 가득
+신나는 하루를 만들어요
+
+[2절]
+파란 하늘 새가 날아요
+꽃들도 살며시 웃어요
+친구 손을 꼭 잡고서
+꿈을 찾아 떠나가요
+
+[후렴]
+${title}
+우리 함께 불러봐요
+웃음 가득 행복 가득
+신나는 하루를 만들어요`;
+}
+
+return `[1절]
+창밖에 내리는 비를 바라보며
+오늘도 그대 생각에 잠겨요
+지나간 시간은 멀어졌지만
+마음 한편엔 그대로 남아
+
+[후렴]
+${title}
+잊으려 해도 잊을 수 없는
+우리의 오래된 이야기
+조용한 밤이 다시 찾아오면
+나는 또 그대를 생각해
+
+[2절]
+익숙한 거리를 혼자 걸으며
+그날의 기억을 다시 꺼내요
+계절은 몇 번이나 변했지만
+그리움만은 그대로네요
+
+[후렴]
+${title}
+잊으려 해도 잊을 수 없는
+우리의 오래된 이야기
+조용한 밤이 다시 찾아오면
+나는 또 그대를 생각해`;
+}
+
+
+function copyText(id){
+
+const text=document.getElementById(id);
+
+text.select();
+text.setSelectionRange(0,99999);
+
+navigator.clipboard.writeText(text.value);
+
+alert("복사했습니다.");
+}
+
 
 function openSuno(){
-  window.open("https://suno.com/create","_blank");
+window.open("https://suno.com/create","_blank");
 }
 
-document
-.getElementById("audioFile")
-.addEventListener("change",function(){
 
-  const file=this.files[0];
+document.getElementById("audioFile").addEventListener(
+"change",function(){
 
-  if(file){
+const file=this.files[0];
 
-    document.getElementById("audioName").textContent =
-    "✅ 선택된 음악: "+file.name;
+if(file){
 
-    const preview =
-    document.getElementById("audioPreview");
+document.getElementById("audioName").textContent=
+"✅ 선택된 음악: "+file.name;
 
-    preview.src=URL.createObjectURL(file);
+const preview=document.getElementById("audioPreview");
 
-    preview.classList.remove("hidden");
-  }
-
+preview.src=URL.createObjectURL(file);
+preview.classList.remove("hidden");
+}
 });
 
 
-function showThumb(){
-  show("thumbnailStep");
+function saveProject(){
+
+const data={
+projectName:document.getElementById("projectName").value,
+genre:document.getElementById("genre").value,
+mood:document.getElementById("mood").value,
+vocal:document.getElementById("vocal").value,
+count:document.getElementById("count").value,
+currentGenre,
+currentTitles
+};
+
+localStorage.setItem("playmakerProject",JSON.stringify(data));
 }
 
 
-function generateThumbnail(){
+function restoreProject(){
 
-  const prompt =
-    document.getElementById("thumbPrompt").value.trim();
+const saved=localStorage.getItem("playmakerProject");
 
-  const status =
-    document.getElementById("thumbStatus");
+if(saved){
 
-  const img =
-    document.getElementById("thumbImage");
+try{
 
-  if(!prompt){
-    status.textContent = "❗ 썸네일 설명을 먼저 입력하세요.";
-    return;
-  }
+const d=JSON.parse(saved);
 
-status.innerHTML =
-  "✅ CapCut용 썸네일 프롬프트가 준비되었습니다.<br><br>" +
-  "<b>복사해서 CapCut AI 이미지 생성에 사용하세요:</b><br><br>" +
-  prompt +
-  "<br><br>추천 문구: <b>Midnight Coffee</b><br><br>" +
-  '<a href="https://www.capcut.com/" target="_blank" ' +
-  'style="display:block;padding:16px;background:#111;color:#fff;' +
-  'text-align:center;border-radius:12px;text-decoration:none;font-weight:bold;">' +
-  '🎬 CapCut 열기</a>';
+document.getElementById("projectName").value=d.projectName||"";
+document.getElementById("genre").value=d.genre||"AI 자동";
+document.getElementById("mood").value=d.mood||"비 오는 밤";
+document.getElementById("vocal").value=d.vocal||"여성 보컬";
+document.getElementById("count").value=d.count||"10";
 
-  if(img){
-    img.classList.add("hidden");
-  }
+currentGenre=d.currentGenre||"";
+currentTitles=d.currentTitles||[];
 
+}catch(e){}
+}
+
+const lastPage=localStorage.getItem("playmakerPage")||"home";
+showPage(lastPage);
 }
 
 
-function goVideo(){
-  show("videoStep");
-}
-
-
-document
-.getElementById("videoFile")
-.addEventListener("change",function(){
-
-  const file=this.files[0];
-
-  const nameBox=
-  document.getElementById("videoFileName");
-
-  const preview=
-  document.getElementById("videoPreview");
-
-  if(file){
-
-    nameBox.textContent=
-    "✅ 선택된 영상: "+file.name;
-
-    preview.src=
-    URL.createObjectURL(file);
-
-    preview.classList.remove("hidden");
-
-  }
-
+["projectName","genre","mood","vocal","count"].forEach(id=>{
+document.getElementById(id).addEventListener("change",saveProject);
 });
 
 
-function showYoutube(){
-  show("youtubeStep");
-}
+restoreProject();
 
 </script>
 
