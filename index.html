@@ -378,7 +378,41 @@ const styleBanks={
 
 let currentGenre="";
 let currentTitles=[];
+  
+function generateUniqueTitles(genre, count){
+  const used = JSON.parse(localStorage.getItem("usedTitles") || "[]");
 
+  const popA = ["Midnight","Rainy","Silent","Golden","Lonely","Velvet","Fading","Blue","Secret","Endless","Distant","Last","Slow","Neon","Quiet"];
+  const popB = ["Window","Memories","Tonight","Dreams","Rain","Letters","Heart","Lights","Moments","Street","Sky","Morning","Season","Coffee","Moon"];
+  const popC = ["With You","Without You","Again","After Midnight","In the Rain","By the Window","Before Dawn","Tonight"];
+
+  let result = [];
+  let tries = 0;
+
+  while(result.length < count && tries < 500){
+    let title;
+
+    if(genre === "팝"){
+      const type = Math.floor(Math.random()*3);
+
+      if(type === 0) title = random(popA)+" "+random(popB);
+      if(type === 1) title = random(popB)+" "+random(popC);
+      if(type === 2) title = random(popA)+" "+random(popB)+" "+random(popC);
+    }else{
+      const bank = titleBanks[genre] || titleBanks["팝"];
+      title = random(bank);
+    }
+
+    if(!used.includes(title) && !result.includes(title)){
+      result.push(title);
+      used.push(title);
+    }
+    tries++;
+  }
+
+  localStorage.setItem("usedTitles",JSON.stringify(used));
+  return result;
+  }
 
 function showPage(id){
 
