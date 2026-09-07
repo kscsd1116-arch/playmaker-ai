@@ -450,11 +450,10 @@ const count=Number(document.getElementById("count").value);
 
 currentGenre=genre;
 
-let bank=[...titleBanks[genre]];
-bank.sort(()=>Math.random()-.5);
 
-currentTitles=bank.slice(0,count);
-
+currentTitles = genre === "팝"
+  ? generateUniqueTitles(genre, count)
+  : [...titleBanks[genre]].sort(()=>Math.random()-.5).slice(0,count);
 document.getElementById("planInfo").innerHTML=
 "<b>"+name+"</b><br>"+
 genre+" · "+mood+" · "+vocal+" · "+count+"곡";
