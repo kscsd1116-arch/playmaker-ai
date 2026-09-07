@@ -700,17 +700,21 @@ preview.classList.remove("hidden");
 
 function saveProject(){
 
-const data={
-projectName:document.getElementById("projectName").value,
-genre:document.getElementById("genre").value,
-mood:document.getElementById("mood").value,
-vocal:document.getElementById("vocal").value,
-count:document.getElementById("count").value,
-currentGenre,
-currentTitles
-};
+  const data={
+    projectName:document.getElementById("projectName").value,
+    genre:document.getElementById("genre").value,
+    mood:document.getElementById("mood").value,
+    vocal:document.getElementById("vocal").value,
+    count:document.getElementById("count").value,
+    currentGenre,
+    currentTitles,
 
-localStorage.setItem("playmakerProject",JSON.stringify(data));
+    sunoPrompt:document.getElementById("sunoPrompt")?.value || "",
+    lyrics:document.getElementById("lyrics")?.value || "",
+    thumbTitle:document.getElementById("thumbTitle")?.value || ""
+  };
+
+  localStorage.setItem("playmakerProject",JSON.stringify(data));
 }
 
 
