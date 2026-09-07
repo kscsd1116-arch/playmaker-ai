@@ -476,11 +476,41 @@ const extras=[
 "relaxed natural arrangement"
 ];
 
-const prompt=
+const moodEnglish = {
+  "비 오는 밤":"rainy night",
+  "늦은 밤":"late night",
+  "카페":"cozy cafe atmosphere",
+  "새벽":"quiet dawn",
+  "드라이브":"night drive",
+  "감성":"emotional atmosphere",
+  "신나는":"upbeat energetic mood"
+};
+
+const vocalEnglish = {
+  "여성 보컬":"female vocals",
+  "남성 보컬":"male vocals",
+  "남녀 혼성":"male and female duet vocals",
+  "연주곡":"instrumental"
+};
+
+let sunoVocal = vocal;
+
+if(vocal === "AI 자동"){
+  sunoVocal = random([
+    "여성 보컬",
+    "남성 보컬",
+    "남녀 혼성"
+  ]);
+}
+
+const moodPrompt = moodEnglish[mood] || mood;
+const vocalPrompt = vocalEnglish[sunoVocal] || sunoVocal;
+
+const prompt =
 styleBanks[currentGenre]+", "+
 random(tempos)+", "+
-mood+", "+
-vocal+", "+
+moodPrompt+", "+
+vocalPrompt+", "+
 random(extras)+
 ", original composition, suitable for a long YouTube playlist";
 
