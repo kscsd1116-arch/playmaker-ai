@@ -484,7 +484,8 @@ op.value=i;
 op.textContent=(i+1)+". "+title;
 select.appendChild(op);
 });
-
+const savedIndex = Number(localStorage.getItem("playmakerSongIndex") || 0);
+if(savedIndex < currentTitles.length) select.value = savedIndex;
 updateSongContent();
 
 showPage("suno");
@@ -497,7 +498,7 @@ if(!currentTitles.length)return;
 
 const index=Number(document.getElementById("songSelect").value || 0);
 const title=currentTitles[index];
-
+localStorage.setItem("playmakerSongIndex", index);
 const mood=document.getElementById("mood").value;
 const vocal=document.getElementById("vocal").value;
 
