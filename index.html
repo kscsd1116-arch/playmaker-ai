@@ -6,7 +6,9 @@
 <title>PlayMaker AI</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
 
 body{
   margin:0;
@@ -17,7 +19,7 @@ body{
 
 header{
   background:linear-gradient(135deg,#6d3df5,#8b5cf6);
-  color:white;
+  color:#fff;
   padding:28px 20px;
   text-align:center;
 }
@@ -39,37 +41,34 @@ main{
 }
 
 .card{
-  background:white;
-  border-radius:28px;
-  padding:24px;
+  background:#fff;
+  border-radius:26px;
+  padding:23px;
   margin-bottom:20px;
-  box-shadow:0 5px 20px rgba(0,0,0,.05);
+  box-shadow:0 5px 20px rgba(0,0,0,.06);
 }
 
 h2{
   margin-top:0;
-  font-size:27px;
-}
-
-h3{
-  font-size:20px;
-  margin-bottom:10px;
+  font-size:26px;
 }
 
 label{
-  font-size:18px;
-  font-weight:700;
   display:block;
   margin:18px 0 8px;
+  font-size:18px;
+  font-weight:700;
 }
 
-select,input,textarea{
+select,
+input,
+textarea{
   width:100%;
   border:1px solid #ddd;
-  border-radius:18px;
-  padding:16px;
+  border-radius:16px;
+  padding:15px;
   font-size:17px;
-  background:white;
+  background:#fff;
 }
 
 textarea{
@@ -80,69 +79,66 @@ textarea{
 button{
   width:100%;
   border:0;
-  border-radius:18px;
-  padding:18px;
-  margin-top:14px;
-  font-size:18px;
+  border-radius:17px;
+  padding:17px;
+  margin-top:13px;
+  font-size:17px;
   font-weight:700;
   cursor:pointer;
 }
 
 .primary{
   background:#6d3df5;
-  color:white;
-}
-
-.dark{
-  background:#222;
-  color:white;
+  color:#fff;
 }
 
 .light{
   background:#eee9ff;
-  color:#5631c7;
+  color:#5531c6;
+}
+
+.dark{
+  background:#222;
+  color:#fff;
 }
 
 .green{
-  background:#e8fff0;
-  color:#14833b;
+  background:#e7fbed;
+  color:#147b37;
 }
 
-.row{
-  display:flex;
-  gap:10px;
-}
-
-.row button{
-  flex:1;
+.back{
+  background:#fff;
+  border:1px solid #ddd;
+  color:#333;
 }
 
 .notice{
   background:#f1edff;
-  padding:14px;
-  border-radius:14px;
-  margin-top:15px;
-  font-size:15px;
-  line-height:1.5;
-}
-
-.success{
-  color:#15803d;
-  font-weight:700;
-  margin-top:12px;
-}
-
-.hidden{
-  display:none!important;
+  padding:15px;
+  border-radius:15px;
+  margin:16px 0;
+  line-height:1.65;
 }
 
 .titleBox{
-  font-size:25px;
-  font-weight:800;
   background:#fafafa;
   border:1px solid #ddd;
-  border-radius:18px;
+  border-radius:16px;
   padding:17px;
+  font-size:25px;
+  font-weight:800;
+  min-height:64px;
+}
+
+.hidden{
+  display:none !important;
+}
+
+.success{
+  margin-top:12px;
+  font-weight:700;
+  color:#13813a;
 }
 
 audio{
@@ -150,65 +146,52 @@ audio{
   margin-top:15px;
 }
 
+.preview{
+  width:100%;
+  margin-top:15px;
+  border-radius:18px;
+  display:none;
+}
+
 .bottomNav{
   position:fixed;
   bottom:0;
   left:0;
   right:0;
-  background:white;
+  background:#fff;
   border-top:1px solid #ddd;
   display:flex;
-  justify-content:space-around;
-  z-index:10;
+  z-index:20;
 }
 
 .bottomNav button{
-  background:white;
-  color:#333;
-  padding:14px 4px;
-  margin:0;
+  flex:1;
+  background:#fff;
+  color:#444;
   border-radius:0;
-  font-size:14px;
+  margin:0;
+  padding:13px 3px;
+  font-size:13px;
 }
 
-.bottomNav button span{
+.bottomNav span{
   display:block;
-  font-size:22px;
-  margin-bottom:4px;
+  font-size:21px;
+  margin-bottom:3px;
 }
 
-.activeNav{
-  color:#6d3df5!important;
-  font-weight:800;
-}
-
-.small{
-  font-size:14px;
-  color:#777;
-  line-height:1.6;
-}
-
-.backBtn{
-  background:white;
-  border:1px solid #ddd;
-  margin-bottom:22px;
+.active{
+  color:#6d3df5 !important;
 }
 
 .badge{
   display:inline-block;
-  background:#efeaff;
-  color:#5d37d4;
-  padding:7px 10px;
+  background:#eee9ff;
+  color:#5b36ce;
   border-radius:20px;
+  padding:7px 11px;
   font-size:13px;
-  font-weight:bold;
-}
-
-.previewImage{
-  width:100%;
-  border-radius:18px;
-  margin-top:15px;
-  display:none;
+  font-weight:700;
 }
 </style>
 </head>
@@ -224,54 +207,62 @@ audio{
 
 <!-- 홈 -->
 <section id="homePage" class="page">
+
   <div class="card">
+
     <h2>🏠 PlayMaker AI</h2>
-    <p>AI 음악 콘텐츠 제작을 시작합니다.</p>
 
     <div class="notice">
       ✅ 제목 자동 생성<br>
-      ✅ 가사 자동 생성<br>
+      ✅ 제목 복사<br>
       ✅ 4~5분 곡 구조<br>
+      ✅ 장르별 가사 · 스타일<br>
+      ✅ 남녀 혼성 보컬 지원<br>
       ✅ Suno 이동 후 작업 복원<br>
       ✅ MP3 가져오기<br>
-      ✅ 썸네일 프롬프트 생성
+      ✅ 썸네일 제작 단계
     </div>
 
-    <button class="primary" onclick="goPage('createPage')">
+    <button class="primary" onclick="startNewSong()">
       ✨ 새 노래 만들기
     </button>
 
     <button class="light" onclick="resumeProject()">
       🔄 이전 작업 이어하기
     </button>
+
   </div>
+
 </section>
 
 
-<!-- 만들기 -->
+<!-- 설정 -->
 <section id="createPage" class="page hidden">
 
   <div class="card">
 
-    <button class="backBtn" onclick="goPage('homePage')">
+    <button class="back" onclick="goPage('homePage')">
       ← 이전
     </button>
 
     <h2>✨ AI 음악 만들기</h2>
 
     <label>장르</label>
-    <select id="genre" onchange="saveInputs()">
+
+    <select id="genre" onchange="saveProject()">
       <option value="pop">팝</option>
-      <option value="ballad">발라드</option>
-      <option value="bossa">보사노바</option>
-      <option value="jazz">재즈</option>
+      <option value="kpop">가요</option>
       <option value="trot">트로트</option>
       <option value="adult">성인가요</option>
+      <option value="bossa">보사노바</option>
+      <option value="jazz">재즈</option>
       <option value="kids">동요</option>
     </select>
 
+
     <label>분위기</label>
-    <select id="mood" onchange="saveInputs()">
+
+    <select id="mood" onchange="saveProject()">
       <option value="warm">따뜻하고 감성적</option>
       <option value="night">밤 · 도시 · 감성</option>
       <option value="rain">비 오는 밤</option>
@@ -280,23 +271,31 @@ audio{
       <option value="romantic">로맨틱</option>
     </select>
 
+
     <label>보컬</label>
-    <select id="vocal" onchange="saveInputs()">
+
+    <select id="vocal" onchange="saveProject()">
       <option value="female">여성 보컬</option>
       <option value="male">남성 보컬</option>
+      <option value="duet">남녀 혼성 보컬</option>
       <option value="auto">AI 자동</option>
     </select>
 
+
     <div class="notice">
-      🎯 앞으로 생성되는 곡은 <b>약 4~5분</b>을 목표로 합니다.<br>
-      같은 후렴만 반복하지 않고 Verse · Bridge · Instrumental · Final Chorus · Outro 구조를 사용합니다.
+      🎯 목표 곡 길이: <b>약 4~5분</b><br>
+      Verse 1 → Pre-Chorus → Chorus → Verse 2 →
+      Chorus → Instrumental → Bridge →
+      Final Chorus → Outro 구조로 만듭니다.
     </div>
+
 
     <button class="primary" onclick="generateSong()">
       🎵 제목 · 가사 · 스타일 자동 만들기
     </button>
 
   </div>
+
 </section>
 
 
@@ -305,7 +304,7 @@ audio{
 
   <div class="card">
 
-    <button class="backBtn" onclick="goPage('createPage')">
+    <button class="back" onclick="goPage('createPage')">
       ← 이전 단계
     </button>
 
@@ -314,6 +313,7 @@ audio{
     <span class="badge">4~5분 목표</span>
 
     <label>제목</label>
+
     <div id="songTitle" class="titleBox"></div>
 
     <button class="light" onclick="copyTitle()">
@@ -324,40 +324,60 @@ audio{
       🔄 제목만 새로 만들기
     </button>
 
+
     <label>스타일 프롬프트</label>
-    <textarea id="stylePrompt" oninput="saveProject()"></textarea>
+
+    <textarea
+      id="stylePrompt"
+      oninput="saveProject()"
+    ></textarea>
 
     <button class="light" onclick="copyStyle()">
-      📋 스타일 프롬프트 복사
+      📋 스타일 복사
     </button>
 
+
     <label>가사</label>
-    <textarea id="lyrics" oninput="saveProject()"></textarea>
+
+    <textarea
+      id="lyrics"
+      oninput="saveProject()"
+    ></textarea>
 
     <button class="light" onclick="copyLyrics()">
       📋 가사 복사
     </button>
 
+
     <button class="dark" onclick="openSuno()">
       🎵 Suno 열기
     </button>
 
+
     <label>완성된 MP3 가져오기</label>
+
     <input
       id="mp3File"
       type="file"
-      accept="audio/*,.mp3"
+      accept=".mp3,audio/*"
       onchange="loadMP3(event)"
     >
 
     <div id="selectedMusic" class="success hidden"></div>
-    <audio id="audioPlayer" controls class="hidden"></audio>
+
+    <audio
+      id="audioPlayer"
+      controls
+      class="hidden"
+    ></audio>
+
 
     <button class="primary" onclick="goThumbnail()">
       다음: 썸네일 만들기 →
     </button>
 
   </div>
+
 </section>
 
 
@@ -366,23 +386,34 @@ audio{
 
   <div class="card">
 
-    <button class="backBtn" onclick="goPage('songPage')">
+    <button class="back" onclick="goPage('songPage')">
       ← 이전 단계
     </button>
 
     <h2>🖼️ 썸네일 만들기</h2>
 
-    <label>썸네일 문구</label>
-    <input id="thumbText" oninput="saveProject()">
+    <label>썸네일 제목</label>
 
-    <label>이미지 생성 프롬프트</label>
-    <textarea id="imagePrompt" oninput="saveProject()"></textarea>
+    <input
+      id="thumbText"
+      oninput="saveProject()"
+    >
+
+
+    <label>이미지 프롬프트</label>
+
+    <textarea
+      id="imagePrompt"
+      oninput="saveProject()"
+    ></textarea>
 
     <button class="light" onclick="copyImagePrompt()">
       📋 이미지 프롬프트 복사
     </button>
 
+
     <label>완성된 썸네일 이미지 가져오기</label>
+
     <input
       id="imageFile"
       type="file"
@@ -390,13 +421,19 @@ audio{
       onchange="loadImage(event)"
     >
 
-    <img id="imagePreview" class="previewImage">
+    <img
+      id="imagePreview"
+      class="preview"
+      alt="thumbnail preview"
+    >
+
 
     <button class="primary" onclick="goPage('videoPage')">
       다음: 영상 만들기 →
     </button>
 
   </div>
+
 </section>
 
 
@@ -405,35 +442,37 @@ audio{
 
   <div class="card">
 
-    <button class="backBtn" onclick="goPage('thumbnailPage')">
+    <button class="back" onclick="goPage('thumbnailPage')">
       ← 이전 단계
     </button>
 
     <h2>🎬 영상 만들기</h2>
 
     <div class="notice">
-      선택한 음악과 썸네일을 이용해 유튜브용 영상을 만드는 단계입니다.
+      선택한 MP3와 썸네일을 이용해
+      유튜브용 영상을 만드는 단계입니다.
     </div>
 
-    <h3 id="videoTitle"></h3>
+    <div id="videoInfo"></div>
 
-    <div id="videoMusicInfo" class="small"></div>
-
-    <button class="green" onclick="saveProject()">
+    <button class="green" onclick="saveProjectAndAlert()">
       ✅ 현재 프로젝트 저장
     </button>
 
-    <button class="primary" onclick="alert('다음 단계에서 MP3 + 썸네일 자동 영상 제작 기능을 연결합니다.')">
+    <button
+      class="primary"
+      onclick="alert('다음 개발 단계에서 MP3 + 썸네일 자동 영상 제작 기능을 연결합니다.')"
+    >
       🎬 영상 자동 제작
     </button>
 
   </div>
+
 </section>
 
 </main>
 
 
-<!-- 하단 메뉴 -->
 <nav class="bottomNav">
 
   <button id="navHome" onclick="goPage('homePage')">
@@ -461,80 +500,57 @@ audio{
 
 <script>
 
-const STORAGE_KEY = "playmaker_project_v5";
-const TITLE_HISTORY_KEY = "playmaker_title_history_v5";
+const STORAGE_KEY = "playmaker_project_final_v1";
+const TITLE_HISTORY_KEY = "playmaker_titles_final_v1";
 
 let currentPage = "homePage";
-let mp3ObjectURL = null;
-let imageObjectURL = null;
+let audioURL = null;
+let imageURL = null;
 
 
-/* -------------------------
-   제목 후보
--------------------------- */
+/* 제목 후보 */
 
 const titles = {
 
 pop:[
 "Heart Before Dawn",
-"Walking Through Midnight",
+"Walking Back to You",
+"Midnight Between Us",
 "Stay Until Morning",
-"City Lights Between Us",
-"Another Night With You",
 "Coffee After Midnight",
+"City Lights Between Us",
 "Where the Night Begins",
 "Falling Into Blue",
 "Before the City Sleeps",
 "Echoes of Tonight",
-"Slowly Back to You",
-"Lights Across the Rain",
+"Under the Neon Sky",
+"One More Quiet Night",
+"Rain Against the Window",
 "Somewhere After Midnight",
 "The Way Tonight Feels",
 "Closer Than Yesterday",
-"Rain Against the Window",
-"One More Quiet Night",
-"Under the Neon Sky",
 "Still Here Tonight",
-"When Morning Finds Us"
+"Lights Across the Rain",
+"When Morning Finds Us",
+"Slowly Back to You"
 ],
 
-ballad:[
-"비가 머문 자리",
-"늦은 밤의 편지",
-"그날의 우리",
+kpop:[
+"너에게 가는 밤",
+"우리의 계절",
+"다시 너에게",
+"오늘도 너를",
+"비가 내리던 날",
+"그때의 우리",
+"새벽 끝에서",
 "아직 남은 마음",
-"너를 보내는 밤",
+"너를 닮은 하루",
 "다시 걷는 길",
+"오늘 밤 우리",
+"기억 속의 너",
+"마지막 장면",
 "우리였던 시간",
-"오늘도 그 자리",
-"그대가 떠난 후",
-"마지막 인사"
-],
-
-bossa:[
-"Midnight Bossa Cafe",
-"Coffee by the Window",
-"Sunday Cafe",
-"Slow Morning",
-"Moonlight Bossa",
-"Quiet Table for Two",
-"Golden Cafe",
-"Summer Window",
-"Coffee and Moonlight",
-"Softly Tonight"
-],
-
-jazz:[
-"Midnight Blue",
-"After Hours",
-"Rainy Jazz Room",
-"City Jazz Night",
-"Velvet Evening",
-"Coffee and Saxophone",
-"Late Night Avenue",
-"Blue Window",
-"Moonlight Sessions",
-"Quiet City Jazz"
+"그날 이후"
 ],
 
 trot:[
@@ -547,7 +563,11 @@ trot:[
 "내 마음 모르죠",
 "다시 한번",
 "사랑의 정거장",
-"웃으며 살자"
+"웃으며 살자",
+"인생길",
+"그 사람",
+"사랑 한잔",
+"당신의 자리"
 ],
 
 adult:[
@@ -560,7 +580,39 @@ adult:[
 "아직도 당신",
 "마지막 사랑",
 "기다리는 마음",
-"우리의 계절"
+"우리의 계절",
+"그리운 이름",
+"세월 속의 당신"
+],
+
+bossa:[
+"Midnight Bossa Cafe",
+"Coffee by the Window",
+"Sunday Cafe",
+"Slow Morning",
+"Moonlight Bossa",
+"Quiet Table for Two",
+"Golden Cafe",
+"Summer Window",
+"Coffee and Moonlight",
+"Softly Tonight",
+"Morning in Lisbon",
+"Lazy Cafe Day"
+],
+
+jazz:[
+"Midnight Blue",
+"After Hours",
+"Rainy Jazz Room",
+"City Jazz Night",
+"Velvet Evening",
+"Coffee and Saxophone",
+"Late Night Avenue",
+"Blue Window",
+"Moonlight Sessions",
+"Quiet City Jazz",
+"One More Jazz",
+"Night Piano"
 ],
 
 kids:[
@@ -579,71 +631,92 @@ kids:[
 };
 
 
-/* -------------------------
-   페이지 이동
--------------------------- */
+/* 페이지 */
 
 function goPage(page){
 
-  document.querySelectorAll(".page").forEach(p=>{
-    p.classList.add("hidden");
+  document.querySelectorAll(".page").forEach(el=>{
+    el.classList.add("hidden");
   });
 
-  const target=document.getElementById(page);
+  const target =
+    document.getElementById(page);
 
   if(target){
     target.classList.remove("hidden");
-    currentPage=page;
+    currentPage = page;
   }
 
-  setActiveNav(page);
-
+  updateNav();
+  updateVideoInfo();
   saveProject();
 
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
+  window.scrollTo(0,0);
 }
 
 
-function setActiveNav(page){
+function updateNav(){
 
-  document.querySelectorAll(".bottomNav button").forEach(b=>{
-    b.classList.remove("activeNav");
-  });
+  document
+    .querySelectorAll(".bottomNav button")
+    .forEach(btn=>{
+      btn.classList.remove("active");
+    });
 
-  if(page==="homePage"){
-    navHome.classList.add("activeNav");
+  if(currentPage==="homePage"){
+    navHome.classList.add("active");
   }
 
-  if(page==="createPage"){
-    navCreate.classList.add("activeNav");
+  if(currentPage==="createPage"){
+    navCreate.classList.add("active");
   }
 
-  if(page==="songPage"){
-    navSong.classList.add("activeNav");
+  if(currentPage==="songPage"){
+    navSong.classList.add("active");
   }
 
-  if(page==="thumbnailPage"){
-    navThumb.classList.add("activeNav");
+  if(currentPage==="thumbnailPage"){
+    navThumb.classList.add("active");
   }
 }
 
 
-/* -------------------------
-   저장
--------------------------- */
+/* 새 작업 */
 
-function saveInputs(){
+function startNewSong(){
+
+  genre.value="pop";
+  mood.value="warm";
+  vocal.value="female";
+
+  songTitle.innerText="";
+  stylePrompt.value="";
+  lyrics.value="";
+  thumbText.value="";
+  imagePrompt.value="";
+
+  localStorage.removeItem("playmaker_mp3_name");
+
+  selectedMusic.innerText="";
+  selectedMusic.classList.add("hidden");
+
+  audioPlayer.src="";
+  audioPlayer.classList.add("hidden");
+
+  currentPage="createPage";
+
   saveProject();
+  goPage("createPage");
 }
 
+
+/* 저장 */
 
 function saveProject(){
 
-  const data={
-    currentPage:currentPage,
+  const data = {
+
+    page:currentPage,
 
     genre:
       document.getElementById("genre")?.value || "pop",
@@ -670,11 +743,10 @@ function saveProject(){
       document.getElementById("imagePrompt")?.value || "",
 
     mp3Name:
-      document.getElementById("mp3File")?.files?.[0]?.name ||
-      localStorage.getItem("playmaker_mp3_name") ||
-      "",
+      localStorage.getItem("playmaker_mp3_name") || "",
 
     savedAt:Date.now()
+
   };
 
   localStorage.setItem(
@@ -684,54 +756,44 @@ function saveProject(){
 }
 
 
-/* -------------------------
-   복원
--------------------------- */
-
 function restoreProject(){
 
-  const raw=localStorage.getItem(STORAGE_KEY);
+  const raw =
+    localStorage.getItem(STORAGE_KEY);
 
   if(!raw){
-    goPage("homePage");
+    showPageOnly("homePage");
     return;
   }
 
   try{
 
-    const data=JSON.parse(raw);
+    const data =
+      JSON.parse(raw);
 
-    if(data.genre){
-      genre.value=data.genre;
-    }
+    genre.value =
+      data.genre || "pop";
 
-    if(data.mood){
-      mood.value=data.mood;
-    }
+    mood.value =
+      data.mood || "warm";
 
-    if(data.vocal){
-      vocal.value=data.vocal;
-    }
+    vocal.value =
+      data.vocal || "female";
 
-    if(data.title){
-      songTitle.innerText=data.title;
-    }
+    songTitle.innerText =
+      data.title || "";
 
-    if(data.style){
-      stylePrompt.value=data.style;
-    }
+    stylePrompt.value =
+      data.style || "";
 
-    if(data.lyrics){
-      lyrics.value=data.lyrics;
-    }
+    lyrics.value =
+      data.lyrics || "";
 
-    if(data.thumbText){
-      thumbText.value=data.thumbText;
-    }
+    thumbText.value =
+      data.thumbText || "";
 
-    if(data.imagePrompt){
-      imagePrompt.value=data.imagePrompt;
-    }
+    imagePrompt.value =
+      data.imagePrompt || "";
 
     if(data.mp3Name){
 
@@ -740,32 +802,50 @@ function restoreProject(){
         data.mp3Name
       );
 
-      selectedMusic.innerText=
-        "✅ 이전에 선택한 음악: "+data.mp3Name;
+      selectedMusic.innerText =
+        "✅ 이전에 선택한 음악: " +
+        data.mp3Name;
 
       selectedMusic.classList.remove("hidden");
+
     }
 
-    currentPage=
-      data.currentPage ||
-      "homePage";
+    currentPage =
+      data.page || "homePage";
 
-    goPage(currentPage);
+    showPageOnly(currentPage);
 
-  }catch(e){
+  }catch(error){
 
-    console.log(e);
+    console.log(error);
+    showPageOnly("homePage");
 
-    goPage("homePage");
   }
+}
+
+
+function showPageOnly(page){
+
+  document.querySelectorAll(".page").forEach(el=>{
+    el.classList.add("hidden");
+  });
+
+  const target =
+    document.getElementById(page);
+
+  if(target){
+    target.classList.remove("hidden");
+    currentPage = page;
+  }
+
+  updateNav();
+  updateVideoInfo();
 }
 
 
 function resumeProject(){
 
-  const raw=localStorage.getItem(STORAGE_KEY);
-
-  if(!raw){
+  if(!localStorage.getItem(STORAGE_KEY)){
 
     alert("저장된 작업이 없습니다.");
 
@@ -778,31 +858,41 @@ function resumeProject(){
 }
 
 
-/* -------------------------
-   제목 중복 방지
--------------------------- */
+function saveProjectAndAlert(){
+
+  saveProject();
+
+  alert("프로젝트가 저장되었습니다.");
+}
+
+
+/* 제목 중복 줄이기 */
 
 function getTitleHistory(){
 
   try{
+
     return JSON.parse(
       localStorage.getItem(TITLE_HISTORY_KEY)
     ) || [];
-  }
-  catch{
+
+  }catch{
+
     return [];
+
   }
 }
 
 
-function saveTitleHistory(title){
+function rememberTitle(title){
 
-  let history=getTitleHistory();
+  let history =
+    getTitleHistory();
 
   history.push(title);
 
-  if(history.length>40){
-    history=history.slice(-40);
+  if(history.length > 50){
+    history = history.slice(-50);
   }
 
   localStorage.setItem(
@@ -814,59 +904,60 @@ function saveTitleHistory(title){
 
 function randomTitle(){
 
-  const g=genre.value;
+  const list =
+    titles[genre.value] || titles.pop;
 
-  const list=
-    titles[g] ||
-    titles.pop;
+  const history =
+    getTitleHistory();
 
-  const history=getTitleHistory();
+  let available =
+    list.filter(title=>{
+      return !history.includes(title);
+    });
 
-  let available=list.filter(t=>{
-    return !history.includes(t);
-  });
-
-  if(available.length===0){
+  if(available.length === 0){
 
     localStorage.removeItem(
       TITLE_HISTORY_KEY
     );
 
-    available=[...list];
+    available = [...list];
   }
 
   return available[
     Math.floor(
-      Math.random()*available.length
+      Math.random() * available.length
     )
   ];
 }
 
 
-/* -------------------------
-   노래 생성
--------------------------- */
+/* 노래 생성 */
 
 function generateSong(){
 
-  const title=randomTitle();
+  const title =
+    randomTitle();
 
-  saveTitleHistory(title);
+  rememberTitle(title);
 
-  songTitle.innerText=title;
+  songTitle.innerText =
+    title;
 
-  stylePrompt.value=
-    buildStylePrompt();
+  stylePrompt.value =
+    buildStyle();
 
-  lyrics.value=
+  lyrics.value =
     buildLyrics(title);
 
-  thumbText.value=title;
+  thumbText.value =
+    title;
 
-  imagePrompt.value=
+  imagePrompt.value =
     buildImagePrompt(title);
 
-  currentPage="songPage";
+  currentPage =
+    "songPage";
 
   saveProject();
 
@@ -876,94 +967,130 @@ function generateSong(){
 
 function newTitleOnly(){
 
-  const title=randomTitle();
+  const title =
+    randomTitle();
 
-  saveTitleHistory(title);
+  rememberTitle(title);
 
-  songTitle.innerText=title;
+  songTitle.innerText =
+    title;
 
-  thumbText.value=title;
+  thumbText.value =
+    title;
 
-  imagePrompt.value=
+  imagePrompt.value =
     buildImagePrompt(title);
 
   saveProject();
 }
 
 
-/* -------------------------
-   스타일
--------------------------- */
+/* 스타일 */
 
-function buildStylePrompt(){
+function buildStyle(){
 
-  const g=genre.value;
-  const m=mood.value;
-  const v=vocal.value;
+  const vocalMap = {
 
-  const vocalText={
-    female:"female vocals",
-    male:"male vocals",
-    auto:"natural expressive vocals"
-  }[v];
+    female:
+    "female lead vocals",
 
-  const moodText={
-    warm:"warm emotional atmosphere",
-    night:"cinematic late-night city atmosphere",
-    rain:"emotional rainy-night atmosphere",
-    cafe:"cozy cafe atmosphere",
-    bright:"bright uplifting atmosphere",
-    romantic:"romantic emotional atmosphere"
-  }[m];
+    male:
+    "male lead vocals",
 
-  const genreText={
+    duet:
+    "male and female duet vocals, alternating male and female verses, harmonized choruses",
+
+    auto:
+    "natural expressive vocals, AI chooses the best vocal type"
+
+  };
+
+
+  const moodMap = {
+
+    warm:
+    "warm emotional atmosphere",
+
+    night:
+    "cinematic late-night city atmosphere",
+
+    rain:
+    "emotional rainy-night atmosphere",
+
+    cafe:
+    "cozy relaxing cafe atmosphere",
+
+    bright:
+    "bright uplifting atmosphere",
+
+    romantic:
+    "romantic emotional atmosphere"
+
+  };
+
+
+  const genreMap = {
 
     pop:
-      "modern emotional pop, catchy melodic chorus, polished production",
+    "modern emotional pop, polished production, catchy memorable chorus",
 
-    ballad:
-      "emotional Korean ballad, piano and strings, cinematic arrangement",
-
-    bossa:
-      "warm bossa nova, acoustic guitar, soft percussion, relaxed cafe groove",
-
-    jazz:
-      "smooth late-night jazz, piano, bass, brushed drums, elegant arrangement",
+    kpop:
+    "modern Korean pop ballad and contemporary K-pop, emotional melody, polished arrangement",
 
     trot:
-      "modern Korean trot, memorable melody, expressive vocal phrasing",
+    "modern Korean trot, expressive melody, rhythmic groove, memorable chorus",
 
     adult:
-      "Korean adult contemporary song, emotional melody, warm orchestral arrangement",
+    "Korean adult contemporary song, mature emotional melody, warm orchestral arrangement",
+
+    bossa:
+    "warm bossa nova, acoustic guitar, soft percussion, relaxing cafe groove",
+
+    jazz:
+    "smooth late-night jazz, piano, upright bass, brushed drums, elegant arrangement",
 
     kids:
-      "bright children's song, playful melody, friendly acoustic arrangement"
+    "bright children's song, playful melody, cheerful friendly arrangement"
 
-  }[g];
+  };
 
-  return `${genreText}, ${moodText}, ${vocalText},
-target song duration approximately 4 to 5 minutes,
-full song structure with intro, verse 1, pre-chorus, chorus,
-verse 2, pre-chorus, chorus, instrumental break,
-bridge, final chorus, extended final chorus and outro,
+
+  return `${genreMap[genre.value]},
+${moodMap[mood.value]},
+${vocalMap[vocal.value]},
+target duration approximately 4 to 5 minutes,
+full-length song,
+intro,
+verse 1,
+pre-chorus,
+chorus,
+verse 2,
+pre-chorus,
+second chorus,
+instrumental break,
+bridge,
+final chorus,
+extended final chorus,
+outro,
 natural musical development,
 avoid excessive repetition,
 strong memorable melody,
 original composition,
-clean professional production,
-suitable for a long YouTube music playlist`;
+professional production,
+suitable for YouTube music playlists`;
+
 }
 
 
-/* -------------------------
-   가사
--------------------------- */
+/* 가사 */
 
 function buildLyrics(title){
 
-  const g=genre.value;
+  const g =
+    genre.value;
 
-  if(g==="pop"){
+
+  if(g === "pop"){
 
 return `[Intro]
 Soft city lights are fading
@@ -971,13 +1098,20 @@ Another quiet night begins
 
 [Verse 1]
 Midnight traffic disappears beneath the rain
-I watch the colors moving slowly down the glass
-Every little memory calls your name again
-And for a moment all the hours disappear
+Colors move like memories across the windowpane
+I thought another evening might erase your name
+But every quiet street just brings it back again
+
+Coffee getting colder while the city slows
+Somewhere in the distance another late train goes
+I watch the shadows moving underneath the light
+And wonder where your heart is staying tonight
 
 [Pre-Chorus]
-I thought the distance would make everything easier
-But every quiet second brings me back to you
+Every little moment pulls me closer
+Every quiet second feels brand new
+I thought that time would make the feeling smaller
+But every road keeps leading back to you
 
 [Chorus]
 ${title}
@@ -990,17 +1124,18 @@ Tonight I'm listening to the sound
 Of everything we never said out loud
 
 [Verse 2]
-Coffee getting colder by the window
-Neon reflections dancing on the street
-Somewhere in the distance music follows
-Like all the nights you used to walk with me
-Maybe time has changed the way I see it
-Maybe I've been holding on too long
-But every road that crosses through this city
-Still reminds me where my heart belongs
+Another hour passes by the window
+The city turns to colors in the dark
+I hear the echo of our conversation
+And feel it moving somewhere in my heart
+
+Maybe I was waiting for an answer
+Maybe I was scared to let you know
+Some feelings only grow a little stronger
+When there's nowhere left for them to go
 
 [Pre-Chorus]
-And every little moment pulls me closer
+Every little moment pulls me closer
 Every quiet second feels brand new
 I don't know what tomorrow has waiting
 But tonight my thoughts return to you
@@ -1017,18 +1152,19 @@ Of everything we never said out loud
 
 [Instrumental Break]
 Atmospheric instrumental section
-Piano, soft drums and warm cinematic synths
-Let the melody breathe and gradually build
+Piano, warm synths and soft drums
+Allow the main melody to develop gradually
 
 [Bridge]
 Maybe tomorrow everything will change
-Maybe we'll find another road
-Maybe the night will carry us away
-To somewhere neither of us knows
-But if this moment turns into a memory
-I'll keep the feeling close to me
-Some things don't disappear with morning
-Some hearts remember quietly
+Maybe we'll find another way
+Maybe the morning takes us somewhere new
+And leaves tonight so far away
+
+But if this night becomes a memory
+I'll keep a little piece with me
+Some moments disappear with morning
+Some stay inside us quietly
 
 [Final Chorus]
 ${title}
@@ -1036,7 +1172,7 @@ You're the rhythm running through my mind
 ${title}
 Like a light I never leave behind
 Through every season, every changing sky
-I still remember how it felt tonight
+I'll still remember how it felt tonight
 And even when the morning comes around
 I'll hear your echo somewhere in this town
 
@@ -1053,23 +1189,286 @@ A part of me keeps walking back to you
 [Outro]
 The city slowly turns to morning
 Rain is fading from the window
-And somewhere before the dawn
+Somewhere before the dawn
 The music carries on`;
 
   }
 
 
-  if(g==="bossa"){
+  if(g === "kpop"){
 
 return `[Intro]
-Soft guitar by the window
-Morning light begins to glow
+조용한 새벽
+도시의 불빛이 하나둘 멀어져 간다
+
+[Verse 1]
+오늘도 익숙한 길을 걷다가
+문득 네 생각에 멈춰 섰어
+괜찮다고 몇 번을 말해봐도
+마음은 아직 그날에 머물러 있어
+
+지나가는 사람들 사이로
+너와 닮은 뒷모습을 찾게 돼
+시간이 모든 걸 바꿔 놓는다 해도
+어떤 기억은 그대로 남아
+
+[Pre-Chorus]
+조금만 더 솔직했더라면
+우린 달라질 수 있었을까
+늦은 밤 혼자 묻고 또 물어
+대답 없는 마음만 커져가
+
+[Chorus]
+${title}
+아직 내 마음에 남아 있어
+수많은 계절이 지나가도
+너를 향한 이 마음은
+쉽게 사라지지 않아
+
+${title}
+다시 한번 너를 만난다면
+그때는 숨기지 않을게
+오랫동안 하지 못했던 말
+너를 많이 사랑했다고
+
+[Verse 2]
+우리 자주 걷던 그 거리에는
+새로운 불빛들이 켜져 있고
+익숙했던 카페 창가 자리엔
+모르는 누군가 웃고 있어
+
+세상은 아무 일 없다는 듯이
+매일 조금씩 앞으로 가는데
+왜 나의 시간은 그날 이후로
+천천히 흐르는 것만 같을까
+
+[Pre-Chorus]
+조금만 더 용기 냈더라면
+우린 달라질 수 있었을까
+돌아갈 수 없는 시간 앞에서
+오늘도 너를 생각해
+
+[Chorus]
+${title}
+아직 내 마음에 남아 있어
+수많은 계절이 지나가도
+너를 향한 이 마음은
+쉽게 사라지지 않아
+
+${title}
+다시 한번 너를 만난다면
+그때는 숨기지 않을게
+오랫동안 하지 못했던 말
+너를 많이 사랑했다고
+
+[Instrumental Break]
+피아노와 스트링 중심의 감성적인 간주
+점점 감정을 고조시킨다
+
+[Bridge]
+언젠가 우리 다시 만나면
+그때는 웃을 수 있을까
+아팠던 기억도 좋은 추억처럼
+편하게 말할 수 있을까
+
+멀리 돌아온 시간 끝에서
+나는 이제야 알 것 같아
+사랑은 끝난 뒤에도
+한동안 마음속에 살아 있다는 걸
+
+[Final Chorus]
+${title}
+내게 가장 빛나던 사람이야
+수많은 밤을 지나온 뒤에도
+너와 함께했던 순간들은
+아직 나를 웃게 만들어
+
+${title}
+언젠가 다시 만나는 날엔
+그때는 웃으며 말할게
+너를 사랑했던 그 시간들이
+내겐 참 행복했다고
+
+[Outro]
+새벽이 밝아오고
+도시는 다시 하루를 시작한다
+나는 천천히 너를 보내준다`;
+
+  }
+
+
+  if(g === "trot"){
+
+return `[Intro]
+경쾌하면서도 정감 있는 트로트 전주
+
+[Verse 1]
+돌고 도는 인생길에
+당신을 만나 웃었지요
+힘든 날도 좋은 날도
+함께라서 행복했어요
+
+세월 따라 흘러가도
+마음 하나 변함없는데
+오늘따라 당신 얼굴
+더욱더 보고 싶네요
+
+[Pre-Chorus]
+사는 게 다 그런 거라지만
+사랑만은 놓칠 수 없어요
+
+[Chorus]
+${title}
+내 마음의 단 한 사람
+천년 만년 세월 가도
+당신만을 사랑해요
+
+${title}
+웃으며 함께 갑시다
+힘든 세상 넘어가며
+우리 둘이 살아갑시다
+
+[Verse 2]
+비가 오면 비를 맞고
+바람 불면 기대어 가고
+굽이굽이 인생길을
+손을 잡고 걸어왔지요
+
+돈도 좋고 명예도 좋지만
+사람 하나가 제일이지
+내 곁에서 웃어주는
+당신 하나면 충분해요
+
+[Chorus]
+${title}
+내 마음의 단 한 사람
+천년 만년 세월 가도
+당신만을 사랑해요
+
+${title}
+웃으며 함께 갑시다
+힘든 세상 넘어가며
+우리 둘이 살아갑시다
+
+[Instrumental Break]
+트로트 특유의 흥겨운 간주
+색소폰 또는 기타 멜로디를 충분히 연주
+
+[Bridge]
+세월아 너무 빨리 가지 마라
+우리 사랑 아직 뜨겁다
+오늘보다 더 좋은 내일을
+당신과 함께 살아가리라
+
+[Final Chorus]
+${title}
+내 인생의 단 한 사람
+세상 끝에 닿는 날까지
+당신 곁을 지켜줄게요
+
+${title}
+우리 함께 웃어봅시다
+좋은 날도 힘든 날도
+사랑하며 살아갑시다
+
+[Outro]
+흥겨운 멜로디를 길게 남기며 마무리`;
+
+  }
+
+
+  if(g === "adult"){
+
+return `[Intro]
+잔잔한 피아노와 스트링
+
+[Verse 1]
+하루가 또 저물어 가고
+거리엔 불빛 하나둘 켜지면
+문득 그대 생각이 나서
+한참을 그 자리에 서 있네요
+
+지나간 시간 속 우리의 모습
+아직 내 마음 한편에 남아서
+잊었다고 생각했던 그 이름
+오늘도 조용히 불러봅니다
+
+[Pre-Chorus]
+시간이 지나면 괜찮아진다지만
+왜 그리움은 더 깊어지는지
+
+[Chorus]
+${title}
+내 마음에 남아 있는 사람
+수많은 계절이 지나가도
+잊을 수 없는 그 이름
+
+${title}
+다시 한번 볼 수 있다면
+하지 못했던 그 한마디
+사랑했다고 말하고 싶어요
+
+[Verse 2]
+익숙했던 길을 걷다 보면
+그대와 함께했던 날들이 보여요
+웃으며 나누었던 이야기들이
+바람을 타고 다시 들려오네요
+
+세상이 아무리 변해 간대도
+마음은 그날에 머물러 있고
+돌아갈 수 없는 시간인 걸 알아도
+오늘도 그리움은 깊어집니다
+
+[Chorus]
+${title}
+내 마음에 남아 있는 사람
+수많은 계절이 지나가도
+잊을 수 없는 그 이름
+
+${title}
+다시 한번 볼 수 있다면
+하지 못했던 그 한마디
+사랑했다고 말하고 싶어요
+
+[Instrumental Break]
+피아노와 스트링 중심의 긴 간주
+감정을 서서히 고조시킨다
+
+[Bridge]
+우리 다시 만날 수 있다면
+그때는 놓치지 않을 텐데
+지나간 세월 끝에 서 있어도
+내 마음은 아직 그대를 향해요
+
+[Final Chorus]
+${title}
+내 인생에 하나뿐인 사람
+눈물이 흐르는 날이 와도
+가슴속에 남아 있을 이름
+
+${title}
+먼 훗날 다시 만난다면
+그때는 웃으며 말할게요
+당신을 사랑해서 행복했다고
+
+[Outro]
+조용한 연주로 긴 여운을 남긴다`;
+
+  }
+
+
+  if(g === "bossa"){
+
+return `[Intro]
+Soft acoustic guitar
+Gentle morning rhythm
 
 [Verse 1]
 Coffee on the table
 Sunlight on the floor
 A quiet little morning
 I could stay forever more
+
 The city moves so slowly
 The breeze is warm and light
 Everything feels easy
@@ -1090,6 +1489,7 @@ People passing softly
 Music from the street
 A gentle summer rhythm
 Moving underneath our feet
+
 Nothing here is perfect
 Nothing needs to be
 Just another cup of coffee
@@ -1124,26 +1524,26 @@ Let the sunlight stay
 We'll keep this little feeling
 For another day
 
-[Outro]
-Soft guitar
-Quiet coffee
-Morning fades away`;
+[Extended Outro]
+Soft guitar and piano
+Relaxed instrumental ending`;
 
   }
 
 
-  if(g==="jazz"){
+  if(g === "jazz"){
 
 return `[Intro]
-Late night piano
-Soft brushes
-City lights outside
+Late-night piano
+Brushed drums
+Upright bass
 
 [Verse 1]
 Another midnight window
 Another empty street
 A melody is waiting
 Somewhere underneath
+
 The room is slowly turning
 Into shades of blue
 And every quiet measure
@@ -1164,6 +1564,7 @@ Coffee on the counter
 Rain against the glass
 Every little moment
 Feels too good to pass
+
 Bass is moving slowly
 Drums are soft and low
 The city keeps on dreaming
@@ -1199,98 +1600,13 @@ Let the final chord keep falling
 Until morning fills the sky
 
 [Outro]
-Piano fades
-Rain continues
-City sleeps`;
+Extended piano and saxophone ending
+Rain continues outside`;
 
   }
 
 
-  if(g==="trot" || g==="adult" || g==="ballad"){
-
-return `[Intro]
-잔잔한 연주
-
-[Verse 1]
-하루가 또 저물어 가고
-거리엔 불빛이 하나둘 켜지면
-문득 그대 생각이 나서
-한참을 그 자리에 서 있네요
-
-지나간 시간 속 우리의 모습
-아직 내 마음 한편에 남아서
-잊었다고 생각했던 그 이름
-오늘도 조용히 불러봅니다
-
-[Pre-Chorus]
-시간이 지나면 괜찮아진다지만
-왜 그리움은 더 깊어지는지
-
-[Chorus]
-${title}
-내 마음에 남아 있는 사람
-수많은 계절이 지나가도
-잊을 수 없는 그 이름
-${title}
-다시 한번 볼 수 있다면
-하지 못했던 그 한마디
-사랑했다고 말하고 싶어요
-
-[Verse 2]
-익숙했던 길을 걷다 보면
-그대와 함께했던 날들이 보여요
-웃으며 나누었던 이야기들이
-바람을 타고 다시 들려오네요
-
-세상이 아무리 변해 간대도
-마음은 그날에 머물러 있고
-돌아갈 수 없는 시간인 걸 알아도
-오늘도 그리움은 깊어집니다
-
-[Chorus]
-${title}
-내 마음에 남아 있는 사람
-수많은 계절이 지나가도
-잊을 수 없는 그 이름
-${title}
-다시 한번 볼 수 있다면
-하지 못했던 그 한마디
-사랑했다고 말하고 싶어요
-
-[Instrumental Break]
-간주를 충분히 길게 연주
-피아노와 스트링 중심으로 감정을 점점 고조
-
-[Bridge]
-우리 다시 만날 수 있다면
-그때는 놓치지 않을 텐데
-지나간 세월 끝에 서 있어도
-내 마음은 아직 그대를 향해요
-
-[Final Chorus]
-${title}
-내 인생에 하나뿐인 사람
-눈물이 흐르는 날이 와도
-가슴속에 남아 있을 이름
-${title}
-먼 훗날 다시 만난다면
-그때는 웃으며 말할게요
-당신을 사랑해서 행복했다고
-
-[Extended Final Chorus]
-오랜 시간이 지나가도
-그대는 내 마음에 남아
-세월이 모든 걸 바꿔 놓아도
-우리의 추억은 사라지지 않아요
-
-[Outro]
-조용히 멀어지는 연주
-마지막 여운을 길게 남긴다`;
-
-  }
-
-
-return `[Intro]
+  return `[Intro]
 밝고 즐거운 연주
 
 [Verse 1]
@@ -1322,7 +1638,7 @@ ${title}
 즐거운 여행을 떠나요
 
 [Instrumental Break]
-밝고 재미있는 연주
+밝고 재미있는 긴 연주
 
 [Bridge]
 힘든 일이 생겨도
@@ -1339,66 +1655,71 @@ ${title}
 내일을 향해 달려가요
 
 [Outro]
-웃음소리와 함께 마무리`;
+즐거운 멜로디로 마무리`;
 
 }
 
 
-/* -------------------------
-   이미지 프롬프트
--------------------------- */
+/* 이미지 */
 
 function buildImagePrompt(title){
 
-  const moodMap={
+  const moodImages = {
 
     warm:
-    "warm cozy cafe, golden lights, peaceful emotional atmosphere",
+    "warm cozy cafe, golden lights, emotional peaceful atmosphere",
 
     night:
-    "cinematic city cafe at night, neon lights, atmospheric window reflections",
+    "cinematic city cafe at night, neon lights, beautiful window reflections",
 
     rain:
-    "cinematic cozy cafe at night, rain on window, warm lights, emotional atmosphere",
+    "cinematic cozy cafe at night, rain on window, warm lights",
 
     cafe:
-    "beautiful cozy cafe interior, warm lighting, peaceful evening atmosphere",
+    "beautiful cozy cafe interior, peaceful relaxing atmosphere",
 
     bright:
-    "bright beautiful cafe, soft sunlight, uplifting clean atmosphere",
+    "bright beautiful cafe, soft sunlight, uplifting atmosphere",
 
     romantic:
-    "romantic cafe at night, warm lights, elegant dreamy atmosphere"
+    "romantic cafe at night, elegant warm dreamy lighting"
 
   };
 
-  return `${moodMap[mood.value]},
+  return `${moodImages[mood.value]},
 realistic cinematic photography,
-elegant composition,
-no people in foreground,
 premium YouTube music playlist cover,
-space for title text,
+clean elegant composition,
+no close-up people,
+room for title text,
 16:9 widescreen,
 high detail,
-title mood inspired by "${title}"`;
+atmosphere inspired by "${title}"`;
+
 }
 
 
-/* -------------------------
-   복사
--------------------------- */
+/* 복사 */
 
 async function copyText(text,message){
+
+  if(!text){
+
+    alert("복사할 내용이 없습니다.");
+
+    return;
+  }
 
   try{
 
     await navigator.clipboard.writeText(text);
 
-  }catch(e){
+  }catch{
 
-    const temp=document.createElement("textarea");
+    const temp =
+      document.createElement("textarea");
 
-    temp.value=text;
+    temp.value = text;
 
     document.body.appendChild(temp);
 
@@ -1407,6 +1728,7 @@ async function copyText(text,message){
     document.execCommand("copy");
 
     temp.remove();
+
   }
 
   alert(message);
@@ -1415,20 +1737,11 @@ async function copyText(text,message){
 
 function copyTitle(){
 
-  const text=
-    songTitle.innerText.trim();
-
-  if(!text){
-
-    alert("제목이 없습니다.");
-
-    return;
-  }
-
   copyText(
-    text,
+    songTitle.innerText.trim(),
     "제목이 복사되었습니다."
   );
+
 }
 
 
@@ -1436,8 +1749,9 @@ function copyStyle(){
 
   copyText(
     stylePrompt.value,
-    "스타일 프롬프트가 복사되었습니다."
+    "스타일이 복사되었습니다."
   );
+
 }
 
 
@@ -1447,6 +1761,7 @@ function copyLyrics(){
     lyrics.value,
     "가사가 복사되었습니다."
   );
+
 }
 
 
@@ -1456,62 +1771,54 @@ function copyImagePrompt(){
     imagePrompt.value,
     "이미지 프롬프트가 복사되었습니다."
   );
+
 }
 
 
-/* -------------------------
-   Suno 이동
--------------------------- */
+/* Suno */
 
 function openSuno(){
 
-  /*
-  가장 중요한 부분:
-  Suno로 이동하기 직전에 현재 작업을 저장합니다.
-  돌아왔을 때 제목/가사/스타일/작업단계가 복원됩니다.
-  */
-
-  currentPage="songPage";
+  currentPage = "songPage";
 
   saveProject();
 
   localStorage.setItem(
-    "playmaker_return_page",
-    "songPage"
+    "playmaker_return_from_suno",
+    "yes"
   );
 
-  window.location.href=
+  window.location.href =
     "https://suno.com/create";
+
 }
 
 
-/* -------------------------
-   MP3
--------------------------- */
+/* MP3 */
 
 function loadMP3(event){
 
-  const file=
+  const file =
     event.target.files[0];
 
   if(!file){
     return;
   }
 
-  if(mp3ObjectURL){
-    URL.revokeObjectURL(mp3ObjectURL);
+  if(audioURL){
+    URL.revokeObjectURL(audioURL);
   }
 
-  mp3ObjectURL=
+  audioURL =
     URL.createObjectURL(file);
 
-  audioPlayer.src=
-    mp3ObjectURL;
+  audioPlayer.src =
+    audioURL;
 
   audioPlayer.classList.remove("hidden");
 
-  selectedMusic.innerText=
-    "✅ 선택된 음악: "+file.name;
+  selectedMusic.innerText =
+    "✅ 선택된 음악: " + file.name;
 
   selectedMusic.classList.remove("hidden");
 
@@ -1524,13 +1831,11 @@ function loadMP3(event){
 }
 
 
-/* -------------------------
-   썸네일
--------------------------- */
+/* 썸네일 */
 
 function goThumbnail(){
 
-  const title=
+  const title =
     songTitle.innerText.trim();
 
   if(!title){
@@ -1540,12 +1845,14 @@ function goThumbnail(){
     return;
   }
 
-  thumbText.value=title;
+  thumbText.value =
+    title;
 
   if(!imagePrompt.value){
 
-    imagePrompt.value=
+    imagePrompt.value =
       buildImagePrompt(title);
+
   }
 
   saveProject();
@@ -1556,98 +1863,100 @@ function goThumbnail(){
 
 function loadImage(event){
 
-  const file=
+  const file =
     event.target.files[0];
 
   if(!file){
     return;
   }
 
-  if(imageObjectURL){
-    URL.revokeObjectURL(imageObjectURL);
+  if(imageURL){
+    URL.revokeObjectURL(imageURL);
   }
 
-  imageObjectURL=
+  imageURL =
     URL.createObjectURL(file);
 
-  imagePreview.src=
-    imageObjectURL;
+  imagePreview.src =
+    imageURL;
 
-  imagePreview.style.display="block";
+  imagePreview.style.display =
+    "block";
+
 }
 
 
-/* -------------------------
-   복귀 처리
--------------------------- */
+/* 영상 정보 */
 
-window.addEventListener(
-  "pageshow",
-  function(){
+function updateVideoInfo(){
 
-    restoreProject();
+  const title =
+    document.getElementById("songTitle")?.innerText || "";
+
+  const mp3Name =
+    localStorage.getItem("playmaker_mp3_name") || "";
+
+  if(document.getElementById("videoInfo")){
+
+    videoInfo.innerHTML =
+      "<b>제목:</b> " +
+      (title || "없음") +
+      "<br><br><b>음악:</b> " +
+      (mp3Name || "선택되지 않음");
+
   }
-);
+}
+
+
+/* 앱 복귀 */
+
+window.addEventListener("pageshow",()=>{
+
+  restoreProject();
+
+});
 
 
 document.addEventListener(
   "visibilitychange",
-  function(){
+  ()=>{
 
-    if(
-      document.visibilityState==="visible"
-    ){
+    if(document.visibilityState === "visible"){
 
-      const returnPage=
+      restoreProject();
+
+      const fromSuno =
         localStorage.getItem(
-          "playmaker_return_page"
+          "playmaker_return_from_suno"
         );
 
-      if(returnPage){
-
-        restoreProject();
-
-        goPage(returnPage);
+      if(fromSuno === "yes"){
 
         localStorage.removeItem(
-          "playmaker_return_page"
+          "playmaker_return_from_suno"
         );
+
+        currentPage = "songPage";
+
+        showPageOnly("songPage");
+
+        saveProject();
+
       }
+
     }
+
   }
 );
 
 
-/* -------------------------
-   초기 실행
--------------------------- */
+/* 초기 실행 */
 
-window.addEventListener(
-  "load",
-  function(){
+window.addEventListener("load",()=>{
 
-    restoreProject();
+  restoreProject();
 
-    const title=
-      songTitle.innerText.trim();
-
-    if(title){
-
-      videoTitle.innerText=title;
-    }
-
-    const mp3Name=
-      localStorage.getItem(
-        "playmaker_mp3_name"
-      );
-
-    if(mp3Name){
-
-      videoMusicInfo.innerText=
-        "선택된 음악: "+mp3Name;
-    }
-  }
-);
+});
 
 </script>
 
