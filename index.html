@@ -538,43 +538,73 @@ function makeLyrics(title,genre){
 if(genre==="팝" || genre==="R&B" ||
 genre==="어쿠스틱" || genre==="시티팝"){
 
-return `[Verse 1]
-Rain is falling softly tonight
-Coffee cooling by my side
-City lights are fading slow
-Still there's something I should know
+  const songIndex = Math.max(0, currentTitles.indexOf(title));
+
+  const openings = [
+    "Rain draws silver lines across the window",
+    "Midnight traffic fades beneath the city lights",
+    "Your old message glows softly on my phone",
+    "Coffee steam rises into the quiet room",
+    "Neon reflections move across the street",
+    "The last train disappears into the night",
+    "A distant song is playing from downstairs",
+    "Moonlight falls across an empty chair",
+    "Morning feels a thousand miles away",
+    "The city sleeps but I am still awake"
+  ];
+
+  const memories = [
+    "I remember how you laughed that night",
+    "Your voice still follows me through the crowd",
+    "We talked until the sky began to change",
+    "I still see your shadow by the door",
+    "Every street somehow leads back to you",
+    "Your name returns whenever the rain begins",
+    "We promised not to let the moment end",
+    "I keep the words I never got to say",
+    "The silence feels different without you",
+    "Some memories refuse to disappear"
+  ];
+
+  const i = songIndex % openings.length;
+
+  return `[Verse 1]
+${openings[i]}
+${memories[i]}
+Tonight I'm learning how to let it show
+There's more inside my heart than you could know
 
 [Pre-Chorus]
-Every little sound reminds me
-Of the way you used to smile
+Every little moment pulls me closer
+Every quiet second feels brand new
 
 [Chorus]
 ${title}
-Stay with me a little while
-Through the quiet, through the night
-You're still somewhere in my mind
+You're the rhythm running through my mind
+${title}
+Like a light I never leave behind
+Through the rain, through the changing sky
+I keep coming back to you tonight
 
 [Verse 2]
-Walking past the window light
-Memories are passing by
-Maybe time will let us know
-Where all of these feelings go
-
-[Chorus]
-${title}
-Stay with me a little while
-Through the quiet, through the night
-You're still somewhere in my mind
+Another hour passes by the window
+The city turns to colors in the dark
+I hear the echo of a conversation
+And feel it moving somewhere in my heart
 
 [Bridge]
-If tomorrow finds me dreaming
-I'll remember this tonight
+Maybe tomorrow everything will change
+Maybe we'll find another way
+But if this night becomes a memory
+I'll keep a little piece of it with me
 
 [Final Chorus]
 ${title}
-Like a song I can't forget
-In the rain and in the silence
-You're the one I remember yet`;
+You're the rhythm running through my mind
+${title}
+Like a light I never leave behind
+Whatever waits beyond tonight
+I'll remember how this moment felt`;
 }
 
 if(genre==="동요"){
