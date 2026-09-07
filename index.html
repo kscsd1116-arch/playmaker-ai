@@ -753,7 +753,38 @@ document.getElementById(id).addEventListener("change",saveProject);
 
 
 restoreProject();
+// 이전 단계 버튼 자동 생성
+function addBackButtons(){
+  const pages = Array.from(document.querySelectorAll("main section"));
 
+  pages.forEach((page, index)=>{
+    if(index === 0 || page.querySelector(".playmaker-back-btn")) return;
+
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "playmaker-back-btn";
+    btn.textContent = "← 이전 단계";
+
+    btn.style.width = "100%";
+    btn.style.margin = "0 0 16px";
+    btn.style.padding = "14px";
+    btn.style.border = "1px solid #ddd";
+    btn.style.borderRadius = "14px";
+    btn.style.background = "#fff";
+    btn.style.fontSize = "16px";
+    btn.style.fontWeight = "700";
+    btn.style.cursor = "pointer";
+
+    btn.addEventListener("click", ()=>{
+      saveProject();
+      showPage(pages[index - 1].id);
+    });
+
+    page.insertBefore(btn, page.firstChild);
+  });
+}
+
+addBackButtons();
 </script>
 
 </body>
