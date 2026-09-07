@@ -461,7 +461,7 @@ audio{
 
     <button
       class="primary"
-      onclick="alert('다음 개발 단계에서 MP3 + 썸네일 자동 영상 제작 기능을 연결합니다.')"
+    onclick="makeVideo()"
     >
       🎬 영상 자동 제작
     </button>
@@ -1957,7 +1957,145 @@ window.addEventListener("load",()=>{
   restoreProject();
 
 });
+async function makeVideo(){
 
+  const audioInput = document.getElementById("mp3File");
+  const imageInput = document.getElementById("imageFile");
+
+  const audioFile = audioInput?.files?.[0];
+  const imageFile = imageInput?.files?.[0];
+
+  if(!audioFile){
+    alert("먼저 MP3 파일을 선택해 주세요.");
+    goPage("songPage");
+    return;
+  }
+
+  if(!imageFile){
+    alert("먼저 썸네일 이미지를 선택해 주세요.");
+    goPage("thumbnailPage");
+    return;
+  }
+
+  const button = document.querySelector(
+    '#videoPage button.primary'
+  );
+
+  const originalText =
+    button ? button.innerText : "";
+
+  if(button){
+    button.disabled = true;
+    button.innerText = "⏳ 영상 제작 중... 잠시 기다려 주세요";
+  }
+
+  try{
+
+    const formData = new FormData();
+
+    formData.append(
+      "audio",
+      audioFile,
+      audioFile.name
+    );
+
+    formData.append(
+      "image",
+      imageFile,
+      imageFile.name
+    );
+
+    const response = await fetch(
+      "/render-video",
+      {
+        method:"POST",
+        body:formData
+      }
+    );
+
+    if(!response.ok){
+
+      let message =
+        "영상 제작에 실패했습니다.";
+
+      try{
+
+        const data =
+          await response.json();
+
+        if(data.error){
+          message = data.error;
+        }
+
+        if(data.detail){
+          message += "\n\n" + data.detail;
+        }
+
+      }catch{}
+
+      throw new Error(message);
+    }
+
+    const videoBlob =
+      await response.blob();
+
+    const videoURL =
+      URL.createObjectURL(videoBlob);
+
+    const title =
+      document
+        .getElementById("songTitle")
+        ?.innerText
+        ?.trim() ||
+      "PlayMaker-video";
+
+    const safeTitle =
+      title.replace(
+        /[\\/:*?"<>|]/g,
+        "-"
+      );
+
+    const link =
+      document.createElement("a");
+
+    link.href = videoURL;
+    link.download =
+      safeTitle + ".mp4";
+
+    document.body.appendChild(link);
+
+    link.click();
+
+    link.remove();
+
+    setTimeout(()=>{
+      URL.revokeObjectURL(videoURL);
+    },10000);
+
+    alert(
+      "✅ 영상 제작이 완료되었습니다.\n\n" +
+      safeTitle +
+      ".mp4 파일을 확인해 주세요."
+    );
+
+  }catch(error){
+
+    alert(
+      "❌ 영상 제작 중 오류가 발생했습니다.\n\n" +
+      error.message
+    );
+
+  }finally{
+
+    if(button){
+      button.disabled = false;
+      button.innerText =
+        originalText || "🎬 영상 자동 제작";
+    }
+
+  }
+
+  }
 </script>
 
 </body>
