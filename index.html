@@ -1827,7 +1827,9 @@ function loadMP3(event){
     file.name
   );
 
-  saveProject();
+const mp3Title = file.name.replace(/\.[^/.]+$/, "");
+songTitle.innerText = mp3Title;
+saveProject();
 }
 
 
