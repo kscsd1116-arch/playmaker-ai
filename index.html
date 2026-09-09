@@ -7,34 +7,54 @@
 
 <style>
 *{box-sizing:border-box}
+
 body{
   margin:0;
   font-family:Arial,"Noto Sans KR",sans-serif;
   background:#f7f5fb;
-  color:#222
+  color:#222;
 }
+
 header{
   background:linear-gradient(135deg,#6d3df5,#8b5cf6);
-  color:white;
+  color:#fff;
   text-align:center;
-  padding:28px 16px
+  padding:28px 16px;
 }
-header h1{margin:0;font-size:34px}
-header p{margin:10px 0 0;font-size:18px}
+
+header h1{
+  margin:0;
+  font-size:34px;
+}
+
+header p{
+  margin:10px 0 0;
+  font-size:18px;
+}
+
 main{
   max-width:720px;
   margin:auto;
-  padding:24px 18px 110px
+  padding:24px 18px 110px;
 }
+
 .card{
-  background:white;
+  background:#fff;
   border-radius:28px;
   padding:28px 22px;
   margin:18px 0;
-  box-shadow:0 8px 28px rgba(0,0,0,.06)
+  box-shadow:0 8px 28px rgba(0,0,0,.06);
 }
-h2{font-size:30px;margin:6px 0 24px}
-h3{margin-top:24px}
+
+h2{
+  font-size:30px;
+  margin:6px 0 24px;
+}
+
+h3{
+  margin-top:24px;
+}
+
 button{
   width:100%;
   border:0;
@@ -43,80 +63,99 @@ button{
   margin:8px 0;
   font-size:19px;
   font-weight:700;
-  cursor:pointer
+  cursor:pointer;
 }
+
 .primary{
   background:#6d3df5;
-  color:white
+  color:#fff;
 }
+
 .secondary{
   background:#eee8ff;
-  color:#5b35c9
+  color:#5b35c9;
 }
+
 .green{
   background:#e6f8eb;
-  color:#168447
+  color:#168447;
 }
+
 .black{
   background:#222;
-  color:white
+  color:#fff;
 }
+
 input,select,textarea{
   width:100%;
   border:1px solid #ddd;
   border-radius:18px;
   padding:18px;
   font-size:18px;
-  background:white;
-  margin:8px 0
+  background:#fff;
+  margin:8px 0;
 }
+
 textarea{
-  min-height:180px;
-  resize:vertical
+  min-height:210px;
+  resize:vertical;
 }
+
 .result{
   background:#fafafa;
   border:1px solid #ddd;
   border-radius:18px;
   padding:18px;
-  white-space:pre-wrap
+  white-space:pre-wrap;
+  font-size:20px;
 }
+
 .status{
   padding:15px;
   background:#f2edff;
   border-radius:16px;
-  margin:12px 0
+  margin:12px 0;
 }
-.success{
-  background:#e8f8ec;
-  color:#14763f
+
+.hidden{
+  display:none;
 }
-.hidden{display:none}
+
 .preview{
   width:100%;
   border-radius:20px;
-  margin-top:12px
+  margin-top:12px;
 }
-audio,video{width:100%;margin-top:12px}
+
+audio,video{
+  width:100%;
+  margin-top:12px;
+}
+
 .nav{
   position:fixed;
   bottom:0;
   left:0;
   right:0;
-  background:white;
+  background:#fff;
   border-top:1px solid #ddd;
   display:flex;
-  z-index:10
+  z-index:10;
 }
+
 .nav button{
   border-radius:0;
   margin:0;
-  background:white;
+  background:#fff;
   color:#333;
   font-size:15px;
-  padding:14px 5px
+  padding:14px 5px;
 }
-.small{font-size:14px;color:#666}
+
+.small{
+  font-size:14px;
+  color:#666;
+}
 </style>
 </head>
 
@@ -131,12 +170,15 @@ audio,video{width:100%;margin-top:12px}
 
 <section id="homePage">
   <div class="card">
+
     <h2>🏠 PlayMaker AI</h2>
 
     <div class="status">
       ✅ 한 번에 1곡 제작<br>
-      ✅ 장르별 제목 · 가사 · 스타일<br>
-      ✅ 남성 · 여성 · 혼성 · 연주곡<br>
+      ✅ 최근 제목 반복 방지<br>
+      ✅ 매번 새로운 가사 구성<br>
+      ✅ 장르별 스타일 변화<br>
+      ✅ 4~6분 · 5~7분 · 약 10분<br>
       ✅ Suno 작업 후 프로젝트 복원<br>
       ✅ MP3 서버 저장<br>
       ✅ 썸네일 서버 저장<br>
@@ -150,11 +192,13 @@ audio,video{width:100%;margin-top:12px}
     <button class="secondary" onclick="continueProject()">
       ↪️ 최근 프로젝트 이어하기
     </button>
+
   </div>
 </section>
 
 
 <section id="createPage" class="hidden">
+
   <div class="card">
 
     <button class="secondary" onclick="goPage('homePage')">
@@ -164,6 +208,7 @@ audio,video{width:100%;margin-top:12px}
     <h2>✨ 음악 기획</h2>
 
     <h3>장르</h3>
+
     <select id="genre">
       <option>팝</option>
       <option>가요</option>
@@ -174,7 +219,9 @@ audio,video{width:100%;margin-top:12px}
       <option>동요</option>
     </select>
 
+
     <h3>보컬</h3>
+
     <select id="vocal">
       <option>여성</option>
       <option>남성</option>
@@ -182,29 +229,40 @@ audio,video{width:100%;margin-top:12px}
       <option>연주곡</option>
     </select>
 
+
     <h3>분위기</h3>
+
     <select id="mood">
       <option>따뜻하고 감성적</option>
       <option>밤과 도시</option>
       <option>편안하고 잔잔함</option>
       <option>밝고 경쾌함</option>
       <option>애절하고 깊은 감성</option>
+      <option>카페에서 듣기 좋은 분위기</option>
+      <option>비 오는 밤</option>
     </select>
 
+
     <h3>목표 곡 길이</h3>
+
     <select id="duration">
       <option value="4-6">4~6분</option>
       <option value="5-7">5~7분</option>
+      <option value="10">약 10분</option>
     </select>
 
+
     <button class="primary" onclick="generateSong()">
-      🎵 노래 1곡 만들기
+      🎵 새로운 노래 1곡 만들기
     </button>
+
   </div>
+
 </section>
 
 
 <section id="songPage" class="hidden">
+
   <div class="card">
 
     <button class="secondary" onclick="goPage('createPage')">
@@ -213,34 +271,46 @@ audio,video{width:100%;margin-top:12px}
 
     <h2>🎵 노래 만들기</h2>
 
+
     <h3>제목</h3>
+
     <div id="songTitle" class="result"></div>
+
 
     <button class="secondary" onclick="copyText('songTitle')">
       📋 제목 복사
     </button>
 
-    <button class="secondary" onclick="newTitle()">
-      🔄 제목만 새로 만들기
+
+    <button class="secondary" onclick="regenerateSong()">
+      🔄 제목 · 가사 새로 만들기
     </button>
 
+
     <h3>스타일 프롬프트</h3>
+
     <textarea id="stylePrompt" readonly></textarea>
+
 
     <button class="secondary" onclick="copyValue('stylePrompt')">
       📋 스타일 복사
     </button>
 
+
     <h3>가사</h3>
+
     <textarea id="lyrics" readonly></textarea>
+
 
     <button class="secondary" onclick="copyValue('lyrics')">
       📋 가사 복사
     </button>
 
+
     <button class="black" onclick="openSuno()">
       🎵 Suno 열기
     </button>
+
 
     <h3>완성된 MP3 가져오기</h3>
 
@@ -251,44 +321,56 @@ audio,video{width:100%;margin-top:12px}
       onchange="uploadAudio(this.files[0])"
     >
 
+
     <div id="audioStatus" class="status">
       아직 MP3가 저장되지 않았습니다.
     </div>
 
+
     <audio id="audioPlayer" controls class="hidden"></audio>
+
 
     <button class="primary" onclick="goThumbnail()">
       다음: 썸네일 만들기 →
     </button>
 
   </div>
+
 </section>
 
 
 <section id="thumbnailPage" class="hidden">
+
   <div class="card">
 
     <button class="secondary" onclick="goPage('songPage')">
       ← 이전 단계
     </button>
 
+
     <h2>🖼️ 썸네일 만들기</h2>
 
+
     <h3>썸네일 제목</h3>
+
     <div id="thumbTitle" class="result"></div>
 
+
     <h3>이미지 프롬프트</h3>
+
     <textarea id="imagePrompt" readonly></textarea>
+
 
     <button class="secondary" onclick="copyValue('imagePrompt')">
       📋 이미지 프롬프트 복사
     </button>
 
+
     <p class="small">
-      지금 단계에서는 ChatGPT에서 이미지를 만든 뒤
-      아래에서 한 번만 선택합니다.
-      이후 GPT 이미지 자동 생성 기능을 연결할 수 있습니다.
+      현재는 ChatGPT에서 이미지를 만든 뒤 한 번만 선택합니다.
+      추후 이미지 생성 API를 연결하면 이 단계도 자동화할 수 있습니다.
     </p>
+
 
     <h3>완성된 썸네일 이미지 가져오기</h3>
 
@@ -299,40 +381,51 @@ audio,video{width:100%;margin-top:12px}
       onchange="uploadThumbnail(this.files[0])"
     >
 
+
     <div id="thumbnailStatus" class="status">
       아직 썸네일이 저장되지 않았습니다.
     </div>
 
+
     <img id="thumbnailPreview" class="preview hidden">
+
 
     <button class="primary" onclick="goVideo()">
       다음: 영상 만들기 →
     </button>
 
   </div>
+
 </section>
 
 
 <section id="videoPage" class="hidden">
+
   <div class="card">
 
     <button class="secondary" onclick="goPage('thumbnailPage')">
       ← 이전 단계
     </button>
 
+
     <h2>🎬 영상 만들기</h2>
 
+
     <div id="videoSummary" class="status"></div>
+
 
     <button id="renderButton" class="primary" onclick="renderVideo()">
       🎬 영상 자동 제작
     </button>
 
+
     <div id="videoStatus" class="status">
       영상 제작 준비
     </div>
 
+
     <video id="videoPlayer" controls class="hidden"></video>
+
 
     <a id="downloadVideo" class="hidden">
       <button class="green">
@@ -341,22 +434,37 @@ audio,video{width:100%;margin-top:12px}
     </a>
 
   </div>
+
 </section>
 
 </main>
 
 
 <div class="nav">
-  <button onclick="goPage('homePage')">🏠<br>홈</button>
-  <button onclick="goPage('createPage')">✨<br>만들기</button>
-  <button onclick="goPage('songPage')">🎵<br>노래</button>
-  <button onclick="goPage('thumbnailPage')">🖼️<br>썸네일</button>
+
+  <button onclick="goPage('homePage')">
+    🏠<br>홈
+  </button>
+
+  <button onclick="goPage('createPage')">
+    ✨<br>만들기
+  </button>
+
+  <button onclick="goPage('songPage')">
+    🎵<br>노래
+  </button>
+
+  <button onclick="goPage('thumbnailPage')">
+    🖼️<br>썸네일
+  </button>
+
 </div>
 
 
 <script>
 
 const state = {
+
   projectId:"",
   title:"",
   genre:"",
@@ -369,52 +477,219 @@ const state = {
   audioName:"",
   thumbnailUrl:"",
   videoUrl:""
+
 };
+
+
+function randomNumber(max){
+
+  if(
+    window.crypto &&
+    window.crypto.getRandomValues
+  ){
+
+    const array =
+      new Uint32Array(1);
+
+    window.crypto.getRandomValues(
+      array
+    );
+
+    return array[0] % max;
+
+  }
+
+  return Math.floor(
+    Math.random()*max
+  );
+
+}
+
+
+function choose(array){
+
+  return array[
+    randomNumber(array.length)
+  ];
+
+}
+
+
+function shuffle(array){
+
+  const copy =
+    [...array];
+
+  for(
+    let i=copy.length-1;
+    i>0;
+    i--
+  ){
+
+    const j =
+      randomNumber(i+1);
+
+    [
+      copy[i],
+      copy[j]
+    ] = [
+      copy[j],
+      copy[i]
+    ];
+
+  }
+
+  return copy;
+
+}
 
 
 function goPage(id){
 
-  document.querySelectorAll("main section")
-    .forEach(el=>el.classList.add("hidden"));
+  document
+    .querySelectorAll("main section")
+    .forEach(
+      el =>
+        el.classList.add("hidden")
+    );
 
-  document.getElementById(id)
+  document
+    .getElementById(id)
     .classList.remove("hidden");
 
   window.scrollTo(0,0);
+
 }
 
 
 function makeProjectId(){
 
-  return "project-" +
+  return (
+    "project-" +
     Date.now().toString(36) +
     "-" +
-    Math.random().toString(36).slice(2,8);
+    randomNumber(999999)
+  );
+
+}
+
+
+function getTitleHistory(){
+
+  try{
+
+    return JSON.parse(
+      localStorage.getItem(
+        "playmaker_title_history"
+      ) || "[]"
+    );
+
+  }catch(e){
+
+    return [];
+
+  }
+
+}
+
+
+function rememberTitle(title){
+
+  if(!title)return;
+
+  let history =
+    getTitleHistory();
+
+  history =
+    history.filter(
+      item =>
+        item !== title
+    );
+
+  history.unshift(title);
+
+  history =
+    history.slice(0,30);
+
+  localStorage.setItem(
+    "playmaker_title_history",
+    JSON.stringify(history)
+  );
+
+}
+
+
+function clearProjectUI(){
+
+  document
+    .getElementById("songTitle")
+    .innerText = "";
+
+  document
+    .getElementById("stylePrompt")
+    .value = "";
+
+  document
+    .getElementById("lyrics")
+    .value = "";
+
+  document
+    .getElementById("audioStatus")
+    .innerText =
+      "아직 MP3가 저장되지 않았습니다.";
+
+  document
+    .getElementById("thumbnailStatus")
+    .innerText =
+      "아직 썸네일이 저장되지 않았습니다.";
+
+  document
+    .getElementById("audioPlayer")
+    .classList.add("hidden");
+
+  document
+    .getElementById("thumbnailPreview")
+    .classList.add("hidden");
+
+  document
+    .getElementById("videoPlayer")
+    .classList.add("hidden");
+
 }
 
 
 async function newProject(){
 
-  Object.assign(state,{
-    projectId:makeProjectId(),
-    title:"",
-    genre:"",
-    vocal:"",
-    mood:"",
-    duration:"",
-    lyrics:"",
-    style:"",
-    audioUrl:"",
-    audioName:"",
-    thumbnailUrl:"",
-    videoUrl:""
-  });
+  Object.assign(
+    state,
+    {
+
+      projectId:
+        makeProjectId(),
+
+      title:"",
+      genre:"",
+      vocal:"",
+      mood:"",
+      duration:"",
+      lyrics:"",
+      style:"",
+      audioUrl:"",
+      audioName:"",
+      thumbnailUrl:"",
+      videoUrl:""
+
+    }
+  );
+
+  clearProjectUI();
 
   saveLocal();
 
   await saveProject();
 
   goPage("createPage");
+
 }
 
 
@@ -425,33 +700,47 @@ async function continueProject(){
   try{
 
     const response =
-      await fetch("/api/project");
+      await fetch(
+        "/api/project"
+      );
 
     if(response.ok){
 
       const data =
         await response.json();
 
-      if(data && data.projectId){
+      if(
+        data &&
+        data.projectId
+      ){
 
-        Object.assign(state,data);
+        Object.assign(
+          state,
+          data
+        );
 
         saveLocal();
+
       }
+
     }
 
   }catch(e){}
 
   if(!state.projectId){
 
-    alert("저장된 프로젝트가 없습니다.");
+    alert(
+      "저장된 프로젝트가 없습니다."
+    );
 
     return;
+
   }
 
   restoreUI();
 
   goPage("songPage");
+
 }
 
 
@@ -461,6 +750,7 @@ function saveLocal(){
     "playmaker_project",
     JSON.stringify(state)
   );
+
 }
 
 
@@ -470,15 +760,22 @@ function loadLocal(){
 
     const saved =
       JSON.parse(
-        localStorage.getItem("playmaker_project")
+        localStorage.getItem(
+          "playmaker_project"
+        )
       );
 
     if(saved){
 
-      Object.assign(state,saved);
+      Object.assign(
+        state,
+        saved
+      );
+
     }
 
   }catch(e){}
+
 }
 
 
@@ -486,198 +783,852 @@ async function saveProject(){
 
   saveLocal();
 
+  if(!state.projectId)return;
+
   try{
 
     await fetch(
       "/api/project/save",
       {
+
         method:"POST",
+
         headers:{
-          "Content-Type":"application/json"
+          "Content-Type":
+            "application/json"
         },
-        body:JSON.stringify(state)
+
+        body:
+          JSON.stringify(state)
+
       }
     );
 
   }catch(e){}
+
 }
 
 
 function restoreUI(){
 
-  document.getElementById("songTitle")
+  document
+    .getElementById("songTitle")
     .innerText =
-    state.title || "";
+      state.title || "";
 
-  document.getElementById("stylePrompt")
+  document
+    .getElementById("stylePrompt")
     .value =
-    state.style || "";
+      state.style || "";
 
-  document.getElementById("lyrics")
+  document
+    .getElementById("lyrics")
     .value =
-    state.lyrics || "";
+      state.lyrics || "";
 
-  document.getElementById("thumbTitle")
+  document
+    .getElementById("thumbTitle")
     .innerText =
-    state.title || "";
+      state.title || "";
 
-  document.getElementById("imagePrompt")
+  document
+    .getElementById("imagePrompt")
     .value =
-    buildImagePrompt();
+      buildImagePrompt();
+
 
   if(state.audioUrl){
 
     const audio =
-      document.getElementById("audioPlayer");
+      document
+        .getElementById("audioPlayer");
 
     audio.src =
-      state.audioUrl + "?t=" + Date.now();
+      state.audioUrl +
+      "?t=" +
+      Date.now();
 
-    audio.classList.remove("hidden");
+    audio
+      .classList
+      .remove("hidden");
 
-    document.getElementById("audioStatus")
+    document
+      .getElementById("audioStatus")
       .innerHTML =
-      "✅ 저장된 음악: " +
-      state.audioName;
+        "✅ 저장된 음악: " +
+        (
+          state.audioName ||
+          "MP3"
+        );
+
   }
+
 
   if(state.thumbnailUrl){
 
     const img =
-      document.getElementById(
-        "thumbnailPreview"
-      );
+      document
+        .getElementById(
+          "thumbnailPreview"
+        );
 
     img.src =
       state.thumbnailUrl +
       "?t=" +
       Date.now();
 
-    img.classList.remove("hidden");
+    img
+      .classList
+      .remove("hidden");
 
-    document.getElementById(
-      "thumbnailStatus"
-    ).innerHTML =
-      "✅ 썸네일 저장 완료";
+    document
+      .getElementById(
+        "thumbnailStatus"
+      )
+      .innerHTML =
+        "✅ 썸네일 저장 완료";
+
   }
 
   updateVideoSummary();
+
 }
 
 
-const popTitles = [
-  "Midnight Between Us",
-  "Echoes of Tonight",
-  "Coffee After Midnight",
-  "Heart Before Dawn",
-  "Walking Back to You",
-  "City Lights Again",
-  "Stay Until Morning",
-  "Rain Between the Lights",
-  "Closer After Midnight",
-  "Where the Night Begins"
+/* 제목 후보 */
+
+const popAdjectives = [
+
+  "Silent",
+  "Golden",
+  "Velvet",
+  "Fading",
+  "Hidden",
+  "Endless",
+  "Quiet",
+  "Neon",
+  "Silver",
+  "Warm",
+  "Blue",
+  "Last",
+  "Soft",
+  "Distant",
+  "Secret"
+
 ];
 
 
-const koreanTitles = [
-  "오늘 밤 우리",
-  "새벽이 오기 전에",
-  "다시 너에게",
-  "비가 머문 자리",
-  "늦은 밤의 기억",
-  "우리의 계절",
-  "너를 기다리는 밤",
-  "남겨진 마음"
+const popNouns = [
+
+  "Midnight",
+  "Morning",
+  "Rain",
+  "Memory",
+  "City",
+  "Lights",
+  "Sky",
+  "Window",
+  "Dream",
+  "Heart",
+  "Echo",
+  "Coffee",
+  "Moon",
+  "Night",
+  "Tomorrow"
+
 ];
 
 
-function choose(arr){
+const popPhrases = [
 
-  return arr[
-    Math.floor(
-      Math.random()*arr.length
-    )
-  ];
-}
+  "After the Rain",
+  "Before the Morning",
+  "Under City Lights",
+  "Where We Used to Be",
+  "When the Night Returns",
+  "Between Two Hearts",
+  "A Little Closer",
+  "Until the Lights Fade",
+  "Somewhere After Midnight",
+  "The Way You Stayed",
+  "One More Quiet Night",
+  "Before We Say Goodbye",
+  "Back to the Window",
+  "Through the City Rain",
+  "When Tomorrow Comes"
+
+];
 
 
-function generateTitle(){
+const koreanFirst = [
 
-  if(
-    state.genre === "팝" ||
-    state.genre === "보사노바" ||
-    state.genre === "재즈"
+  "늦은 밤",
+  "다시",
+  "오늘",
+  "그날",
+  "새벽",
+  "우리",
+  "비 오는 날",
+  "조용한 밤",
+  "남겨진",
+  "따뜻한"
+
+];
+
+
+const koreanLast = [
+
+  "기억",
+  "마음",
+  "사랑",
+  "약속",
+  "계절",
+  "노래",
+  "하루",
+  "그리움",
+  "시간",
+  "이야기"
+
+];
+
+
+function makeFreshTitle(){
+
+  const history =
+    getTitleHistory();
+
+  let title = "";
+
+  for(
+    let attempt=0;
+    attempt<80;
+    attempt++
   ){
 
-    return choose(popTitles);
+    if(
+      state.genre === "팝" ||
+      state.genre === "보사노바" ||
+      state.genre === "재즈"
+    ){
+
+      const mode =
+        randomNumber(3);
+
+      if(mode===0){
+
+        title =
+          choose(popAdjectives) +
+          " " +
+          choose(popNouns);
+
+      }else if(mode===1){
+
+        title =
+          choose(popNouns) +
+          " " +
+          choose(popPhrases);
+
+      }else{
+
+        title =
+          choose(popPhrases);
+
+      }
+
+    }else{
+
+      title =
+        choose(koreanFirst) +
+        " " +
+        choose(koreanLast);
+
+    }
+
+
+    if(
+      title &&
+      !history.includes(title)
+    ){
+
+      rememberTitle(title);
+
+      return title;
+
+    }
+
   }
 
-  return choose(koreanTitles);
-}
+
+  title =
+    (
+      state.genre === "팝"
+      ? "Night Story "
+      : "새로운 노래 "
+    ) +
+    Date.now()
+      .toString()
+      .slice(-5);
 
 
-function newTitle(){
+  rememberTitle(title);
 
-  state.title =
-    generateTitle();
+  return title;
 
-  document.getElementById("songTitle")
-    .innerText =
-    state.title;
-
-  saveProject();
 }
 
 
 function vocalEnglish(){
 
-  if(state.vocal==="여성")
+  if(state.vocal==="여성"){
+
     return "female lead vocals";
 
-  if(state.vocal==="남성")
+  }
+
+  if(state.vocal==="남성"){
+
     return "male lead vocals";
 
-  if(state.vocal==="혼성")
+  }
+
+  if(state.vocal==="혼성"){
+
     return "male and female duet vocals";
 
+  }
+
   return "instrumental, no vocals";
+
 }
 
 
 function genreEnglish(){
 
   const map = {
-    "팝":"modern emotional pop",
-    "가요":"modern Korean pop ballad",
-    "트로트":"modern Korean trot",
-    "성인가요":"Korean adult contemporary",
-    "보사노바":"warm bossa nova",
-    "재즈":"smooth cafe jazz",
-    "동요":"bright gentle children's song"
+
+    "팝":
+      "modern emotional pop",
+
+    "가요":
+      "modern Korean pop ballad",
+
+    "트로트":
+      "modern Korean trot",
+
+    "성인가요":
+      "Korean adult contemporary",
+
+    "보사노바":
+      "warm cafe bossa nova",
+
+    "재즈":
+      "smooth late-night cafe jazz",
+
+    "동요":
+      "bright gentle children's song"
+
   };
 
-  return map[state.genre] ||
-    "modern emotional pop";
+  return (
+    map[state.genre] ||
+    "modern emotional pop"
+  );
+
+}
+
+
+function moodEnglish(){
+
+  const map = {
+
+    "따뜻하고 감성적":
+      "warm emotional atmosphere",
+
+    "밤과 도시":
+      "cinematic late-night city atmosphere",
+
+    "편안하고 잔잔함":
+      "soft calm relaxing atmosphere",
+
+    "밝고 경쾌함":
+      "bright uplifting atmosphere",
+
+    "애절하고 깊은 감성":
+      "deep bittersweet emotional atmosphere",
+
+    "카페에서 듣기 좋은 분위기":
+      "cozy sophisticated cafe atmosphere",
+
+    "비 오는 밤":
+      "rainy late-night intimate atmosphere"
+
+  };
+
+  return (
+    map[state.mood] ||
+    "warm emotional atmosphere"
+  );
+
+}
+
+
+function durationPrompt(){
+
+  if(state.duration==="10"){
+
+    return (
+      "target duration approximately 9 to 10 minutes, " +
+      "extended full-length arrangement, " +
+      "multiple verses and choruses, " +
+      "two instrumental sections, " +
+      "long bridge development, " +
+      "extended final chorus and outro"
+    );
+
+  }
+
+  if(state.duration==="5-7"){
+
+    return (
+      "target duration approximately 5 to 7 minutes, " +
+      "full-length arrangement with instrumental development"
+    );
+
+  }
+
+  return (
+    "target duration approximately 4 to 6 minutes, " +
+    "full-length song arrangement"
+  );
+
 }
 
 
 function generateStyle(){
 
+  const productionChoices = [
+
+    "polished modern production",
+
+    "warm spacious production",
+
+    "cinematic polished production",
+
+    "natural intimate production",
+
+    "smooth radio-ready production"
+
+  ];
+
+
+  const melodyChoices = [
+
+    "memorable emotional chorus",
+
+    "strong melodic hook",
+
+    "gentle but memorable refrain",
+
+    "gradually building emotional melody",
+
+    "expressive melodic development"
+
+  ];
+
+
+  const arrangementChoices = [
+
+    "piano, warm pads, subtle drums and atmospheric textures",
+
+    "electric piano, soft bass, gentle drums and ambient guitar",
+
+    "warm acoustic layers, restrained percussion and cinematic pads",
+
+    "soft synth textures, piano, bass and tasteful rhythmic groove",
+
+    "organic instruments blended with modern atmospheric production"
+
+  ];
+
+
   return (
+
     genreEnglish() + ", " +
+
     vocalEnglish() + ", " +
-    "warm emotional atmosphere, " +
-    "professional polished production, " +
-    "strong memorable melody, " +
+
+    moodEnglish() + ", " +
+
+    choose(productionChoices) + ", " +
+
+    choose(melodyChoices) + ", " +
+
+    choose(arrangementChoices) + ", " +
+
     "natural musical development, " +
-    "avoid excessive repetition, " +
-    "intro, verse 1, pre-chorus, chorus, " +
-    "verse 2, chorus, instrumental break, " +
-    "bridge, final chorus, extended outro, " +
-    "target duration approximately " +
-    state.duration +
-    " minutes, suitable for YouTube music playlists"
+
+    "vary melody and chord movement between sections, " +
+
+    "avoid excessive lyrical and melodic repetition, " +
+
+    "do not loop the same chorus excessively, " +
+
+    durationPrompt() + ", " +
+
+    "suitable for a premium YouTube music playlist"
+
   );
+
+}
+
+
+/* 영어 가사 재료 */
+
+const englishScenes = [
+
+  "streetlights trembling softly on the rain",
+  "coffee cooling by the window",
+  "empty trains moving through the city",
+  "headlights fading down the avenue",
+  "moonlight resting on the floor",
+  "neon colors drifting through the glass",
+  "quiet footsteps crossing the station",
+  "morning waiting beyond the rooftops",
+  "wind moving gently through the curtains",
+  "a distant radio playing down the hall"
+
+];
+
+
+const englishFeelings = [
+
+  "I still remember the way you smiled",
+  "your voice returns when everything is quiet",
+  "some memories refuse to disappear",
+  "I wonder where this road will lead",
+  "the smallest moments bring you back",
+  "tonight feels closer than yesterday",
+  "I carry pieces of that night with me",
+  "time moves on but something stays",
+  "there are words I never learned to say",
+  "the silence knows what I cannot explain"
+
+];
+
+
+const englishHope = [
+
+  "maybe tomorrow we'll understand",
+  "maybe the morning will change our minds",
+  "perhaps another road will bring us home",
+  "somewhere ahead a light is waiting",
+  "I believe the night will open into dawn",
+  "there may still be another chance",
+  "we might find our way beyond the rain",
+  "the next sunrise may feel different"
+
+];
+
+
+function makeEnglishVerse(number){
+
+  const scenes =
+    shuffle(englishScenes)
+      .slice(0,2);
+
+  const feelings =
+    shuffle(englishFeelings)
+      .slice(0,2);
+
+
+  return (
+`[Verse ${number}]
+${scenes[0]}
+${feelings[0]}
+${scenes[1]}
+${feelings[1]}`
+  );
+
+}
+
+
+function makeEnglishPre(){
+
+  const lines =
+    shuffle(englishFeelings)
+      .slice(0,2);
+
+  return (
+`[Pre-Chorus]
+${lines[0]}
+${lines[1]}`
+  );
+
+}
+
+
+function makeEnglishChorus(){
+
+  const endings = [
+
+    "I keep finding my way back tonight",
+    "I hear your name beneath the city lights",
+    "the distance disappears inside my mind",
+    "I hold the memory a little while",
+    "I follow every light that leads me home"
+
+  ];
+
+
+  return (
+`[Chorus]
+${state.title}
+Stay with me inside this moment
+${state.title}
+Like a light that keeps on glowing
+Through the changing streets and passing time
+${choose(endings)}`
+  );
+
+}
+
+
+function makeEnglishBridge(){
+
+  const hope =
+    shuffle(englishHope)
+      .slice(0,3);
+
+  return (
+`[Bridge]
+${hope[0]}
+${hope[1]}
+${hope[2]}
+And I will carry what this night has shown`
+  );
+
+}
+
+
+function makePopLyrics(){
+
+  const intro =
+    choose([
+      "The city settles into blue",
+      "Another quiet evening starts",
+      "Rain is falling past the window",
+      "The last train disappears tonight",
+      "Soft lights are waking in the street"
+    ]);
+
+
+  let lyrics =
+`[Intro]
+${intro}
+
+${makeEnglishVerse(1)}
+
+${makeEnglishPre()}
+
+${makeEnglishChorus()}
+
+${makeEnglishVerse(2)}
+
+${makeEnglishChorus()}
+
+[Instrumental Break]
+`;
+
+  if(state.duration==="10"){
+
+    lyrics +=
+`
+${makeEnglishVerse(3)}
+
+${makeEnglishPre()}
+
+${makeEnglishChorus()}
+
+[Extended Instrumental Break]
+
+${makeEnglishVerse(4)}
+
+${makeEnglishBridge()}
+
+${makeEnglishChorus()}
+
+[Instrumental Development]
+
+${makeEnglishChorus()}
+
+[Extended Outro]
+The night grows quiet around me
+The lights slowly disappear
+What remains becomes a memory
+And morning waits somewhere near
+`;
+
+  }else{
+
+    lyrics +=
+`
+${makeEnglishBridge()}
+
+${makeEnglishChorus()}
+
+[Outro]
+The city grows quiet around me
+And morning waits beyond the night
+`;
+
+  }
+
+  return lyrics;
+
+}
+
+
+/* 한국어 가사 재료 */
+
+const koreanScenes = [
+
+  "창가에 머문 빗소리를 듣고",
+  "조용한 골목 불빛을 바라보며",
+  "늦은 밤 텅 빈 거리를 걷다가",
+  "따뜻한 커피 향이 남은 자리에서",
+  "새벽빛이 번지는 창을 바라보다",
+  "멀어지는 자동차 불빛 사이로",
+  "바람이 조용히 커튼을 흔들 때",
+  "익숙한 노래가 멀리서 들려와"
+
+];
+
+
+const koreanFeelings = [
+
+  "문득 당신의 웃음이 떠올랐어요",
+  "하지 못한 말들이 마음에 남아요",
+  "시간이 지나도 기억은 선명해요",
+  "그날의 마음이 다시 돌아옵니다",
+  "작은 순간들이 오래 남아 있어요",
+  "왜인지 오늘은 더 그리워집니다",
+  "멀리 있어도 마음은 그 자리에 있어요",
+  "조용한 마음속에 이름을 불러봅니다"
+
+];
+
+
+function makeKoreanVerse(number){
+
+  const scenes =
+    shuffle(koreanScenes)
+      .slice(0,2);
+
+  const feelings =
+    shuffle(koreanFeelings)
+      .slice(0,2);
+
+
+  return (
+`[${number}절]
+${scenes[0]}
+${feelings[0]}
+${scenes[1]}
+${feelings[1]}`
+  );
+
+}
+
+
+function makeKoreanChorus(){
+
+  const ends = [
+
+    "오늘도 그 길을 천천히 걸어요",
+    "아직도 마음 한편에 남아 있어요",
+    "그 기억을 따라 다시 걸어갑니다",
+    "시간이 흘러도 잊지 않을게요",
+    "우리의 계절을 오래 간직할게요"
+
+  ];
+
+
+  return (
+`[후렴]
+${state.title}
+내 마음 깊은 곳에 남아
+시간이 지나도 사라지지 않는
+그날의 기억을 따라서
+${choose(ends)}`
+  );
+
+}
+
+
+function makeKoreanLyrics(){
+
+  let lyrics =
+`${makeKoreanVerse(1)}
+
+${makeKoreanChorus()}
+
+${makeKoreanVerse(2)}
+
+${makeKoreanChorus()}
+
+[간주]
+`;
+
+  if(state.duration==="10"){
+
+    lyrics +=
+`
+${makeKoreanVerse(3)}
+
+${makeKoreanChorus()}
+
+[긴 간주]
+
+${makeKoreanVerse(4)}
+
+[브리지]
+내일은 조금 달라질까요
+다시 웃으며 만날 수 있을까요
+멀어진 시간 너머에서도
+그 마음 하나는 기억할게요
+
+${makeKoreanChorus()}
+
+[연주]
+
+${makeKoreanChorus()}
+
+[긴 아웃트로]
+조용한 밤이 지나가고
+새로운 아침이 찾아옵니다
+`;
+
+  }else{
+
+    lyrics +=
+`
+[브리지]
+내일은 조금 달라질까요
+다시 웃으며 만날 수 있을까요
+멀어진 시간 너머에서도
+그 마음 하나는 기억할게요
+
+${makeKoreanChorus()}
+
+[아웃트로]
+조용한 밤이 지나가고
+새로운 아침이 찾아옵니다
+`;
+
+  }
+
+  return lyrics;
+
 }
 
 
@@ -685,125 +1636,60 @@ function generateLyrics(){
 
   if(state.vocal==="연주곡"){
 
-    return "[Instrumental]\n\n" +
-      "No lyrics.\n" +
-      "Create a full-length instrumental arrangement.";
+    if(state.duration==="10"){
+
+      return (
+`[Instrumental]
+
+No lyrics.
+
+Create an approximately 9 to 10 minute instrumental track.
+
+Intro
+Theme A
+Theme B
+Instrumental development
+Theme A variation
+Long solo section
+Bridge
+Theme B variation
+Final theme
+Extended outro
+
+Avoid obvious looping and excessive repetition.`
+      );
+
+    }
+
+
+    return (
+`[Instrumental]
+
+No lyrics.
+
+Create a full-length instrumental arrangement
+with evolving sections and minimal repetition.`
+    );
+
   }
+
 
   if(state.genre==="팝"){
 
-    return `[Intro]
-Soft city lights are fading
-Another quiet night begins
+    return makePopLyrics();
 
-[Verse 1]
-Midnight traffic disappears beneath the rain
-Colors move like memories across the window pane
-Every little moment brings your voice to mind
-Somewhere in the silence there is something left to find
-
-[Pre-Chorus]
-Every quiet second pulls me closer
-Every passing light feels new
-
-[Chorus]
-${state.title}
-You're the rhythm running through my mind
-${state.title}
-Like a light I never leave behind
-Through the rain and through the changing sky
-I keep coming back to you tonight
-
-[Verse 2]
-Another hour passes slowly by the window
-The city turns to colors in the dark
-I hear the echo of our conversation
-And feel it moving somewhere in my heart
-
-[Chorus]
-${state.title}
-You're the rhythm running through my mind
-${state.title}
-Like a light I never leave behind
-Through the rain and through the changing sky
-I keep coming back to you tonight
-
-[Instrumental Break]
-
-[Bridge]
-Maybe tomorrow everything will change
-Maybe we'll find another way
-But if this night becomes a memory
-I'll keep a little piece of it with me
-
-[Final Chorus]
-${state.title}
-You're the rhythm running through my mind
-${state.title}
-Like a light I never leave behind
-Whatever waits beyond tonight
-I'll remember how this moment felt
-
-[Extended Outro]
-Soft city lights are fading
-And still I hear your name`;
   }
 
-  return `[1절]
-조용한 밤 창가에 앉아
-지나간 시간을 바라봅니다
-말하지 못했던 마음들이
-오늘따라 더 선명해집니다
 
-[후렴]
-${state.title}
-내 마음 깊은 곳에 남아
-시간이 지나도 잊히지 않는
-우리의 기억을 따라
-오늘도 그 길을 걷습니다
+  return makeKoreanLyrics();
 
-[2절]
-계절이 몇 번을 지나가도
-익숙한 그 자릴 바라봅니다
-웃으며 나눴던 이야기들이
-바람처럼 다시 돌아옵니다
-
-[후렴]
-${state.title}
-내 마음 깊은 곳에 남아
-시간이 지나도 잊히지 않는
-우리의 기억을 따라
-오늘도 그 길을 걷습니다
-
-[브리지]
-내일은 조금 달라질까요
-우리 다시 웃을 수 있을까요
-
-[마지막 후렴]
-${state.title}
-오래도록 기억할게요
-멀리 있어도 변하지 않는
-그날의 마음을 따라
-오늘도 당신을 생각합니다`;
 }
 
 
-async function generateSong(){
-
-  state.genre =
-    document.getElementById("genre").value;
-
-  state.vocal =
-    document.getElementById("vocal").value;
-
-  state.mood =
-    document.getElementById("mood").value;
-
-  state.duration =
-    document.getElementById("duration").value;
+async function createFreshSong(){
 
   state.title =
-    generateTitle();
+    makeFreshTitle();
 
   state.style =
     generateStyle();
@@ -811,54 +1697,139 @@ async function generateSong(){
   state.lyrics =
     generateLyrics();
 
-  document.getElementById("songTitle")
+  state.audioUrl = "";
+  state.audioName = "";
+  state.thumbnailUrl = "";
+  state.videoUrl = "";
+
+
+  document
+    .getElementById("songTitle")
     .innerText =
-    state.title;
+      state.title;
 
-  document.getElementById("stylePrompt")
-    .value =
-    state.style;
 
-  document.getElementById("lyrics")
+  document
+    .getElementById("stylePrompt")
     .value =
-    state.lyrics;
+      state.style;
+
+
+  document
+    .getElementById("lyrics")
+    .value =
+      state.lyrics;
+
+
+  document
+    .getElementById("audioStatus")
+    .innerText =
+      "아직 MP3가 저장되지 않았습니다.";
+
+
+  document
+    .getElementById("audioPlayer")
+    .classList
+    .add("hidden");
+
 
   await saveProject();
 
+}
+
+
+async function generateSong(){
+
+  state.genre =
+    document
+      .getElementById("genre")
+      .value;
+
+  state.vocal =
+    document
+      .getElementById("vocal")
+      .value;
+
+  state.mood =
+    document
+      .getElementById("mood")
+      .value;
+
+  state.duration =
+    document
+      .getElementById("duration")
+      .value;
+
+
+  await createFreshSong();
+
   goPage("songPage");
+
+}
+
+
+async function regenerateSong(){
+
+  if(!state.genre){
+
+    alert(
+      "먼저 음악 기획에서 장르를 선택해 주세요."
+    );
+
+    return;
+
+  }
+
+  await createFreshSong();
+
 }
 
 
 function copyText(id){
 
-  navigator.clipboard.writeText(
-    document.getElementById(id)
-      .innerText
+  const text =
+    document
+      .getElementById(id)
+      .innerText;
+
+  navigator
+    .clipboard
+    .writeText(text);
+
+  alert(
+    "복사했습니다."
   );
 
-  alert("복사했습니다.");
 }
 
 
 function copyValue(id){
 
-  navigator.clipboard.writeText(
-    document.getElementById(id)
-      .value
+  const text =
+    document
+      .getElementById(id)
+      .value;
+
+  navigator
+    .clipboard
+    .writeText(text);
+
+  alert(
+    "복사했습니다."
   );
 
-  alert("복사했습니다.");
 }
 
 
-function openSuno(){
+async function openSuno(){
 
-  saveProject();
+  await saveProject();
 
   window.open(
     "https://suno.com/create",
     "_blank"
   );
+
 }
 
 
@@ -866,22 +1837,44 @@ async function uploadAudio(file){
 
   if(!file)return;
 
-  const status =
-    document.getElementById(
-      "audioStatus"
+
+  if(!state.projectId){
+
+    alert(
+      "먼저 새 프로젝트를 시작해 주세요."
     );
+
+    return;
+
+  }
+
+
+  const status =
+    document
+      .getElementById(
+        "audioStatus"
+      );
+
 
   status.innerText =
     "⏳ MP3 서버 저장 중...";
 
+
   const form =
     new FormData();
 
-  form.append("audio",file);
+
+  form.append(
+    "audio",
+    file
+  );
+
+
   form.append(
     "projectId",
     state.projectId
   );
+
 
   try{
 
@@ -889,67 +1882,70 @@ async function uploadAudio(file){
       await fetch(
         "/api/project/audio",
         {
+
           method:"POST",
           body:form
+
         }
       );
 
+
     const data =
       await response.json();
+
 
     if(!response.ok){
 
       throw new Error(
         data.error ||
+        data.detail ||
         "MP3 저장 실패"
       );
+
     }
+
 
     state.audioUrl =
       data.audioUrl;
 
+
     state.audioName =
       file.name;
 
-    const mp3Title =
-      file.name.replace(
-        /\.[^/.]+$/,
-        ""
-      );
-
-    state.title =
-      mp3Title;
-
-    document.getElementById(
-      "songTitle"
-    ).innerText =
-      mp3Title;
 
     status.innerHTML =
       "✅ 서버에 저장된 음악: " +
       file.name;
 
+
     const audio =
-      document.getElementById(
-        "audioPlayer"
-      );
+      document
+        .getElementById(
+          "audioPlayer"
+        );
+
 
     audio.src =
       state.audioUrl +
       "?t=" +
       Date.now();
 
-    audio.classList.remove(
-      "hidden"
-    );
+
+    audio
+      .classList
+      .remove("hidden");
+
 
     await saveProject();
 
   }catch(error){
 
     status.innerText =
-      "❌ " + error.message;
+      "❌ " +
+      error.message;
+
   }
+
 }
 
 
@@ -959,19 +1955,37 @@ function buildImagePrompt(){
     state.title ||
     "Midnight Music";
 
+
   return (
-    "warm cozy cafe at night, golden lights, " +
-    "emotional peaceful atmosphere, " +
-    "realistic cinematic photography, " +
+
     "premium YouTube music playlist cover, " +
-    "clean elegant composition, " +
+
+    "16:9 widescreen, " +
+
+    moodEnglish() + ", " +
+
+    "cinematic realistic photography, " +
+
+    "beautiful lighting, sophisticated composition, " +
+
     "no close-up people, " +
-    "room for title text, " +
-    "16:9 widescreen, high detail, " +
-    'atmosphere inspired by "' +
+
+    "no distorted text, " +
+
+    "clear visual focus, " +
+
+    "room for title typography, " +
+
+    "high detail, " +
+
+    "visual concept inspired by the song title " +
+
+    '"' +
     title +
     '"'
+
   );
+
 }
 
 
@@ -984,21 +1998,32 @@ function goThumbnail(){
     );
 
     return;
+
   }
 
-  document.getElementById(
-    "thumbTitle"
-  ).innerText =
-    state.title;
 
-  document.getElementById(
-    "imagePrompt"
-  ).value =
-    buildImagePrompt();
+  document
+    .getElementById(
+      "thumbTitle"
+    )
+    .innerText =
+      state.title;
+
+
+  document
+    .getElementById(
+      "imagePrompt"
+    )
+    .value =
+      buildImagePrompt();
+
 
   saveProject();
 
-  goPage("thumbnailPage");
+  goPage(
+    "thumbnailPage"
+  );
+
 }
 
 
@@ -1006,26 +2031,33 @@ async function uploadThumbnail(file){
 
   if(!file)return;
 
+
   const status =
-    document.getElementById(
-      "thumbnailStatus"
-    );
+    document
+      .getElementById(
+        "thumbnailStatus"
+      );
+
 
   status.innerText =
     "⏳ 썸네일 서버 저장 중...";
 
+
   const form =
     new FormData();
+
 
   form.append(
     "thumbnail",
     file
   );
 
+
   form.append(
     "projectId",
     state.projectId
   );
+
 
   try{
 
@@ -1033,67 +2065,95 @@ async function uploadThumbnail(file){
       await fetch(
         "/api/project/thumbnail",
         {
+
           method:"POST",
           body:form
+
         }
       );
 
+
     const data =
       await response.json();
+
 
     if(!response.ok){
 
       throw new Error(
         data.error ||
+        data.detail ||
         "썸네일 저장 실패"
       );
+
     }
+
 
     state.thumbnailUrl =
       data.thumbnailUrl;
 
+
     const img =
-      document.getElementById(
-        "thumbnailPreview"
-      );
+      document
+        .getElementById(
+          "thumbnailPreview"
+        );
+
 
     img.src =
       state.thumbnailUrl +
       "?t=" +
       Date.now();
 
-    img.classList.remove(
-      "hidden"
-    );
+
+    img
+      .classList
+      .remove("hidden");
+
 
     status.innerHTML =
       "✅ 썸네일 서버 저장 완료";
+
 
     await saveProject();
 
   }catch(error){
 
     status.innerText =
-      "❌ " + error.message;
+      "❌ " +
+      error.message;
+
   }
+
 }
 
 
 function updateVideoSummary(){
 
-  document.getElementById(
-    "videoSummary"
-  ).innerHTML =
-    "<b>제목:</b> " +
-    (state.title || "-") +
-    "<br><br><b>음악:</b> " +
-    (state.audioName || "-") +
-    "<br><br><b>썸네일:</b> " +
-    (
-      state.thumbnailUrl
-      ? "저장 완료"
-      : "없음"
-    );
+  document
+    .getElementById(
+      "videoSummary"
+    )
+    .innerHTML =
+
+      "<b>제목:</b> " +
+      (
+        state.title ||
+        "-"
+      ) +
+
+      "<br><br><b>음악:</b> " +
+      (
+        state.audioName ||
+        "-"
+      ) +
+
+      "<br><br><b>썸네일:</b> " +
+      (
+        state.thumbnailUrl
+        ? "저장 완료"
+        : "없음"
+      );
+
 }
 
 
@@ -1106,7 +2166,9 @@ function goVideo(){
     );
 
     return;
+
   }
+
 
   if(!state.thumbnailUrl){
 
@@ -1115,13 +2177,18 @@ function goVideo(){
     );
 
     return;
+
   }
+
 
   updateVideoSummary();
 
   saveProject();
 
-  goPage("videoPage");
+  goPage(
+    "videoPage"
+  );
+
 }
 
 
@@ -1137,25 +2204,35 @@ async function renderVideo(){
     );
 
     return;
+
   }
 
+
   const button =
-    document.getElementById(
-      "renderButton"
-    );
+    document
+      .getElementById(
+        "renderButton"
+      );
+
 
   const status =
-    document.getElementById(
-      "videoStatus"
-    );
+    document
+      .getElementById(
+        "videoStatus"
+      );
 
-  button.disabled = true;
+
+  button.disabled =
+    true;
+
 
   button.innerText =
     "⏳ 영상 제작 중...";
 
+
   status.innerText =
-    "MP4를 만들고 있습니다. 잠시 기다려 주세요.";
+    "MP4를 만들고 있습니다. 기다려 주세요.";
+
 
   try{
 
@@ -1163,74 +2240,99 @@ async function renderVideo(){
       await fetch(
         "/api/project/render",
         {
+
           method:"POST",
+
           headers:{
             "Content-Type":
               "application/json"
           },
-          body:JSON.stringify({
-            projectId:
-              state.projectId
-          })
+
+          body:
+            JSON.stringify({
+
+              projectId:
+                state.projectId
+
+            })
+
         }
       );
+
 
     const data =
       await response.json();
 
+
     if(!response.ok){
 
       throw new Error(
-        data.error ||
         data.detail ||
+        data.error ||
         "영상 제작 실패"
       );
+
     }
+
 
     state.videoUrl =
       data.videoUrl;
 
+
     const video =
-      document.getElementById(
-        "videoPlayer"
-      );
+      document
+        .getElementById(
+          "videoPlayer"
+        );
+
 
     video.src =
       state.videoUrl +
       "?t=" +
       Date.now();
 
-    video.classList.remove(
-      "hidden"
-    );
+
+    video
+      .classList
+      .remove("hidden");
+
 
     const download =
-      document.getElementById(
-        "downloadVideo"
-      );
+      document
+        .getElementById(
+          "downloadVideo"
+        );
+
 
     download.href =
       state.videoUrl;
+
 
     download.download =
       (
         state.title ||
         "PlayMaker"
-      ) + ".mp4";
+      ) +
+      ".mp4";
 
-    download.classList.remove(
-      "hidden"
-    );
+
+    download
+      .classList
+      .remove("hidden");
+
 
     status.innerHTML =
       "✅ 영상 제작 완료";
+
 
     await saveProject();
 
   }catch(error){
 
     status.innerText =
-      "❌ " + error.message;
+      "❌ " +
+      error.message;
+
 
     alert(
       "영상 제작 오류\n\n" +
@@ -1239,20 +2341,21 @@ async function renderVideo(){
 
   }finally{
 
-    button.disabled = false;
+    button.disabled =
+      false;
+
 
     button.innerText =
       "🎬 영상 자동 제작";
+
   }
+
 }
 
 
 loadLocal();
 
-if(state.projectId){
-
-  restoreUI();
-}
+restoreUI();
 
 goPage("homePage");
 
