@@ -2294,15 +2294,67 @@ async function renderVideo(){
 
   }catch(error){
 
-    status.innerText =
-      "❌ " +
-      error.message;
+  try{
 
+    const recoveryResponse =
+      await fetch("/api/project");
 
-    alert(
-      "영상 제작 오류\n\n" +
-      error.message
+    const recoveryData =
+      await recoveryResponse.json();
+
+    if(recoveryData.videoUrl){
+
+      state.videoUrl =
+        recoveryData.videoUrl;
+
+      const video =
+        document.getElementById(
+          "videoPlayer"
+        );
+
+      video.src =
+        state.videoUrl +
+        "?t=" +
+        Date.now();
+
+      video.classList.remove("hidden");
+
+      const download =
+        document.getElementById(
+          "downloadVideo"
+        );
+
+      download.href =
+        state.videoUrl;
+
+      download.download =
+        (state.title || "PlayMaker") +
+        ".mp4";
+
+      download.classList.remove("hidden");
+
+      status.innerText =
+        "✅ 영상 제작 완료";
+
+      await saveProject();
+
+      return;
+    }
+
+  }catch(recoveryError){
+    console.error(
+      "VIDEO RECOVERY ERROR:",
+      recoveryError
     );
+  }
+
+  status.innerText =
+    "❌ " + error.message;
+
+  alert(
+    "영상 제작 오류\n\n" +
+    error.message
+  );
 
   }finally{
 
