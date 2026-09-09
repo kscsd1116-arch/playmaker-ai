@@ -1634,45 +1634,10 @@ ${makeKoreanChorus()}
 
 function generateLyrics(){
 
-  if(state.vocal==="연주곡"){
 
-    if(state.duration==="10"){
-
-      return (
-`[Instrumental]
-
-No lyrics.
-
-Create an approximately 9 to 10 minute instrumental track.
-
-Intro
-Theme A
-Theme B
-Instrumental development
-Theme A variation
-Long solo section
-Bridge
-Theme B variation
-Final theme
-Extended outro
-
-Avoid obvious looping and excessive repetition.`
-      );
-
-    }
-
-
-    return (
-`[Instrumental]
-
-No lyrics.
-
-Create a full-length instrumental arrangement
-with evolving sections and minimal repetition.`
-    );
-
-  }
-
+if(state.vocal==="연주곡"){
+  return "";
+}
 
   if(state.genre==="팝"){
 
