@@ -798,48 +798,31 @@ app.post(
       );
 
 
-      const args = [
+const args = [
+  "-y",
 
-        "-y",
+  "-loop", "1",
+  "-framerate", "1",
+  "-i", thumbnailPath,
 
-        "-loop",
-        "1",
+  "-i", audioPath,
 
-        "-framerate",
-        "2",
+  "-vf",
+  "scale=1280:720:force_original_aspect_ratio=decrease,pad=1280:720:(ow-iw)/2:(oh-ih)/2,format=yuv420p",
 
-        "-i",
-        thumbnailPath,
+  "-c:v", "libx264",
+  "-preset", "ultrafast",
+  "-tune", "stillimage",
+  "-r", "1",
 
-        "-i",
-        audioPath,
+  "-c:a", "aac",
+  "-b:a", "128k",
 
-        "-c:v",
-        "libx264",
+  "-shortest",
+  "-movflags", "+faststart",
 
-        "-preset",
-        "veryfast",
-
-        "-tune",
-        "stillimage",
-
-        "-vf",
-        "scale=1920:1080:force_original_aspect_ratio=decrease,pad=1920:1080:(ow-iw)/2:(oh-ih)/2,format=yuv420p",
-
-        "-c:a",
-        "aac",
-
-        "-b:a",
-        "192k",
-
-        "-shortest",
-
-        "-movflags",
-        "+faststart",
-
-        outputPath
-
-      ];
+  outputPath
+];
 
 
       const result =
